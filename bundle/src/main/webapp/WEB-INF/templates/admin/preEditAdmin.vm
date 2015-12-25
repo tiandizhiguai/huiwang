@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/preAdd.css"/>
+<div class="pre_edit">
+    <form class="pre_add_admin_form" action="//www.rensheng.com/admin/editAdmin" method="post">
+        <table>
+	      <tr>
+	         <td align="right" class="left_td"><span class="must_input">*</span>姓名：</td>
+	         <td align="left"><input type="text" class="realName" name="realName" value="$!{loginUser.realName}"></td>
+	         <td><span class="tips" id="check_name"></span></td>
+	      </tr>
+	      <tr>
+	         <td align="right" class="left_td"><span class="must_input">*</span>身份证号：</td>
+	         <td align="left"><input type="text" class="idNumber" name="idNumber" value="$!{loginUser.idNumber}"></td>
+	         <td><span class="tips" id="check_idNumber"></span></td>
+	      </tr>
+	      ##<tr>
+	      ##   <td align="right" class="left_td"><span class="must_input">*</span>所在地：</td>
+	      ##   <td align="left">
+	      ##      <select name="provinceId" class="province_id_select"></select>
+		  ##        <select name="cityId" class="city_id_select"></select>
+		  ##	<td><span class="tips" id="check_province"></span></td>
+	      ##  </td>
+	      ##</tr>
+	      <tr>
+	         <td align="right" class="left_td"><span class="must_input">*</span>性别：</td>
+	         <td align="left">
+	            #set($sex=$!{loginUser.sex})
+	            <select name="sex" class="sex">
+					<option value="man" #if($sex=="man")selected#end>男</option> 
+					<option value="woman" #if($sex=="woman")selected#end>女</option> 
+				</select>
+	         </td>
+	      </tr>
+	      <tr>
+	          <td align="right" class="left_td"></td>
+	          <td align="left"><button type="button" class="btn btn-primary btn-sm" id="pre_add_admin_btn">确定</button></td>
+	      </tr>
+	      <input type="hidden" name="id" value="$!{loginUser.id}"/>
+	      <input type="hidden" class="province_id_value" value="$!{loginUser.provinceId}"/>
+	      <input type="hidden" class="city_id_value" value="$!{loginUser.cityId}"/>
+		</table>
+	</form>
+</div>
+<script src="//style.rensheng.com/rensheng/js/admin/preEditAdmin.js"></script>

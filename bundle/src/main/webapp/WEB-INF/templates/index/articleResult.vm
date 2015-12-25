@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/articleResult.css"/>
+<div class="rensheng_items">
+    <div class="rensheng_left_item">
+        <div class="rensheng_left_title">最新动态</div>
+        <ul>
+            <li class="rensheng_content_item">
+            	<a class="rensheng_content_title" target="_blank" href="/article/detail">我的2013年爱情</a>
+            	<div class="rensheng_content">那一年，我25岁</div>
+            </li>
+        </ul>
+    </div>
+    <div class="rensheng_right_item">
+    	#parse("index/imgCarousel.vm")
+    </div>
+</div>
+#parse("common/paging.vm")
+<form id="index_form" method="get">
+    <input type="hidden" name="pageSize" value="20"/>
+    <input type="hidden" name="pageNo" id="submit_page_no"/>
+</form>
+<script src="//style.rensheng.com/rensheng/js/articleResult.js"></script>

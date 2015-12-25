@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.ArticleCommentDao">
+	<resultMap id="commentResultMap" type="com.example.model.ArticleCommentModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="simple_comment" property="simpleComment"
+			jdbcType="VARCHAR" />
+		<result column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="commentColumnList">
+		id, simple_comment, article_id, user_id, status,
+		gmt_created, gmt_modified
+	</sql>
+
+	<select id="getList" parameterType="com.example.param.ArticleCommentParam"
+		resultMap="commentResultMap">
+		select
+		<include refid="commentColumnList" />
+		from article_comment
+		where
+		<include refid="commentCondition" />
+	</select>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="commentResultMap">
+		select
+		<include refid="commentColumnList" />
+		from article_comment
+		where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="com.example.param.ArticleCommentParam">
+		delete from article_comment
+		where
+		<include refid="commentCondition" />
+	</delete>
+
+	<insert id="insert" parameterType="com.example.param.ArticleCommentParam">
+		insert into article_comment
+		(simple_comment, article_id,
+		user_id, status, gmt_created,
+		gmt_modified, detail_comment)
+		values (#{simpleComment},#{articleId},
+		#{userId}, 'normal', now(),now(),
+		#{detailComment})
+	</insert>
+	<update id="update" parameterType="com.example.param.ArticleCommentParam">
+		update article_comment
+		<set>
+			<if test="simpleComment != null">
+				simple_comment = #{simpleComment},
+			</if>
+			<if test="articleId != null">
+				article_id = #{articleId},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="detailComment != null">
+				detail_comment = #{detailComment},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+
+	<sql id="commentCondition">
+		1 = 1
+		<if test="simpleComment != null">
+			and simple_comment = #{simpleComment}
+		</if>
+		<if test="articleId != null">
+			and article_id = #{articleId}
+		</if>
+		<if test="userId != null">
+			and user_id = #{userId}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="detailComment != null">
+			and detail_comment = #{detailComment}
+		</if>
+	</sql>
+</mapper>

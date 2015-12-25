@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://www.rensheng.com/rensheng/css/common.css">
+
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<script src="http://www.rensheng.com/rensheng/js/common.js"></script>
+
+#set($loginUser=$!session.getAttribute("loginUser"))

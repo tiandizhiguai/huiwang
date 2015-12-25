@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="off">
+	<appenders>
+		<RollingFile name="ROLLING" fileName="e:/logs/app.log" filePattern="e:/logs/app_%d{yyyy-MM-dd}_%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+            </Policies>
+        </RollingFile>
+	</appenders>
+	<loggers>
+		<root level="error">
+			<appender-ref ref="ROLLING"/>
+		</root>
+	</loggers>
+</configuration>

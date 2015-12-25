@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/header.css"/>
+<div class="header">
+    <div class="header_item">
+	    <ul class="header_left">
+	        <li><a href="//www.rensheng.com/index">首页</a></li>
+	        <li>
+	            #if($!{loginUser})
+	                <input type="hidden" class="login_user_id" value="${loginUser.id}"/>
+	            	$!{loginUser.loginName}，<a href="//www.rensheng.com/user/logout">退出</a>
+	            #else
+	                <a href="//www.rensheng.com/user/preLogin">登陆</a>
+	            #end
+	        </li>
+	        <li><a href="//www.rensheng.com/user/preRegister">注册</a></li>
+	    </ul>
+	    <ul class="header_right">
+	        <li><a href="//www.rensheng.com/admin/index">我的主页</a></li>
+	    </ul>
+    </div>
+</div>

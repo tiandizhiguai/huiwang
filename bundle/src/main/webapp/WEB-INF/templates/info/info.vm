@@ -1,0 +1,3 @@
+<div class="admin_welcome">
+    #if($!operationType == "success")操作成功#end
+</div>

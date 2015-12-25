@@ -1,0 +1,15 @@
+<div class="paging">
+    <ul>
+        #if($!totalCount > 0)
+	        <li>共$!totalCount条</li>
+	        <li>
+				<ul class="pager">
+				  <input type="hidden" value="$!pageNo" class="page_no"/>
+				  <input type="hidden" value="$!totalPage" class="total_page"/>
+				  <li #if($!pageNo <= 1)class="disabled"#end id="pre_page"><a href="#">上一页</a></li>
+				  <li #if($!pageNo >= $!totalPage)class="disabled"#end id="next_page"><a href="#">下一页</a></li>
+				</ul>
+	        </li>
+        #end 
+    </ul>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+	    #parse("common/common.vm")
+	</head>
+	<body>
+	    <div>
+		    #parse("common/header.vm")
+		    <link rel="stylesheet" href="http://style.malasong.com/weishi/css/preRegister.css"/>
+		    <div class="preRegister">
+		        <ul>
+			        <li class="preRegister_img">
+				        <img src="http://img.meilishuo.net/css//images/register/ad_img.jpg"/>
+				    </li>
+			        <li class="preRegister_info">
+						登陆失败，登陆名或密码不正确，<a href="http://www.malasong.com/index">返回首页</a>
+				    </li>
+			    <ul>
+		    </div>
+		    <script src="http://style.malasong.com/weishi/js/preRegister.js"></script>
+		    #parse("common/footer.vm")
+		</div>
+	</body>
+</html>

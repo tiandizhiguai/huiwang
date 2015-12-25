@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.ArticleStatisDao">
+	<resultMap id="statisResultMap" type="com.example.model.ArticleStatisModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="read_size" property="readSize" jdbcType="INTEGER" />
+		<result column="comment_size" property="commentSize" jdbcType="INTEGER" />
+		<result column="favorite_size" property="favoriteSize"
+			jdbcType="INTEGER" />
+		<result column="care_size" property="careSize" jdbcType="INTEGER" />
+		<result column="forward_size" property="forwardSize" jdbcType="INTEGER" />
+		<result column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="statisColumnList">
+		id, read_size, comment_size, favorite_size, care_size,
+		forward_size, article_id,
+		gmt_created, gmt_modified
+	</sql>
+
+	<select id="getList" parameterType="com.example.param.ArticleStatisParam"
+		resultMap="statisResultMap">
+		select
+		<include refid="statisColumnList" />
+		from article_statis
+		where
+		<include refid="statisCondition" />
+	</select>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="statisResultMap">
+		select
+		<include refid="statisColumnList" />
+		from article_statis
+		where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="com.example.param.ArticleStatisParam">
+		delete from article_statis
+		where
+		<include refid="statisCondition" />
+	</delete>
+
+	<insert id="insert" parameterType="com.example.param.ArticleStatisParam">
+		insert into article_statis
+		(read_size, comment_size,
+		favorite_size, care_size, forward_size,
+		article_id, gmt_created, gmt_modified
+		)
+		values
+		(#{readSize},#{commentSize},
+		#{favoriteSize}, #{careSize},
+		#{forwardSize},
+		#{articleId}, now(), now()}
+		)
+	</insert>
+	<update id="update" parameterType="com.example.param.ArticleStatisParam">
+		update article_statis
+		<set>
+			<if test="readSize != null">
+				read_size = #{readSize},
+			</if>
+			<if test="commentSize != null">
+				comment_size = #{commentSize},
+			</if>
+			<if test="favoriteSize != null">
+				favorite_size = #{favoriteSize},
+			</if>
+			<if test="careSize != null">
+				care_size = #{careSize},
+			</if>
+			<if test="forwardSize != null">
+				forward_size = #{forwardSize},
+			</if>
+			<if test="articleId != null">
+				article_id = #{articleId},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+
+	<sql id="statisCondition">
+		1 = 1
+		<if test="readSize != null">
+			and read_size = #{readSize}
+		</if>
+		<if test="commentSize != null">
+			and comment_size = #{commentSize}
+		</if>
+		<if test="favoriteSize != null">
+			and favorite_size = #{favoriteSize}
+		</if>
+		<if test="careSize != null">
+			and care_size = #{careSize}
+		</if>
+		<if test="forwardSize != null">
+			and forward_size = #{forwardSize}
+		</if>
+		<if test="articleId != null">
+			and article_id = #{articleId}
+		</if>
+	</sql>
+</mapper>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+	    #parse("common/common.vm")
+	</head>
+	<body style="min-width:1190px;">
+	    <div>
+		    #parse("common/header.vm")
+		    #parse("common/navBar.vm")
+		    #parse("article/contentDetail.vm")
+		    #parse("common/footer.vm")
+		</div>
+	</body>
+</html>

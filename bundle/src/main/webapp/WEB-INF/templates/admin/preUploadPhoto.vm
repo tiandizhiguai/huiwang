@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/preAdd.css"/>
+<div class="pre_edit">
+    <form action="//www.rensheng.com/article/addArticle" class="add_form" method="post">
+        <table>
+          <tr>
+	         <td align="right" class="left_td"><span class="must_input">*</span>选择头像：</td>
+	         <td align="left"><input type="file" class="files" value="上传" name="files"/></td>
+	         <td><span class="tips" id="check_files"></span></td>
+	      </tr>
+	      <tr>
+	         <td align="right" class="left_td">预览：</td>
+	         <td align="left"><img class="business_license_img" src="$!{company.businessLicense}"/></td>
+	      </tr>	     
+	     <tr>
+	          <td align="right" class="left_td"></td>
+	          <td align="left"><button type="button" class="btn btn-primary btn-sm" id="pre_add_btn">上传</button></td>
+	      </tr>
+	      <input type="hidden" name="userId" value="$!{loginUser.id}"/>
+		</table>
+	</form>
+</div>
+<script src="//style.rensheng.com/rensheng/js/admin/preAddArticle.js"></script>

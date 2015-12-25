@@ -1,0 +1,17 @@
+<ul class="product_comments">
+     #foreach($comment in $!comments)
+	     <li class="product_detail_item">
+	         <span><strong>$!{comment.loginName}</strong></span><span>$!{comment.gmtCreatedStr}</span>
+	     </li>
+	     <li>$!{comment.comment}</li>
+	     <hr/>
+     #end
+</ul>
+<div class="add_product_comment">
+	添加评论（200字以内）：
+	<textarea class="comment" name="comment"></textarea>
+	<input type="button" value="评论" class="add_comment_btn"/>
+	<span style="color:red" class="check_comment"></span>
+</div>
+#parse("common/paging.vm")
+<script src="http://style.malasong.com/weishi/js/productComment.js"></script>
