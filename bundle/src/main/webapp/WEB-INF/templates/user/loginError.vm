@@ -8,18 +8,18 @@
 	<body>
 	    <div>
 		    #parse("common/header.vm")
-		    <link rel="stylesheet" href="http://style.malasong.com/weishi/css/preRegister.css"/>
+		    <link rel="stylesheet" href="//style.rensheneg.com/rensheneg/css/preRegister.css"/>
 		    <div class="preRegister">
 		        <ul>
 			        <li class="preRegister_img">
-				        <img src="http://img.meilishuo.net/css//images/register/ad_img.jpg"/>
+				        <img src="//img.meilishuo.net/css//images/register/ad_img.jpg"/>
 				    </li>
 			        <li class="preRegister_info">
-						登陆失败，登陆名或密码不正确，<a href="http://www.malasong.com/index">返回首页</a>
+						登陆失败，登陆名或密码不正确，<a href="//www.rensheneg.com/index">返回首页</a>
 				    </li>
 			    <ul>
 		    </div>
-		    <script src="http://style.malasong.com/weishi/js/preRegister.js"></script>
+		    <script src="//style.rensheneg.com/rensheneg/js/preRegister.js"></script>
 		    #parse("common/footer.vm")
 		</div>
 	</body>

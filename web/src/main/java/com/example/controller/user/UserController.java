@@ -14,7 +14,7 @@ import com.example.service.UserService;
 import com.example.vo.UserVO;
 
 /**
- * 用户信息模型逻辑。
+ * 用户信息模型。
  * 
  * @author Administrator 2015年8月8日 下午9:55:25
  */

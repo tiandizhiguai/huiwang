@@ -15,7 +15,7 @@
    <tbody>
        #foreach($data in $datas)
            <tr class="active">
-              <td>$!{data.title}</td>
+              <td title="$!{data.title}">$!{data.getTitle(10)}</td>
               <td>$!{data.statisData.readSize}</td>
               <td>$!{data.statisData.careSize}</td>
               <td>$!{data.statisData.favoriteSize}</td>

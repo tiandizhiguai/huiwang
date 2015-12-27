@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +76,11 @@ public class ArticleServiceImpl implements ArticleService {
         if (!CollectionUtils.isEmpty(statisDatas)) {
             vo.setStatisData(statisDatas.get(0));
         }
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd:HH:mm");
+        vo.setGmtCreated(format.format(model.getGmtCreated()));
+        vo.setGmtModified(format.format(model.getGmtModified()));
+
         return vo;
     }
 

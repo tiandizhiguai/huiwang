@@ -96,14 +96,14 @@
 	
 	<sql id="userCondition">
 	    1 = 1
+	    <if test="id != null">
+			and id = #{id}
+		</if>
 	    <if test="realName != null">
 			and real_name = #{realName}
 		</if>
 		<if test="loginName != null">
 			and login_name = #{loginName}
-		</if>
-		<if test="passwd != null">
-			and passwd = #{passwd}
 		</if>
 		<if test="idNumber != null">
 			and id_number = #{idNumber}

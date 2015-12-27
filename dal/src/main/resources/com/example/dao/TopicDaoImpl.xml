@@ -56,6 +56,9 @@
 
 	<sql id="topicCondition">
 		1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if>
 		<if test="name != null">
 			and t_name = #{name}
 		</if>

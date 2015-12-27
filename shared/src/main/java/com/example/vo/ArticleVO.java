@@ -1,6 +1,5 @@
 package com.example.vo;
 
-import java.util.Date;
 
 public class ArticleVO {
 
@@ -18,9 +17,9 @@ public class ArticleVO {
 
     private String          status;
 
-    private Date            gmtCreated;
+    private String          gmtCreated;
 
-    private Date            gmtModified;
+    private String          gmtModified;
 
     private ArticleStatisVO statisData;
 
@@ -42,6 +41,13 @@ public class ArticleVO {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getTitle(int length) {
+        if (title == null || title.length() <= length) {
+            return title;
+        }
+        return title.substring(0, length) + "...";
     }
 
     public void setTitle(String title) {
@@ -88,19 +94,19 @@ public class ArticleVO {
         this.status = status == null ? null : status.trim();
     }
 
-    public Date getGmtCreated() {
+    public String getGmtCreated() {
         return gmtCreated;
     }
 
-    public void setGmtCreated(Date gmtCreated) {
+    public void setGmtCreated(String gmtCreated) {
         this.gmtCreated = gmtCreated;
     }
 
-    public Date getGmtModified() {
+    public String getGmtModified() {
         return gmtModified;
     }
 
-    public void setGmtModified(Date gmtModified) {
+    public void setGmtModified(String gmtModified) {
         this.gmtModified = gmtModified;
     }
 }

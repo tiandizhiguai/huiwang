@@ -4,29 +4,37 @@ import java.util.Date;
 
 public class UserVO {
 
-    private Long              id;
+    private Long   id;
 
-    private String            realName;
+    private String realName;
 
-    private String            loginName;
+    private String loginName;
 
-    private String            passwd;
+    private String passwd;
 
-    private String            idNumber;
+    private String idNumber;
 
-    private String            sex;
+    private String sex;
 
-    private String            photoName;
+    private String status;
 
-    private String            status;
+    private Long   cityId;
 
-    private Long              cityId;
+    private Long   provinceId;
 
-    private Long              provinceId;
+    private Date   gmtCreated;
 
-    private Date              gmtCreated;
+    private Date   gmtModified;
 
-    private Date              gmtModified;
+    private String photoFullUrl;
+
+    public String getPhotoFullUrl() {
+        return photoFullUrl;
+    }
+
+    public void setPhotoFullUrl(String photoFullUrl) {
+        this.photoFullUrl = photoFullUrl;
+    }
 
     public Long getId() {
         return id;
@@ -41,7 +49,7 @@ public class UserVO {
     }
 
     public void setRealName(String realName) {
-        this.realName = realName == null ? null : realName.trim();
+        this.realName = realName;
     }
 
     public String getLoginName() {
@@ -49,7 +57,7 @@ public class UserVO {
     }
 
     public void setLoginName(String loginName) {
-        this.loginName = loginName == null ? null : loginName.trim();
+        this.loginName = loginName;
     }
 
     public String getPasswd() {
@@ -57,7 +65,7 @@ public class UserVO {
     }
 
     public void setPasswd(String passwd) {
-        this.passwd = passwd == null ? null : passwd.trim();
+        this.passwd = passwd;
     }
 
     public String getIdNumber() {
@@ -65,7 +73,7 @@ public class UserVO {
     }
 
     public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber == null ? null : idNumber.trim();
+        this.idNumber = idNumber;
     }
 
     public String getSex() {
@@ -73,15 +81,7 @@ public class UserVO {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
-    }
-
-    public String getPhotoName() {
-        return photoName;
-    }
-
-    public void setPhotoName(String photoName) {
-        this.photoName = photoName == null ? null : photoName.trim();
+        this.sex = sex;
     }
 
     public String getStatus() {
@@ -89,7 +89,7 @@ public class UserVO {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Long getCityId() {

@@ -88,6 +88,9 @@
 
 	<sql id="articleCondition">
 		1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if>
 		<if test="title != null">
 			and title = #{title}
 		</if>

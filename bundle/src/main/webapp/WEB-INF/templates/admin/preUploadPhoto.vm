@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/preAdd.css"/>
 <div class="pre_edit">
-    <form action="//www.rensheng.com/article/addArticle" class="add_form" method="post">
+    <form action="http://www.rensheng.com/admin/uploadPhoto" class="upload_form" method="post" enctype="multipart/form-data">
         <table>
           <tr>
 	         <td align="right" class="left_td"><span class="must_input">*</span>选择头像：</td>
@@ -9,14 +9,14 @@
 	      </tr>
 	      <tr>
 	         <td align="right" class="left_td">预览：</td>
-	         <td align="left"><img class="business_license_img" src="$!{company.businessLicense}"/></td>
+	         <td align="left"><img style="width:200px;height:200px;" src="$!{data.photoFullUrl}"/></td>
 	      </tr>	     
 	     <tr>
 	          <td align="right" class="left_td"></td>
-	          <td align="left"><button type="button" class="btn btn-primary btn-sm" id="pre_add_btn">上传</button></td>
+	          <td align="left"><button type="button" class="btn btn-primary btn-sm" id="pre_upload_btn">上传</button></td>
 	      </tr>
-	      <input type="hidden" name="userId" value="$!{loginUser.id}"/>
+	      <input type="hidden" name="id" value="$!{loginUser.id}"/>
 		</table>
 	</form>
 </div>
-<script src="//style.rensheng.com/rensheng/js/admin/preAddArticle.js"></script>
+<script src="//style.rensheng.com/rensheng/js/admin/preUploadPhoto.js"></script>

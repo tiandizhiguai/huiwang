@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,10 +46,17 @@ public class RestfulJson extends AbstractController {
     }
 
     @ResponseBody
-    @RequestMapping("/getUser")
-    public UserVO getUser(UserParam param) {
+    @RequestMapping("/loginNameExists")
+    public boolean loginNameExists(UserParam param) {
         UserVO user = userServie.get(param);
-        return user != null ? user : new UserVO();
+        return user != null && StringUtils.equals(param.getLoginName(), user.getLoginName());
+    }
+
+    @ResponseBody
+    @RequestMapping("/checkPassword")
+    public boolean checkPassword(UserParam param) {
+        UserVO user = userServie.get(param);
+        return StringUtils.equals(param.getPasswd(), user.getPasswd());
     }
 
     @ResponseBody

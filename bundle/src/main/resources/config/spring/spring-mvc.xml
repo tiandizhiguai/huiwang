@@ -30,9 +30,9 @@
 		<property name="cache" value="true" />
 		<property name="prefix" value="/" />
 		<property name="suffix" value=".vm" />
-		<property name="contentType">
-			<value>text/html;charset=UTF-8</value>
-		</property>
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<!-- 向页面暴露session信息 -->
+		<property name="exposeSessionAttributes" value="true" />
 	</bean>
 	
 	<!-- 返回json数据 -->

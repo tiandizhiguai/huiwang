@@ -8,18 +8,18 @@
 	<body>
 	    <div>
 		    #parse("common/header.vm")
-		    <link rel="stylesheet" href="http://style.malasong.com/weishi/css/preRegister.css"/>
+		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
 		    <div class="preRegister">
 		        <ul>
 			        <li class="preRegister_img">
-				        <img src="http://img.meilishuo.net/css//images/register/ad_img.jpg"/>
+				        <img src="//img.meilishuo.net/css//images/register/ad_img.jpg"/>
 				    </li>
 			        <li class="preRegister_info">
-						注册失败，填写的信息不正确，<a href="http://www.malasong.com/index">返回首页</a>
+						注册失败，填写的信息不正确，<a href="//www.rensheng.com/index">返回首页</a>
 				    </li>
 			    <ul>
 		    </div>
-		    <script src="http://style.malasong.com/weishi/js/preRegister.js"></script>
+		    <script src="//style.rensheng.com/rensheng/js/preRegister.js"></script>
 		    #parse("common/footer.vm")
 		</div>
 	</body>
