@@ -51,18 +51,12 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public void update(TopicParam param) {
-        TopicModel model = topicDao.getById(param.getId());
-        if (model != null) {
-            topicDao.update(param);
-        } else {
-            topicDao.insert(param);
-        }
+        topicDao.update(param);
     }
 
     @Override
     public void delete(TopicParam param) {
         topicDao.delete(param);
-
     }
 
     public TopicVO model2VO(TopicModel model) {
@@ -78,5 +72,15 @@ public class TopicServiceImpl implements TopicService {
             return model2VO(model);
         }
         return null;
+    }
+
+    public String getTopicName(Long id) {
+        TopicParam topicParam = new TopicParam();
+        topicParam.setId(id);
+        List<TopicModel> topics = topicDao.getList(topicParam);
+        if (CollectionUtils.isEmpty(topics)) {
+            return null;
+        }
+        return topics.get(0).getName();
     }
 }

@@ -38,7 +38,7 @@ public class TopicModel implements Serializable {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Date getGmtCreated() {

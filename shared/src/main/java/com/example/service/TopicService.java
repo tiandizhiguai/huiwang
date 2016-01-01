@@ -5,5 +5,5 @@ import com.example.vo.TopicVO;
 
 public interface TopicService extends GeneralService<TopicParam, TopicVO> {
 
-
+    String getTopicName(Long id);
 }

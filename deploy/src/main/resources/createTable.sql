@@ -25,6 +25,7 @@ create table article(
 	simple_content  varchar(300),
 	content 		text,
 	topic_id		bigint,
+	topic_name      varchar(50),
 	user_id  	    bigint,
 	status          varchar(10),
 	gmt_created     datetime,

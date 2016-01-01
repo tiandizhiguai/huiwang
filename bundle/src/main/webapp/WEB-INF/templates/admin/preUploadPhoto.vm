@@ -9,7 +9,7 @@
 	      </tr>
 	      <tr>
 	         <td align="right" class="left_td">预览：</td>
-	         <td align="left"><img style="width:200px;height:200px;" src="$!{data.photoFullUrl}"/></td>
+	         <td align="left"><img style="width:200px;height:200px;" src="$!{data.fullPhotoUrl}"/></td>
 	      </tr>	     
 	     <tr>
 	          <td align="right" class="left_td"></td>

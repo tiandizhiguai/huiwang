@@ -26,14 +26,14 @@ public class UserVO {
 
     private Date   gmtModified;
 
-    private String photoFullUrl;
+    private String fullPhotoUrl;
 
-    public String getPhotoFullUrl() {
-        return photoFullUrl;
+    public String getFullPhotoUrl() {
+        return fullPhotoUrl;
     }
 
-    public void setPhotoFullUrl(String photoFullUrl) {
-        this.photoFullUrl = photoFullUrl;
+    public void setFullPhotoUrl(String fullPhotoUrl) {
+        this.fullPhotoUrl = fullPhotoUrl;
     }
 
     public Long getId() {

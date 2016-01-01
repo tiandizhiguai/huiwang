@@ -1,32 +1,43 @@
 package com.example.param;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserParam extends PageParam {
 
-    private Long              id;
+    private Long       id;
 
-    private String            realName;
+    private List<Long> ids;
 
-    private String            loginName;
+    private String     realName;
 
-    private String            passwd;
+    private String     loginName;
 
-    private String            idNumber;
+    private String     passwd;
 
-    private String            sex;
+    private String     idNumber;
 
-    private String            photoName;
+    private String     sex;
 
-    private String            status;
+    private String     photoName;
 
-    private Long              cityId;
+    private String     status;
 
-    private Long              provinceId;
+    private Long       cityId;
 
-    private Date              gmtCreated;
+    private Long       provinceId;
 
-    private Date              gmtModified;
+    private Date       gmtCreated;
+
+    private Date       gmtModified;
+
+    public List<Long> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<Long> ids) {
+        this.ids = ids;
+    }
 
     public Long getId() {
         return id;
@@ -41,7 +52,7 @@ public class UserParam extends PageParam {
     }
 
     public void setRealName(String realName) {
-        this.realName = realName == null ? null : realName.trim();
+        this.realName = realName;
     }
 
     public String getLoginName() {
@@ -49,7 +60,7 @@ public class UserParam extends PageParam {
     }
 
     public void setLoginName(String loginName) {
-        this.loginName = loginName == null ? null : loginName.trim();
+        this.loginName = loginName;
     }
 
     public String getPasswd() {
@@ -57,7 +68,7 @@ public class UserParam extends PageParam {
     }
 
     public void setPasswd(String passwd) {
-        this.passwd = passwd == null ? null : passwd.trim();
+        this.passwd = passwd;
     }
 
     public String getIdNumber() {
@@ -65,7 +76,7 @@ public class UserParam extends PageParam {
     }
 
     public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber == null ? null : idNumber.trim();
+        this.idNumber = idNumber;
     }
 
     public String getSex() {
@@ -81,7 +92,7 @@ public class UserParam extends PageParam {
     }
 
     public void setPhotoName(String photoName) {
-        this.photoName = photoName == null ? null : photoName.trim();
+        this.photoName = photoName;
     }
 
     public String getStatus() {
@@ -89,7 +100,7 @@ public class UserParam extends PageParam {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Long getCityId() {

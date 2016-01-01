@@ -1,15 +1,29 @@
 <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/articleResult.css"/>
-<div class="rensheng_items">
-    <div class="rensheng_left_item">
-        <div class="rensheng_left_title">最新动态</div>
+<div class="items">
+    <div class="left_item">
+        <div class="left_title">最新动态</div>
         <ul>
-            <li class="rensheng_content_item">
-            	<a class="rensheng_content_title" target="_blank" href="/article/detail">我的2013年爱情</a>
-            	<div class="rensheng_content">那一年，我25岁</div>
-            </li>
+        	#foreach($data in $!{datas})
+	            <li class="content_item">
+	            	<div class="content_title">
+	            		<a target="_blank" href="/article/detail?id=$!{data.id}">$!{data.title}</a>
+	            	</div>
+	            	<div class="content_author">
+	            		<img class="content_user_photo" src="$!{data.userData.fullPhotoUrl}"/>
+	            		<span><strong>$!{data.userData.loginName}</strong></span>
+	            		<span class="content_topic"><a href="#">$!{data.topicName}</a></span>
+	            	</div>
+	            	<div class="content">$!{data.simpleContent}</div>
+	            	<div class="content_bottom">
+	            		<a href="#"><span id="heart"></span><span style="margin-left:15px;">15人赞</span></a>
+		            	<a href="#">5条评论</a>
+		            	<a href="#"><strong>+</strong>添加关注</a>
+	            	</div>
+	            </li>
+            #end
         </ul>
     </div>
-    <div class="rensheng_right_item">
+    <div class="right_item">
     	#parse("index/imgCarousel.vm")
     </div>
 </div>

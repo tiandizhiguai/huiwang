@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.constant.OperationType;
+import com.example.constant.SortType;
 import com.example.constant.StatusType;
 import com.example.controller.AbstractController;
 import com.example.param.ArticleParam;
@@ -28,6 +29,8 @@ public class ArticleController extends AbstractController {
 
     @RequestMapping("/adminArticles")
     public ModelAndView adminArticles(ArticleParam param) {
+        param.setSortType(SortType.ID.getValue());
+        param.setDescOrder(true);
         param.setStatus(StatusType.NORMAL.getValue());
         param.setPageSize(10);
         int totalCount = articleService.getCount(param);

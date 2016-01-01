@@ -35,7 +35,7 @@ public class TopicParam extends PageParam {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Date getGmtCreated() {

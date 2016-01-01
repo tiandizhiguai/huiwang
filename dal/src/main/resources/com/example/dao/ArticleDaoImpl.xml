@@ -10,12 +10,13 @@
 		<result column="topic_id" property="topicId" jdbcType="BIGINT" />
 		<result column="user_id" property="userId" jdbcType="BIGINT" />
 		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="topic_name" property="topicName" jdbcType="VARCHAR" />
 		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
 		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
 	</resultMap>
 
 	<sql id="articleColumnList">
-		id, title, simple_content, content, topic_id, user_id,
+		id, title, simple_content, topic_id, user_id,topic_name,
 		status, gmt_created, gmt_modified
 	</sql>
 
@@ -37,7 +38,7 @@
 
 	<select id="getById" parameterType="java.lang.Long" resultMap="articleResultMap">
 		select
-		<include refid="articleColumnList" />
+		<include refid="articleColumnList" />,content
 		from article
 		where id = #{id}
 	</select>
@@ -51,13 +52,13 @@
 	<insert id="insert" parameterType="com.example.param.ArticleParam">
 		insert into article (
 		title,
-		simple_content,
+		simple_content,topic_name,
 		content, topic_id, user_id,
 		status, gmt_created,
 		gmt_modified
 		)
 		values (#{title},
-		#{simpleContent},
+		#{simpleContent},#{topicName}
 		#{content}, #{topicId},
 		#{userId},
 		'normal', now(), now()
@@ -77,6 +78,9 @@
 			</if>
 			<if test="topicId != null">
 				topic_id = #{topicId},
+			</if>
+			<if test="topicName != null">
+				topic_name = #{topicName},
 			</if>
 			<if test="status != null">
 				status = #{status},
@@ -103,8 +107,17 @@
 		<if test="topicId != null">
 			and topic_id = #{topicId}
 		</if>
+		<if test="topicName != null">
+			topic_name like %#{topicName}%
+		</if>
 		<if test="status != null">
 			and status = #{status}
+		</if>
+		<if test="sortType != null">
+			order by ${sortType}
+		</if>
+		<if test="descOrder == true">
+			desc
 		</if>
 	</sql>
 </mapper>

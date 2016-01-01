@@ -28,12 +28,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserVO> getList(UserParam param) {
         List<UserVO> vos = new ArrayList<UserVO>();
-        List<UserModel> models = userDao.getList(param);
 
-        if (!CollectionUtils.isEmpty(models)) {
-            for (UserModel model : models) {
-                vos.add(model2VO(model));
-            }
+        List<UserModel> models = userDao.getList(param);
+        if (CollectionUtils.isEmpty(models)) {
+            return vos;
+        }
+
+        for (UserModel model : models) {
+            vos.add(model2VO(model));
         }
 
         return vos;
@@ -83,7 +85,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public void delete(UserParam param) {
         userDao.delete(param);
-
     }
 
     public UserVO model2VO(UserModel model) {
@@ -93,7 +94,7 @@ public class UserServiceImpl implements UserService{
         if (StringUtils.isBlank(photoUrl)) {
             photoUrl = URIUtils.getNoneFullImgUrl();
         }
-        vo.setPhotoFullUrl(photoUrl);
+        vo.setFullPhotoUrl(photoUrl);
         return vo;
     }
 

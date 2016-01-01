@@ -25,6 +25,16 @@ public class ArticleModel implements Serializable {
 
     private Date              gmtModified;
 
+    private String            topicName;
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
     public Long getId() {
         return id;
     }
@@ -38,7 +48,7 @@ public class ArticleModel implements Serializable {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getSimpleContent() {
@@ -46,7 +56,7 @@ public class ArticleModel implements Serializable {
     }
 
     public void setSimpleContent(String simpleContent) {
-        this.simpleContent = simpleContent == null ? null : simpleContent.trim();
+        this.simpleContent = simpleContent;
     }
 
     public String getContent() {
@@ -54,7 +64,7 @@ public class ArticleModel implements Serializable {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public Long getTopicId() {
@@ -78,7 +88,7 @@ public class ArticleModel implements Serializable {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Date getGmtCreated() {

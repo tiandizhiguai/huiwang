@@ -1,6 +1,5 @@
 package com.example.vo;
 
-
 public class ArticleVO {
 
     private Long            id;
@@ -22,6 +21,26 @@ public class ArticleVO {
     private String          gmtModified;
 
     private ArticleStatisVO statisData;
+
+    private UserVO          userData;
+
+    private String          topicName;
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
+    public UserVO getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserVO userData) {
+        this.userData = userData;
+    }
 
     public ArticleStatisVO getStatisData() {
         return statisData;
@@ -59,7 +78,7 @@ public class ArticleVO {
     }
 
     public void setSimpleContent(String simpleContent) {
-        this.simpleContent = simpleContent == null ? null : simpleContent.trim();
+        this.simpleContent = simpleContent;
     }
 
     public String getContent() {
@@ -67,7 +86,7 @@ public class ArticleVO {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public Long getTopicId() {
@@ -91,7 +110,7 @@ public class ArticleVO {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public String getGmtCreated() {

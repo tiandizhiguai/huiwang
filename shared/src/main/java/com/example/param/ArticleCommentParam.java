@@ -33,7 +33,7 @@ public class ArticleCommentParam extends PageParam {
     }
 
     public void setSimpleComment(String simpleComment) {
-        this.simpleComment = simpleComment == null ? null : simpleComment.trim();
+        this.simpleComment = simpleComment;
     }
 
     public Long getArticleId() {
@@ -57,7 +57,7 @@ public class ArticleCommentParam extends PageParam {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Date getGmtCreated() {
@@ -81,6 +81,6 @@ public class ArticleCommentParam extends PageParam {
     }
 
     public void setDetailComment(String detailComment) {
-        this.detailComment = detailComment == null ? null : detailComment.trim();
+        this.detailComment = detailComment;
     }
 }

@@ -4,23 +4,53 @@ import java.util.Date;
 
 public class ArticleParam extends PageParam {
 
-    private Long              id;
+    private Long    id;
 
-    private String            title;
+    private String  title;
 
-    private String            simpleContent;
+    private String  simpleContent;
 
-    private String            content;
+    private String  content;
 
-    private Long              topicId;
+    private Long    topicId;
 
-    private Long              userId;
+    private String  topicName;
 
-    private String            status;
+    private Long    userId;
 
-    private Date              gmtCreated;
+    private String  status;
 
-    private Date              gmtModified;
+    private Date    gmtCreated;
+
+    private Date    gmtModified;
+
+    private String  sortType;
+
+    private boolean descOrder;
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
+    public boolean isDescOrder() {
+        return descOrder;
+    }
+
+    public void setDescOrder(boolean descOrder) {
+        this.descOrder = descOrder;
+    }
+
+    public String getSortType() {
+        return sortType;
+    }
+
+    public void setSortType(String sortType) {
+        this.sortType = sortType;
+    }
 
     public Long getId() {
         return id;
@@ -35,7 +65,7 @@ public class ArticleParam extends PageParam {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getSimpleContent() {
@@ -43,7 +73,7 @@ public class ArticleParam extends PageParam {
     }
 
     public void setSimpleContent(String simpleContent) {
-        this.simpleContent = simpleContent == null ? null : simpleContent.trim();
+        this.simpleContent = simpleContent;
     }
 
     public String getContent() {
@@ -51,7 +81,7 @@ public class ArticleParam extends PageParam {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public Long getTopicId() {
@@ -75,7 +105,7 @@ public class ArticleParam extends PageParam {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Date getGmtCreated() {

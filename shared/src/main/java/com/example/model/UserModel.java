@@ -44,7 +44,7 @@ public class UserModel implements Serializable {
     }
 
     public void setRealName(String realName) {
-        this.realName = realName == null ? null : realName.trim();
+        this.realName = realName;
     }
 
     public String getLoginName() {
@@ -52,7 +52,7 @@ public class UserModel implements Serializable {
     }
 
     public void setLoginName(String loginName) {
-        this.loginName = loginName == null ? null : loginName.trim();
+        this.loginName = loginName;
     }
 
     public String getPasswd() {
@@ -60,7 +60,7 @@ public class UserModel implements Serializable {
     }
 
     public void setPasswd(String passwd) {
-        this.passwd = passwd == null ? null : passwd.trim();
+        this.passwd = passwd;
     }
 
     public String getIdNumber() {
@@ -68,7 +68,7 @@ public class UserModel implements Serializable {
     }
 
     public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber == null ? null : idNumber.trim();
+        this.idNumber = idNumber;
     }
 
     public String getSex() {
@@ -76,7 +76,7 @@ public class UserModel implements Serializable {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
     public String getPhotoName() {
@@ -84,7 +84,7 @@ public class UserModel implements Serializable {
     }
 
     public void setPhotoName(String photoName) {
-        this.photoName = photoName == null ? null : photoName.trim();
+        this.photoName = photoName;
     }
 
     public String getStatus() {
@@ -92,7 +92,7 @@ public class UserModel implements Serializable {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Long getCityId() {
