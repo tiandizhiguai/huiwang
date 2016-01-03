@@ -1,26 +1,47 @@
 package com.example.param;
 
 import java.util.Date;
+import java.util.List;
 
 public class ArticleStatisParam extends PageParam {
 
-    private Long    id;
+    private Long       id;
 
-    private Integer readSize;
+    private Integer    readSize;
 
-    private Integer commentSize;
+    private Integer    commentSize;
 
-    private Integer favoriteSize;
+    private Integer    favoriteSize;
 
-    private Integer careSize;
+    private Integer    careSize;
 
-    private Integer forwardSize;
+    private Integer    forwardSize;
 
-    private Long    articleId;
+    private Long       articleId;
 
-    private Date    gmtCreated;
+    private List<Long> articleIds;
 
-    private Date    gmtModified;
+    private Date       gmtCreated;
+
+    private Date       gmtModified;
+
+    private Integer    praiseSize;
+
+    public List<Long> getArticleIds() {
+        return articleIds;
+    }
+
+    public void setArticleIds(List<Long> articleIds) {
+        this.articleIds = articleIds;
+    }
+
+    public Integer getPraiseSize() {
+        return praiseSize;
+    }
+
+    public void setPraiseSize(Integer praiseSize) {
+        this.praiseSize = praiseSize;
+    }
 
     public Long getId() {
         return id;

@@ -2,15 +2,13 @@ package com.example.vo;
 
 import java.util.Date;
 
-public class UserVO {
+public class User {
 
     private Long   id;
 
     private String realName;
 
     private String loginName;
-
-    private String passwd;
 
     private String idNumber;
 
@@ -58,14 +56,6 @@ public class UserVO {
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
-    }
-
-    public String getPasswd() {
-        return passwd;
-    }
-
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
     }
 
     public String getIdNumber() {

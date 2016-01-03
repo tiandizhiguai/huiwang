@@ -1,14 +1,11 @@
 <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/navBar.css"/>
 <div class="nav_bar">
     <ul class="nav_bar_items">
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">花季雨季</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">生活点滴</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">情感</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">心情</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">坎坷</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">奋斗</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">童年</a></li>
-    	<li class="nav_bar_item"><a href="//www.rensheng.com/index">其他</a></li>
+    	#foreach($topicData in $!topicDatas)
+    		<li class="nav_bar_item #if($selectedTopicId == $!{topicData.id}) bar_hover#end">
+    			<a href="//www.rensheng.com/index?topicId=$!{topicData.id}">$!{topicData.name}</a>
+    		</li>
+    	#end
     </ul>
 </div>
-<script src="http://style.rensheng.com/rensheng/js/navBar.js"></script>
+<script src="//style.rensheng.com/rensheng/js/navBar.js"></script>

@@ -10,65 +10,99 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.controller.AbstractController;
+import com.example.param.ArticleCareParam;
+import com.example.param.ArticlePraiseParam;
 import com.example.param.CityParam;
 import com.example.param.TopicParam;
 import com.example.param.UserParam;
+import com.example.result.RestfulResult;
+import com.example.service.ArticleCareService;
+import com.example.service.ArticlePraiseService;
+import com.example.service.ArticleService;
+import com.example.service.ArticleStatisService;
 import com.example.service.CityService;
 import com.example.service.ProvinceService;
 import com.example.service.TopicService;
 import com.example.service.UserService;
-import com.example.vo.CityVO;
-import com.example.vo.ProvinceVO;
-import com.example.vo.TopicVO;
-import com.example.vo.UserVO;
+import com.example.vo.City;
+import com.example.vo.Province;
+import com.example.vo.Topic;
+import com.example.vo.User;
 
 @Controller
 @RequestMapping("/json")
 public class RestfulJson extends AbstractController {
 
     @Resource
-    private UserService     userServie;
+    private UserService          userServie;
 
     @Resource
-    private ProvinceService provinceService;
+    private ProvinceService      provinceService;
 
     @Resource
-    private CityService     cityServie;
+    private CityService          cityServie;
 
     @Resource
-    private TopicService    topicService;
+    private TopicService         topicService;
+
+    @Resource
+    private ArticleService       articleService;
+
+    @Resource
+    private ArticleCareService   articleCareService;
+
+    @Resource
+    private ArticlePraiseService articlePraiseService;
+
+    @Resource
+    private ArticleStatisService articleStatisService;
 
     @ResponseBody
     @RequestMapping("/getTopics")
-    public List<TopicVO> getUser(TopicParam param) {
-        List<TopicVO> vos = topicService.getList(param);
+    public List<Topic> getUser(TopicParam param) {
+        List<Topic> vos = topicService.getList(param);
         return vos;
     }
 
     @ResponseBody
     @RequestMapping("/loginNameExists")
     public boolean loginNameExists(UserParam param) {
-        UserVO user = userServie.get(param);
+        User user = userServie.get(param);
         return user != null && StringUtils.equals(param.getLoginName(), user.getLoginName());
     }
 
     @ResponseBody
     @RequestMapping("/checkPassword")
     public boolean checkPassword(UserParam param) {
-        UserVO user = userServie.get(param);
-        return StringUtils.equals(param.getPasswd(), user.getPasswd());
+        User user = userServie.get(param);
+        return user != null;
     }
 
     @ResponseBody
     @RequestMapping("/getCities")
-    public List<CityVO> getCities(CityParam param) {
+    public List<City> getCities(CityParam param) {
         return cityServie.getList(param);
     }
 
     @ResponseBody
     @RequestMapping("/getAllProvince")
-    public List<ProvinceVO> getAllProvince() {
+    public List<Province> getAllProvince() {
         return provinceService.getAll();
     }
 
+    @ResponseBody
+    @RequestMapping("/careArticle")
+    public RestfulResult careArticle(ArticleCareParam param) {
+        RestfulResult result = new RestfulResult();
+        result.setData(articleStatisService.careArticle(param));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping("/praiseArticle")
+    public RestfulResult praiseArticle(ArticlePraiseParam param) {
+        RestfulResult result = new RestfulResult();
+        result.setData(articleStatisService.praiseArticle(param));
+        return result;
+    }
 }

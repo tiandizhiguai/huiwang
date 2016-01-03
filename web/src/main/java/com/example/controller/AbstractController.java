@@ -14,6 +14,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.constant.Constants;
+import com.example.vo.User;
+
 public class AbstractController {
 
     protected Logger             logger = LogManager.getLogger(AbstractController.class);
@@ -23,6 +26,14 @@ public class AbstractController {
 
     @Resource
     protected HttpServletRequest httpServletRequest;
+
+    protected User getLoginUser() {
+        return (User) httpSession.getAttribute(Constants.LOGIN_USER);
+    }
+
+    protected boolean isUserLogin() {
+        return getLoginUser() != null;
+    }
 
     protected List<String> saveFiles(MultipartFile[] files, File parentPath) {
         if (files == null) {

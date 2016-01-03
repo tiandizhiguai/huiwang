@@ -3,11 +3,11 @@ package com.example.service;
 import java.util.List;
 
 import com.example.param.CityParam;
-import com.example.vo.CityVO;
+import com.example.vo.City;
 
 public interface CityService {
 
-    List<CityVO> getAll();
+    List<City> getAll();
     
-    List<CityVO> getList(CityParam param);
+    List<City> getList(CityParam param);
 }

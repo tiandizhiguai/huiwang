@@ -89,4 +89,5 @@ public class ArticleController extends AbstractController {
         modelAndView.setViewName("/info/info");
         return modelAndView;
     }
+
 }

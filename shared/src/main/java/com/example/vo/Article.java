@@ -1,30 +1,30 @@
 package com.example.vo;
 
-public class ArticleVO {
+public class Article {
 
-    private Long            id;
+    private Long          id;
 
-    private String          title;
+    private String        title;
 
-    private String          simpleContent;
+    private String        simpleContent;
 
-    private String          content;
+    private String        content;
 
-    private Long            topicId;
+    private Long          topicId;
 
-    private Long            userId;
+    private Long          userId;
 
-    private String          status;
+    private String        status;
 
-    private String          gmtCreated;
+    private String        gmtCreated;
 
-    private String          gmtModified;
+    private String        gmtModified;
 
-    private ArticleStatisVO statisData;
+    private ArticleStatis statisData;
 
-    private UserVO          userData;
+    private User          userData;
 
-    private String          topicName;
+    private String        topicName;
 
     public String getTopicName() {
         return topicName;
@@ -34,19 +34,19 @@ public class ArticleVO {
         this.topicName = topicName;
     }
 
-    public UserVO getUserData() {
+    public User getUserData() {
         return userData;
     }
 
-    public void setUserData(UserVO userData) {
+    public void setUserData(User userData) {
         this.userData = userData;
     }
 
-    public ArticleStatisVO getStatisData() {
+    public ArticleStatis getStatisData() {
         return statisData;
     }
 
-    public void setStatisData(ArticleStatisVO statisData) {
+    public void setStatisData(ArticleStatis statisData) {
         this.statisData = statisData;
     }
 

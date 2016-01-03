@@ -1,11 +1,11 @@
 package com.example.service;
 
 import com.example.param.UserParam;
-import com.example.vo.UserVO;
+import com.example.vo.User;
 
-public interface UserService extends GeneralService<UserParam, UserVO> {
+public interface UserService extends GeneralService<UserParam, User> {
 
-    UserVO get(String loginName);
+    User get(String loginName);
 
     boolean exists(UserParam param);
 

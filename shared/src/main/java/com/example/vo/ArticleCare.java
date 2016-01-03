@@ -2,11 +2,9 @@ package com.example.vo;
 
 import java.util.Date;
 
-public class ArticleCommentVO {
+public class ArticleCare {
 
     private Long              id;
-
-    private String            simpleComment;
 
     private Long              articleId;
 
@@ -18,22 +16,12 @@ public class ArticleCommentVO {
 
     private Date              gmtModified;
 
-    private String            detailComment;
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSimpleComment() {
-        return simpleComment;
-    }
-
-    public void setSimpleComment(String simpleComment) {
-        this.simpleComment = simpleComment;
     }
 
     public Long getArticleId() {
@@ -76,11 +64,4 @@ public class ArticleCommentVO {
         this.gmtModified = gmtModified;
     }
 
-    public String getDetailComment() {
-        return detailComment;
-    }
-
-    public void setDetailComment(String detailComment) {
-        this.detailComment = detailComment;
-    }
 }

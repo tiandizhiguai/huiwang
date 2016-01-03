@@ -13,7 +13,7 @@ import com.example.dao.TopicDao;
 import com.example.model.TopicModel;
 import com.example.param.TopicParam;
 import com.example.service.TopicService;
-import com.example.vo.TopicVO;
+import com.example.vo.Topic;
 
 @Service
 public class TopicServiceImpl implements TopicService {
@@ -22,8 +22,8 @@ public class TopicServiceImpl implements TopicService {
     private TopicDao topicDao;
 
     @Override
-    public List<TopicVO> getList(TopicParam param) {
-        List<TopicVO> vos = new ArrayList<TopicVO>();
+    public List<Topic> getList(TopicParam param) {
+        List<Topic> vos = new ArrayList<Topic>();
         List<TopicModel> models = topicDao.getList(param);
 
         if (!CollectionUtils.isEmpty(models)) {
@@ -36,8 +36,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public TopicVO get(TopicParam param) {
-        List<TopicVO> vos = getList(param);
+    public Topic get(TopicParam param) {
+        List<Topic> vos = getList(param);
         if (!CollectionUtils.isEmpty(vos)) {
             return vos.get(0);
         }
@@ -59,14 +59,14 @@ public class TopicServiceImpl implements TopicService {
         topicDao.delete(param);
     }
 
-    public TopicVO model2VO(TopicModel model) {
-        TopicVO vo = new TopicVO();
+    public Topic model2VO(TopicModel model) {
+        Topic vo = new Topic();
         BeanUtils.copyProperties(model, vo);
         return vo;
     }
 
     @Override
-    public TopicVO get(Long id) {
+    public Topic get(Long id) {
         TopicModel model = topicDao.getById(id);
         if (model != null) {
             return model2VO(model);

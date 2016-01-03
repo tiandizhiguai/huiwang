@@ -12,7 +12,7 @@ import org.springframework.util.CollectionUtils;
 import com.example.dao.ProvinceDao;
 import com.example.model.ProvinceModel;
 import com.example.service.ProvinceService;
-import com.example.vo.ProvinceVO;
+import com.example.vo.Province;
 
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
@@ -21,8 +21,8 @@ public class ProvinceServiceImpl implements ProvinceService {
     private ProvinceDao provinceDao;
 
     @Override
-    public List<ProvinceVO> getAll() {
-        List<ProvinceVO> vos = new ArrayList<ProvinceVO>();
+    public List<Province> getAll() {
+        List<Province> vos = new ArrayList<Province>();
         List<ProvinceModel> models = provinceDao.getAll();
 
         if (!CollectionUtils.isEmpty(models)) {
@@ -34,8 +34,8 @@ public class ProvinceServiceImpl implements ProvinceService {
         return vos;
     }
 
-    public ProvinceVO model2VO(ProvinceModel model) {
-        ProvinceVO vo = new ProvinceVO();
+    public Province model2VO(ProvinceModel model) {
+        Province vo = new Province();
         BeanUtils.copyProperties(model, vo);
         return vo;
     }

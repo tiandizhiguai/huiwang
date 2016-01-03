@@ -28,6 +28,26 @@ public class ArticleParam extends PageParam {
 
     private boolean descOrder;
 
+    private Long    logoinUserId;
+
+    private boolean userLogined;
+
+    public Long getLogoinUserId() {
+        return logoinUserId;
+    }
+
+    public void setLogoinUserId(Long logoinUserId) {
+        this.logoinUserId = logoinUserId;
+    }
+
+    public boolean isUserLogined() {
+        return userLogined;
+    }
+
+    public void setUserLogined(boolean userLogined) {
+        this.userLogined = userLogined;
+    }
+
     public String getTopicName() {
         return topicName;
     }

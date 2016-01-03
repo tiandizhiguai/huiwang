@@ -19,6 +19,6 @@
 	            #end
 	        </li>
 	    </ul>
-	    <input type="hidden" class="login_user_id" value="${loginUser.id}"/>
+	    <input type="hidden" class="login_user_id" value="$!{loginUser.id}"/>
     </div>
 </div>

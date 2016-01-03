@@ -49,16 +49,39 @@ add index comment_user_index(user_id);
 
 create table article_statis(
     id              bigint primary key not null auto_increment,
-    read_size       int,
-	comment_size	int,
-	favorite_size 	int,
-	care_size		int,
-	forward_size    int,
+    read_size       int default 0 comment '阅读次数',
+	comment_size	int default 0 comment '评论次数',
+	favorite_size 	int default 0 comment '收藏人数',
+	care_size		int default 0 comment '关注人数',
+	forward_size    int default 0 comment '转发次数',
+	praise_size		int default 0 comment '赞人数',
 	article_id  	bigint,
 	gmt_created     datetime,
 	gmt_modified    datetime
 )default charset=utf8;
 alter table article_statis add index statis_article_index(article_id);
+
+create table article_care(
+    id              bigint primary key not null auto_increment,
+	article_id		bigint,
+	user_id  	    bigint,
+	status          varchar(10),
+	gmt_created     datetime,
+	gmt_modified    datetime
+)default charset=utf8;
+alter table article_care add index article_care_index(article_id),
+add index care_user_index(user_id);
+
+create table article_praise(
+    id              bigint primary key not null auto_increment,
+	article_id		bigint,
+	user_id  	    bigint,
+	status          varchar(10),
+	gmt_created     datetime,
+	gmt_modified    datetime
+)default charset=utf8;
+alter table article_praise add index article_praise_index(article_id),
+add index praise_user_index(user_id);
 
 create table topic(
     id              bigint primary key not null auto_increment,

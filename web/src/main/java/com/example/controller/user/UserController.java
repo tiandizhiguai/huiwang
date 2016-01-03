@@ -11,7 +11,7 @@ import com.example.constant.Constants;
 import com.example.controller.AbstractController;
 import com.example.param.UserParam;
 import com.example.service.UserService;
-import com.example.vo.UserVO;
+import com.example.vo.User;
 
 /**
  * 用户信息模型。
@@ -41,7 +41,7 @@ public class UserController extends AbstractController {
         }
 
         userServie.add(param);
-        UserVO loginUser = userServie.get(param.getLoginName());
+        User loginUser = userServie.get(param.getLoginName());
         if (loginUser != null && StringUtils.endsWithIgnoreCase(param.getLoginName(), loginUser.getLoginName())) {
             httpSession.setAttribute(Constants.LOGIN_USER, loginUser);
             modelAndView.setViewName("/user/registerSuccess");
@@ -62,7 +62,7 @@ public class UserController extends AbstractController {
     @RequestMapping("/login")
 	public ModelAndView login(UserParam param) {
 		ModelAndView modelAndView =  new ModelAndView();
-        UserVO loginUser = userServie.get(param);
+        User loginUser = userServie.get(param);
         if (loginUser != null && StringUtils.endsWithIgnoreCase(param.getLoginName(), loginUser.getLoginName())) {
             httpSession.setAttribute(Constants.LOGIN_USER, loginUser);
             modelAndView.setViewName("redirect:/index");

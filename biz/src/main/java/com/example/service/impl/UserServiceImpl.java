@@ -17,7 +17,7 @@ import com.example.dao.UserDao;
 import com.example.model.UserModel;
 import com.example.param.UserParam;
 import com.example.service.UserService;
-import com.example.vo.UserVO;
+import com.example.vo.User;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService{
     private UserDao userDao;
 
     @Override
-    public List<UserVO> getList(UserParam param) {
-        List<UserVO> vos = new ArrayList<UserVO>();
+    public List<User> getList(UserParam param) {
+        List<User> vos = new ArrayList<User>();
 
         List<UserModel> models = userDao.getList(param);
         if (CollectionUtils.isEmpty(models)) {
@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserVO get(UserParam param) {
-        List<UserVO> vos = getList(param);
+    public User get(UserParam param) {
+        List<User> vos = getList(param);
         if (!CollectionUtils.isEmpty(vos)) {
             return vos.get(0);
         }
@@ -51,10 +51,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserVO get(String loginName) {
+    public User get(String loginName) {
         UserParam tmpParam = new UserParam();
         tmpParam.setLoginName(loginName);
-        List<UserVO> vos = getList(tmpParam);
+        List<User> vos = getList(tmpParam);
         if (!CollectionUtils.isEmpty(vos)) {
             return vos.get(0);
         }
@@ -87,8 +87,8 @@ public class UserServiceImpl implements UserService{
         userDao.delete(param);
     }
 
-    public UserVO model2VO(UserModel model) {
-        UserVO vo = new UserVO();
+    public User model2VO(UserModel model) {
+        User vo = new User();
         BeanUtils.copyProperties(model, vo);
         String photoUrl = URIUtils.getAdminPhotoFullUrl(model.getPhotoName());
         if (StringUtils.isBlank(photoUrl)) {
@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserVO get(Long id) {
+    public User get(Long id) {
         UserModel model = userDao.getById(id);
         if (model != null) {
             return model2VO(model);

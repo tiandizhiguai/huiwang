@@ -2,13 +2,11 @@ package com.example.vo;
 
 import java.util.Date;
 
-public class TopicVO {
+public class Province {
 
     private Long   id;
 
     private String name;
-
-    private String status;
 
     private Date   gmtCreated;
 
@@ -28,14 +26,6 @@ public class TopicVO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getGmtCreated() {

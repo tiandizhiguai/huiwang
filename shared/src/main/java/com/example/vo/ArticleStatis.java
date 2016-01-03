@@ -2,7 +2,7 @@ package com.example.vo;
 
 import java.util.Date;
 
-public class ArticleStatisVO {
+public class ArticleStatis {
 
     private Long    id;
 
@@ -21,6 +21,16 @@ public class ArticleStatisVO {
     private Date    gmtCreated;
 
     private Date    gmtModified;
+
+    private Integer praiseSize;
+
+    public Integer getPraiseSize() {
+        return praiseSize;
+    }
+
+    public void setPraiseSize(Integer praiseSize) {
+        this.praiseSize = praiseSize;
+    }
 
     public Long getId() {
         return id;

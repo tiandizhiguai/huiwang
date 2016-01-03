@@ -2,11 +2,15 @@ package com.example.vo;
 
 import java.util.Date;
 
-public class ProvinceVO {
+public class City {
 
     private Long   id;
 
     private String name;
+
+    private String code;
+
+    private Long   provinceId;
 
     private Date   gmtCreated;
 
@@ -25,7 +29,23 @@ public class ProvinceVO {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code == null ? null : code.trim();
+    }
+
+    public Long getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(Long provinceId) {
+        this.provinceId = provinceId;
     }
 
     public Date getGmtCreated() {

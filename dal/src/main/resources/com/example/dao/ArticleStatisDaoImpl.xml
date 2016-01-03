@@ -8,6 +8,7 @@
 		<result column="favorite_size" property="favoriteSize"
 			jdbcType="INTEGER" />
 		<result column="care_size" property="careSize" jdbcType="INTEGER" />
+		<result column="praise_size" property="praiseSize" jdbcType="INTEGER" />
 		<result column="forward_size" property="forwardSize" jdbcType="INTEGER" />
 		<result column="article_id" property="articleId" jdbcType="BIGINT" />
 		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
@@ -16,7 +17,7 @@
 
 	<sql id="statisColumnList">
 		id, read_size, comment_size, favorite_size, care_size,
-		forward_size, article_id,
+		forward_size, article_id,praise_size,
 		gmt_created, gmt_modified
 	</sql>
 
@@ -44,16 +45,15 @@
 
 	<insert id="insert" parameterType="com.example.param.ArticleStatisParam">
 		insert into article_statis
-		(read_size, comment_size,
+		(read_size, comment_size,praise_size,
 		favorite_size, care_size, forward_size,
 		article_id, gmt_created, gmt_modified
 		)
 		values
-		(#{readSize},#{commentSize},
+		(#{readSize},#{commentSize},#{praiseSize},
 		#{favoriteSize}, #{careSize},
 		#{forwardSize},
-		#{articleId}, now(), now()}
-		)
+		#{articleId}, now(), now())
 	</insert>
 	<update id="update" parameterType="com.example.param.ArticleStatisParam">
 		update article_statis
@@ -72,6 +72,9 @@
 			</if>
 			<if test="forwardSize != null">
 				forward_size = #{forwardSize},
+			</if>
+			<if test="praiseSize != null">
+				praise_size = #{praiseSize},
 			</if>
 			<if test="articleId != null">
 				article_id = #{articleId},
@@ -98,11 +101,20 @@
 		<if test="careSize != null">
 			and care_size = #{careSize}
 		</if>
+		<if test="praiseSize != null">
+			and praise_size = #{praiseSize}
+		</if>
 		<if test="forwardSize != null">
 			and forward_size = #{forwardSize}
 		</if>
 		<if test="articleId != null">
 			and article_id = #{articleId}
+		</if>
+		<if test="articleIds != null">
+		    and article_id in 
+		    <foreach collection="articleIds" item="value" separator="," open="(" close=")" index="index">
+				#{value}
+			</foreach>
 		</if>
 	</sql>
 </mapper>
