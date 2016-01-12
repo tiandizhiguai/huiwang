@@ -29,7 +29,9 @@ public class IndexController extends AbstractController {
 
     @RequestMapping("/index")
     public ModelAndView index(ArticleParam param) {
-        param.setUserLogined(this.isUserLogin());
+        if (this.isUserLogined()) {
+            param.setLoginUserId(this.getLoginedUser().getId());
+        }
         param.setSortType(SortType.ID.getValue());
         param.setDescOrder(true);
         param.setStatus(StatusType.NORMAL.getValue());

@@ -9,7 +9,7 @@ public interface ArticleStatisService extends GeneralService<ArticleStatisParam,
 
     ArticleStatis getByArticleId(Long articleId);
 
-    int careArticle(ArticleCareParam param);
+    Integer careArticle(ArticleCareParam param);
 
-    int praiseArticle(ArticlePraiseParam param);
+    Integer praiseArticle(ArticlePraiseParam param);
 }

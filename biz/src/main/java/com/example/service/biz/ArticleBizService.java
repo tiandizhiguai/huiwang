@@ -8,4 +8,6 @@ import com.example.service.bo.ArticleBO;
 public interface ArticleBizService {
 
     List<ArticleBO> getList(ArticleParam bizParam);
+    
+    ArticleBO getDetail(Long loginedUserId, Long articleId);
 }

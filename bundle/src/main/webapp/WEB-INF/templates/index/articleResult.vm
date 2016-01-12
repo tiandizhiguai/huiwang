@@ -11,7 +11,11 @@
 	            	<div class="content_author">
 	            		<img class="content_user_photo" src="$!{data.userData.fullPhotoUrl}"/>
 	            		<span><strong>$!{data.userData.loginName}</strong></span>
-	            		<span class="content_topic"><a href="//www.rensheng.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
+	            		<span class="content_topic">
+		            		<span>$!{data.gmtCreated}</span>
+		            		<span>发表于</span>
+		            		<span><a href="//www.rensheng.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
+	            		</span>
 	            	</div>
 	            	<div class="content">$!{data.simpleContent}</div>
 	            	<div class="content_bottom">
@@ -20,8 +24,8 @@
 		            		<span id="heart"></span>
 		            		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
 	            		</a>
-		            	<a href="javascript:void(0)" class="comment_article_$!articleId" articleId="$!{data.id}" comment_size="$!{data.statisData.commentSize}">5条评论</a>
-		            	<a href="javascript:void(0)" class="care_article_$!articleId" articleId="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"><strong>+</strong>添加关注</a>
+		            	<a href="javascript:void(0)" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
+		            	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
 	            	</div>
 	            </li>
             #end

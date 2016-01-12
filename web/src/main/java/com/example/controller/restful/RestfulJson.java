@@ -94,6 +94,10 @@ public class RestfulJson extends AbstractController {
     @RequestMapping("/careArticle")
     public RestfulResult careArticle(ArticleCareParam param) {
         RestfulResult result = new RestfulResult();
+        if (param.getArticleId() == null || param.getArticleId() == 0 || param.getUserId() == null
+            || param.getUserId() == 0) {
+            return result;
+        }
         result.setData(articleStatisService.careArticle(param));
         return result;
     }
@@ -102,6 +106,10 @@ public class RestfulJson extends AbstractController {
     @RequestMapping("/praiseArticle")
     public RestfulResult praiseArticle(ArticlePraiseParam param) {
         RestfulResult result = new RestfulResult();
+        if (param.getArticleId() == null || param.getArticleId() == 0 || param.getUserId() == null
+            || param.getUserId() == 0) {
+            return result;
+        }
         result.setData(articleStatisService.praiseArticle(param));
         return result;
     }

@@ -1,18 +1,29 @@
 package com.example.param;
 
 import java.util.Date;
+import java.util.List;
 
 public class TopicParam extends PageParam {
 
-    private Long   id;
+    private Long       id;
 
-    private String name;
+    private List<Long> ids;
 
-    private String status;
+    private String     name;
 
-    private Date   gmtCreated;
+    private String     status;
 
-    private Date   gmtModified;
+    private Date       gmtCreated;
+
+    private Date       gmtModified;
+
+    public List<Long> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<Long> ids) {
+        this.ids = ids;
+    }
 
     public Long getId() {
         return id;

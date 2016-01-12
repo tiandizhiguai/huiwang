@@ -1,22 +1,33 @@
 package com.example.param;
 
 import java.util.Date;
+import java.util.List;
 
 public class ArticlePraiseParam extends PageParam {
 
-    private Long    id;
+    private Long       id;
 
-    private Long    articleId;
+    private Long       articleId;
 
-    private Long    userId;
+    private Long       userId;
 
-    private String  status;
+    private String     status;
 
-    private Date    gmtCreated;
+    private Date       gmtCreated;
 
-    private Date    gmtModified;
+    private Date       gmtModified;
 
-    private boolean praised;
+    private boolean    praised;
+
+    private List<Long> articleIds;
+
+    public List<Long> getArticleIds() {
+        return articleIds;
+    }
+
+    public void setArticleIds(List<Long> articleIds) {
+        this.articleIds = articleIds;
+    }
 
     public boolean isPraised() {
         return praised;

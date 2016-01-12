@@ -1,11 +1,21 @@
 <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/contentDetail.css"/>
-<div class="rensheng_items">
-    <div class="rensheng_left_item">
-        <div class="rensheng_left_title">我的2013年爱情</div>
-        <div class="content_detail">那一年，我25岁，文章的详细内容。。。</div>
-        <div class="tab-pane fade" id="product_comment"></div>
+<div class="items">
+    <div class="left_item">
+        <div class="left_title">
+        	<span>$!{data.title}</span>
+        </div>
+        <div class="content_detail">$!{data.content}</div>
+        <div class="content_bottom">
+        	<a href="javascript:void(0)" class="praise_article" article_id="$!articleId" praised="$!{data.praised}" praised_size="$!{data.statisData.praiseSize}">
+	    		<span id="heart"></span>
+	    		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
+			</a>
+	    	<a href="javascript:void(0)" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
+	    	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
+    	</div>
+        <div class="tab-pane fade" id="comment"></div>
     </div>
-    <div class="rensheng_right_item">
+    <div class="right_item">
     	#parse("index/imgCarousel.vm")
     </div>
 </div>

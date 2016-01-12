@@ -41,10 +41,9 @@
 		insert into article_praise
 		(article_id,
 		user_id, status, gmt_created,
-		gmt_modified, detail_praise)
+		gmt_modified)
 		values (#{articleId},
-		#{userId}, 'normal', now(),now(),
-		#{detailPraise})
+		#{userId}, 'normal', now(),now())
 	</insert>
 	<update id="update" parameterType="com.example.param.ArticlePraiseParam">
 		update article_praise

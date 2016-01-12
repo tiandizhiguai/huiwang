@@ -101,67 +101,73 @@ public class AticleStatisServiceImpl implements ArticleStatisService {
         return null;
     }
 
-    public int careArticle(ArticleCareParam param) {
+    public Integer praiseArticle(ArticlePraiseParam param) {
 
         ArticleStatis articleStatis = this.getByArticleId(param.getArticleId());
+
+        // 增加赞
+        Integer size = 0;
         ArticleStatisParam statisParam = new ArticleStatisParam();
-
-        if (articleStatis == null) {
-            statisParam.setArticleId(param.getArticleId());
-            statisParam.setCareSize(1);
-            statisDao.insert(statisParam);
-            return 1;
-        }
-
-        int size = articleStatis.getCareSize();
-        statisParam.setId(articleStatis.getId());
-
-        // 增加关注人
-        if (param.isCared()) {
-            articleCareService.add(param);
-            size++;
-            statisParam.setCareSize(size);
+        if (!param.isPraised()) {
+            articlePraiseService.add(param);
+            if (articleStatis == null) {
+                statisParam.setArticleId(param.getArticleId());
+                statisParam.setPraiseSize(1);
+                statisDao.insert(statisParam);
+                size = 1;
+            } else {
+                size = articleStatis.getPraiseSize();
+                size++;
+                statisParam.setPraiseSize(size);
+                statisParam.setId(articleStatis.getId());
+                statisDao.update(statisParam);
+            }
         } else {
-            // 取消关注人
-            articleCareService.delete(param);
-            size--;
-            statisParam.setCareSize(size);
+            // 取消赞
+            if (articleStatis != null) {
+                articlePraiseService.delete(param);
+                size = articleStatis.getPraiseSize();
+                size--;
+                statisParam.setPraiseSize(size);
+                statisParam.setId(articleStatis.getId());
+                statisDao.update(statisParam);
+            }
         }
-
-        statisDao.update(statisParam);
-
         return size;
     }
 
-    public int praiseArticle(ArticlePraiseParam param) {
+    public Integer careArticle(ArticleCareParam param) {
 
         ArticleStatis articleStatis = this.getByArticleId(param.getArticleId());
+
+        // 增加关注人
+        Integer size = 0;
         ArticleStatisParam statisParam = new ArticleStatisParam();
-
-        if (articleStatis == null) {
-            statisParam.setArticleId(param.getArticleId());
-            statisParam.setPraiseSize(1);
-            statisDao.insert(statisParam);
-            return 1;
-        }
-
-        int praiseSize = articleStatis.getPraiseSize();
-        statisParam.setId(articleStatis.getId());
-
-        // 增加赞
-        if (param.isPraised()) {
-            articlePraiseService.add(param);
-            praiseSize++;
-            statisParam.setPraiseSize(praiseSize);
+        if (!param.isCared()) {
+            articleCareService.add(param);
+            if (articleStatis == null) {
+                statisParam.setArticleId(param.getArticleId());
+                statisParam.setCareSize(1);
+                statisDao.insert(statisParam);
+                size = 1;
+            } else {
+                size = articleStatis.getCareSize();
+                size++;
+                statisParam.setCareSize(size);
+                statisParam.setId(articleStatis.getId());
+                statisDao.update(statisParam);
+            }
         } else {
-            // 取消赞
-            articlePraiseService.delete(param);
-            praiseSize--;
-            statisParam.setPraiseSize(praiseSize);
+            // 取消关注人
+            if (articleStatis != null) {
+                articleCareService.delete(param);
+                size = articleStatis.getCareSize();
+                size--;
+                statisParam.setCareSize(size);
+                statisParam.setId(articleStatis.getId());
+                statisDao.update(statisParam);
+            }
         }
-
-        statisDao.update(statisParam);
-
-        return praiseSize;
+        return size;
     }
 }

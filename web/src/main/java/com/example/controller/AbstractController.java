@@ -27,12 +27,12 @@ public class AbstractController {
     @Resource
     protected HttpServletRequest httpServletRequest;
 
-    protected User getLoginUser() {
+    protected User getLoginedUser() {
         return (User) httpSession.getAttribute(Constants.LOGIN_USER);
     }
 
-    protected boolean isUserLogin() {
-        return getLoginUser() != null;
+    protected boolean isUserLogined() {
+        return getLoginedUser() != null;
     }
 
     protected List<String> saveFiles(MultipartFile[] files, File parentPath) {

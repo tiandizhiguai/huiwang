@@ -15,11 +15,13 @@ import com.example.param.ArticleCareParam;
 import com.example.param.ArticleParam;
 import com.example.param.ArticlePraiseParam;
 import com.example.param.ArticleStatisParam;
+import com.example.param.TopicParam;
 import com.example.param.UserParam;
 import com.example.service.ArticleCareService;
 import com.example.service.ArticlePraiseService;
 import com.example.service.ArticleService;
 import com.example.service.ArticleStatisService;
+import com.example.service.TopicService;
 import com.example.service.UserService;
 import com.example.service.biz.ArticleBizService;
 import com.example.service.bo.ArticleBO;
@@ -27,13 +29,14 @@ import com.example.vo.Article;
 import com.example.vo.ArticleCare;
 import com.example.vo.ArticlePraise;
 import com.example.vo.ArticleStatis;
+import com.example.vo.Topic;
 import com.example.vo.User;
 
 @Service
 public class ArticleBizServiceImpl implements ArticleBizService {
 
     @Resource
-    private ArticleService       articleSerice;
+    private ArticleService       articleService;
 
     @Resource
     private ArticleStatisService articleStatisService;
@@ -47,16 +50,20 @@ public class ArticleBizServiceImpl implements ArticleBizService {
     @Resource
     private ArticlePraiseService articlePraiseService;
 
+    @Resource
+    private TopicService         topicService;
+
     public List<ArticleBO> getList(ArticleParam param) {
         List<ArticleBO> bos = new ArrayList<ArticleBO>();
 
         // 1.文章信息
-        List<Article> articles = articleSerice.getList(param);
+        List<Article> articles = articleService.getList(param);
         if (CollectionUtils.isEmpty(articles)) {
             return bos;
         }
 
         List<Long> userIds = new ArrayList<Long>(articles.size());
+        List<Long> topicIds = new ArrayList<Long>(articles.size());
         List<Long> articleIds = new ArrayList<Long>(articles.size());
         for (Article article : articles) {
             ArticleBO bo = new ArticleBO();
@@ -64,57 +71,123 @@ public class ArticleBizServiceImpl implements ArticleBizService {
             bos.add(bo);
             userIds.add(article.getUserId());
             articleIds.add(article.getId());
+            topicIds.add(article.getTopicId());
         }
 
         // 2.用户信息
         UserParam userParam = new UserParam();
         userParam.setIds(userIds);
         List<User> users = userService.getList(userParam);
+        Map<Long, User> userMap = new HashMap<Long, User>(32);
         if (!CollectionUtils.isEmpty(users)) {
-            Map<Long, User> userMap = new HashMap<Long, User>(users.size());
             for (User user : users) {
                 userMap.put(user.getId(), user);
             }
-            for (ArticleBO bo : bos) {
-                bo.setUserData(userMap.get(bo.getUserId()));
-            }
         }
 
-        // 2.统计数据
+        // 3.统计数据
         ArticleStatisParam statisParam = new ArticleStatisParam();
         statisParam.setArticleIds(articleIds);
         List<ArticleStatis> statises = articleStatisService.getList(statisParam);
+        Map<Long, ArticleStatis> statisMap = new HashMap<Long, ArticleStatis>(32);
         if (!CollectionUtils.isEmpty(statises)) {
-            Map<Long, ArticleStatis> map = new HashMap<Long, ArticleStatis>(statises.size());
             for (ArticleStatis statis : statises) {
-                map.put(statis.getArticleId(), statis);
-            }
-            for (ArticleBO bo : bos) {
-                bo.setStatisData(map.get(bo.getId()));
+                statisMap.put(statis.getArticleId(), statis);
             }
         }
 
-        if (param.isUserLogined()) {
+        // 4.话题
+        TopicParam topicParam = new TopicParam();
+        topicParam.setIds(topicIds);
+        List<Topic> topics = topicService.getList(topicParam);
+        Map<Long, String> topicMap = new HashMap<Long, String>(16);
+        if (!CollectionUtils.isEmpty(topics)) {
+            for (Topic topic : topics) {
+                topicMap.put(topic.getId(), topic.getName());
+            }
+        }
 
-            for (ArticleBO bo : bos) {
-                // 关注
-                ArticleCareParam careParam = new ArticleCareParam();
-                careParam.setArticleId(bo.getId());
-                careParam.setUserId(param.getLogoinUserId());
-                ArticleCare articleCare = articleCareService.get(careParam);
-                bo.setCared(articleCare != null);
-
-                // 赞
-                ArticlePraiseParam praiseParam = new ArticlePraiseParam();
-                praiseParam.setArticleId(bo.getId());
-                praiseParam.setUserId(param.getLogoinUserId());
-                ArticlePraise articlePraise = articlePraiseService.get(praiseParam);
-                bo.setPraised(articlePraise != null);
+        // 5.只有登录用户才能取关注和赞数据
+        Map<Long, ArticleCare> careMap = new HashMap<Long, ArticleCare>(32);
+        Map<Long, ArticlePraise> praiseMap = new HashMap<Long, ArticlePraise>(32);
+        if (param.getLoginUserId() != null) {
+            // 关注
+            ArticleCareParam careParam = new ArticleCareParam();
+            careParam.setArticleIds(articleIds);
+            careParam.setUserId(param.getLoginUserId());
+            List<ArticleCare> articleCares = articleCareService.getList(careParam);
+            if (!CollectionUtils.isEmpty(articleCares)) {
+                for (ArticleCare articleCare : articleCares) {
+                    careMap.put(articleCare.getArticleId(), articleCare);
+                }
             }
 
+            // 赞
+            ArticlePraiseParam praiseParam = new ArticlePraiseParam();
+            praiseParam.setArticleIds(articleIds);
+            praiseParam.setUserId(param.getLoginUserId());
+            List<ArticlePraise> articlePraises = articlePraiseService.getList(praiseParam);
+            if (!CollectionUtils.isEmpty(articlePraises)) {
+                for (ArticlePraise articlePraise : articlePraises) {
+                    praiseMap.put(articlePraise.getArticleId(), articlePraise);
+                }
+            }
+        }
+
+        for (ArticleBO bo : bos) {
+            bo.setUserData(userMap.get(bo.getUserId()));
+            bo.setStatisData(statisMap.get(bo.getId()));
+            bo.setCared(careMap.get(bo.getId()) != null);
+            bo.setPraised(praiseMap.get(bo.getId()) != null);
+            bo.setTopicName(topicMap.get(bo.getTopicId()));
         }
 
         return bos;
     }
 
+    public ArticleBO getDetail(Long loginedUserId, Long articleId) {
+        ArticleBO bo = new ArticleBO();
+
+        // 1.文章信息
+        Article article = articleService.get(articleId);
+        if (article == null) {
+            return bo;
+        }
+
+        BeanUtils.copyProperties(article, bo);
+
+        // 2.用户信息
+        User user = userService.get(article.getUserId());
+
+        // 3.统计数据
+        ArticleStatis statis = articleStatisService.getByArticleId(article.getId());
+
+        // 4.话题
+        Topic topic = topicService.get(article.getTopicId());
+
+        // 5.只有登录用户才能取关注和赞数据
+        ArticleCare articleCare = null;
+        ArticlePraise articlePraise = null;
+        if (loginedUserId != null) {
+            // 关注
+            ArticleCareParam careParam = new ArticleCareParam();
+            careParam.setArticleId(article.getId());
+            careParam.setUserId(loginedUserId);
+            articleCare = articleCareService.get(careParam);
+
+            // 赞
+            ArticlePraiseParam praiseParam = new ArticlePraiseParam();
+            praiseParam.setArticleId(article.getId());
+            praiseParam.setUserId(loginedUserId);
+            articlePraise = articlePraiseService.get(praiseParam);
+        }
+
+        bo.setUserData(user);
+        bo.setStatisData(statis);
+        bo.setCared(articleCare != null);
+        bo.setPraised(articlePraise != null);
+        bo.setTopicName(topic.getName());
+
+        return bo;
+    }
 }

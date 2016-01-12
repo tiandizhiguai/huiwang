@@ -41,10 +41,9 @@
 		insert into article_care
 		(article_id,
 		user_id, status, gmt_created,
-		gmt_modified, detail_care)
+		gmt_modified)
 		values (#{articleId},
-		#{userId}, 'normal', now(),now(),
-		#{detailCare})
+		#{userId}, 'normal', now(),now())
 	</insert>
 	<update id="update" parameterType="com.example.param.ArticleCareParam">
 		update article_care
@@ -76,6 +75,12 @@
 		</if>
 		<if test="status != null">
 			and status = #{status}
+		</if>
+		<if test="articleIds != null">
+		    and article_id in 
+		    <foreach collection="articleIds" item="value" separator="," open="(" close=")" index="index">
+				#{value}
+			</foreach>
 		</if>
 	</sql>
 </mapper>

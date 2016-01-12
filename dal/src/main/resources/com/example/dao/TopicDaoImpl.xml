@@ -65,5 +65,11 @@
 		<if test="status != null">
 			and status = #{status}
 		</if>
+		<if test="ids != null">
+		    and id in 
+		    <foreach collection="ids" item="value" separator="," open="(" close=")" index="index">
+				#{value}
+			</foreach>
+		</if>
 	</sql>
 </mapper>

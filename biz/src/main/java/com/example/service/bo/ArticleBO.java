@@ -25,11 +25,21 @@ public class ArticleBO {
 
     private ArticleStatis statisData;
 
+    private String        topicName;
+
     private User          userData;
 
     private Boolean       cared;
 
     private Boolean       praised;
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
 
     public Long getId() {
         return id;

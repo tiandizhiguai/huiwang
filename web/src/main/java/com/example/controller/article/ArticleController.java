@@ -11,18 +11,39 @@ import com.example.constant.SortType;
 import com.example.constant.StatusType;
 import com.example.controller.AbstractController;
 import com.example.param.ArticleParam;
+import com.example.param.TopicParam;
 import com.example.service.ArticleService;
+import com.example.service.TopicService;
+import com.example.service.biz.ArticleBizService;
 
 @Controller
 @RequestMapping("/article")
 public class ArticleController extends AbstractController {
 
     @Resource
-    private ArticleService articleService;
-    
+    private ArticleService    articleService;
+
+    @Resource
+    private ArticleBizService articleBizService;
+
+    @Resource
+    private TopicService      topicService;
+
     @RequestMapping("/detail")
-    public ModelAndView detail(ArticleParam param) {
+    public ModelAndView detail(Long id) {
         ModelAndView modelAndView = new ModelAndView();
+
+        TopicParam topicParam = new TopicParam();
+        topicParam.setPageSize(20);
+        topicParam.setStatus(StatusType.NORMAL.getValue());
+        modelAndView.addObject("topicDatas", topicService.getList(topicParam));
+
+        Long loginedUserId = null;
+        if (this.isUserLogined()) {
+            loginedUserId = this.getLoginedUser().getId();
+        }
+
+        modelAndView.addObject("data", articleBizService.getDetail(loginedUserId, id));
         modelAndView.setViewName("/article/articleDetail");
         return modelAndView;
     }
@@ -73,7 +94,7 @@ public class ArticleController extends AbstractController {
         } else {
             articleService.add(param);
         }
-        
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("redirect:/admin/index");
