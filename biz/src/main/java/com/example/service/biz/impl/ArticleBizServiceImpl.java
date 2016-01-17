@@ -12,12 +12,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.example.param.ArticleCareParam;
+import com.example.param.ArticleCommentParam;
 import com.example.param.ArticleParam;
 import com.example.param.ArticlePraiseParam;
 import com.example.param.ArticleStatisParam;
 import com.example.param.TopicParam;
 import com.example.param.UserParam;
 import com.example.service.ArticleCareService;
+import com.example.service.ArticleCommentService;
 import com.example.service.ArticlePraiseService;
 import com.example.service.ArticleService;
 import com.example.service.ArticleStatisService;
@@ -25,8 +27,10 @@ import com.example.service.TopicService;
 import com.example.service.UserService;
 import com.example.service.biz.ArticleBizService;
 import com.example.service.bo.ArticleBO;
+import com.example.service.bo.ArticleCommentBO;
 import com.example.vo.Article;
 import com.example.vo.ArticleCare;
+import com.example.vo.ArticleComment;
 import com.example.vo.ArticlePraise;
 import com.example.vo.ArticleStatis;
 import com.example.vo.Topic;
@@ -36,22 +40,25 @@ import com.example.vo.User;
 public class ArticleBizServiceImpl implements ArticleBizService {
 
     @Resource
-    private ArticleService       articleService;
+    private ArticleService        articleService;
 
     @Resource
-    private ArticleStatisService articleStatisService;
+    private ArticleStatisService  articleStatisService;
 
     @Resource
-    private UserService          userService;
+    private UserService           userService;
 
     @Resource
-    private ArticleCareService   articleCareService;
+    private ArticleCareService    articleCareService;
 
     @Resource
-    private ArticlePraiseService articlePraiseService;
+    private ArticlePraiseService  articlePraiseService;
 
     @Resource
-    private TopicService         topicService;
+    private TopicService          topicService;
+
+    @Resource
+    private ArticleCommentService articleCommentService;
 
     public List<ArticleBO> getList(ArticleParam param) {
         List<ArticleBO> bos = new ArrayList<ArticleBO>();
@@ -182,6 +189,21 @@ public class ArticleBizServiceImpl implements ArticleBizService {
             articlePraise = articlePraiseService.get(praiseParam);
         }
 
+        // 6.记录阅读次数
+        ArticleStatis articleStatis = articleStatisService.getByArticleId(articleId);
+        if (articleStatis != null) {
+            Integer readSize = articleStatis.getReadSize();
+            if (readSize != null) {
+                readSize++;
+            } else {
+                readSize = 1;
+            }
+            ArticleStatisParam statisParam = new ArticleStatisParam();
+            statisParam.setId(articleStatis.getId());
+            statisParam.setReadSize(readSize);
+            articleStatisService.update(statisParam);
+        }
+
         bo.setUserData(user);
         bo.setStatisData(statis);
         bo.setCared(articleCare != null);
@@ -189,5 +211,40 @@ public class ArticleBizServiceImpl implements ArticleBizService {
         bo.setTopicName(topic.getName());
 
         return bo;
+    }
+
+    public List<ArticleCommentBO> getCommentList(ArticleCommentParam param) {
+        List<ArticleCommentBO> bos = new ArrayList<ArticleCommentBO>();
+
+        // 1.评论信息
+        List<ArticleComment> articleComments = articleCommentService.getList(param);
+        if (CollectionUtils.isEmpty(articleComments)) {
+            return bos;
+        }
+
+        List<Long> userIds = new ArrayList<Long>(articleComments.size());
+        for (ArticleComment articleComment : articleComments) {
+            ArticleCommentBO bo = new ArticleCommentBO();
+            bo.setComment(articleComment);
+            bos.add(bo);
+            userIds.add(articleComment.getUserId());
+        }
+
+        // 2.用户信息
+        UserParam userParam = new UserParam();
+        userParam.setIds(userIds);
+        List<User> users = userService.getList(userParam);
+        Map<Long, User> userMap = new HashMap<Long, User>(16);
+        if (!CollectionUtils.isEmpty(users)) {
+            for (User user : users) {
+                userMap.put(user.getId(), user);
+            }
+        }
+
+        for (ArticleCommentBO bo : bos) {
+            bo.setUser(userMap.get(bo.getComment().getUserId()));
+        }
+
+        return bos;
     }
 }

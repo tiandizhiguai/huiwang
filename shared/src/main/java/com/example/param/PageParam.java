@@ -15,7 +15,7 @@ public abstract class PageParam {
     }
 
     public int getPageNo() {
-        if (pageNo < 1) {
+        if (pageNo < DEFAULT_PAGE_NO) {
             return DEFAULT_PAGE_NO;
         }
         return pageNo;

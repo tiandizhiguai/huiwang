@@ -2,26 +2,36 @@
 <div class="items">
     <div class="left_item">
         <div class="left_title">
-        	<span>$!{data.title}</span>
+        	<strong>$!{data.title}</strong>
         </div>
-        <div class="content_detail">$!{data.content}</div>
-        <div class="content_bottom">
-        	<a href="javascript:void(0)" class="praise_article" article_id="$!articleId" praised="$!{data.praised}" praised_size="$!{data.statisData.praiseSize}">
-	    		<span id="heart"></span>
-	    		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
-			</a>
-	    	<a href="javascript:void(0)" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
-	    	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
+        <div class="content_author">
+    		<img class="content_user_photo" src="$!{data.userData.fullPhotoUrl}"/>
+    		<span><strong>$!{data.userData.loginName}</strong></span>
+    		<span class="content_topic">
+        		<span>$!{data.gmtCreated}</span>
+        		<span>发表于</span>
+        		<span><a href="//www.rensheng.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
+    		</span>
     	</div>
-        <div class="tab-pane fade" id="comment"></div>
+        <ul>
+        	#set($articleId = $!{data.id})
+        	<input type="hidden" id="article_id" value="$!articleId"/>
+            <li class="content_item">
+            	<div class="content">$!{data.content}</div>
+            	<div class="content_bottom">
+            		<a href="javascript:void(0)" class="praise_article" article_id="$!articleId" praised="$!{data.praised}" praised_size="$!{data.statisData.praiseSize}">
+	            		<span id="heart"></span>
+	            		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
+            		</a>
+	            	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
+            	</div>
+            </li>
+        </ul>
+        <div class="comment_title"><strong>评论</strong></div>
+        <div class="article_comment" id="article_comment"></div>
     </div>
     <div class="right_item">
     	#parse("index/imgCarousel.vm")
     </div>
 </div>
-#parse("common/paging.vm")
-<form id="index_form" method="get">
-    <input type="hidden" name="pageSize" value="20"/>
-    <input type="hidden" name="pageNo" id="submit_page_no"/>
-</form>
 <script src="//style.rensheng.com/rensheng/js/contentDetail.js"></script>

@@ -1,16 +1,16 @@
 <div class="paging">
     <ul>
         #if($!totalCount > 0)
-	        <li>第$!pageNo页</li>
+	        <li>共$!totalCount条</li>
 	        <li>
 				<ul class="pager">
 				  <input type="hidden" value="$!pageNo" class="page_no"/>
 				  <input type="hidden" value="$!totalPage" class="total_page"/>
-				  <li id="pre_page" style="cursor:pointer"><a>上一页</a></li>
-				  <li id="next_page" style="cursor:pointer"><a>下一页</a></li>
+				  <li><a id="pre_page" style="cursor:pointer">上一页</a></li>
+				  <li><a id="next_page" style="cursor:pointer">下一页</a></li>
 				</ul>
 	        </li>
-	        <li>共$!totalCount条，共$!totalPage页</li>
+	        <li>第$!pageNo页，共$!totalPage页</li>
         #end 
     </ul>
 </div>

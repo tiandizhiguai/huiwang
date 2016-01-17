@@ -34,28 +34,28 @@ import com.example.vo.User;
 public class RestfulJson extends AbstractController {
 
     @Resource
-    private UserService          userServie;
+    private UserService           userServie;
 
     @Resource
-    private ProvinceService      provinceService;
+    private ProvinceService       provinceService;
 
     @Resource
-    private CityService          cityServie;
+    private CityService           cityServie;
 
     @Resource
-    private TopicService         topicService;
+    private TopicService          topicService;
 
     @Resource
-    private ArticleService       articleService;
+    private ArticleService        articleService;
 
     @Resource
-    private ArticleCareService   articleCareService;
+    private ArticleCareService    articleCareService;
 
     @Resource
-    private ArticlePraiseService articlePraiseService;
+    private ArticlePraiseService  articlePraiseService;
 
     @Resource
-    private ArticleStatisService articleStatisService;
+    private ArticleStatisService  articleStatisService;
 
     @ResponseBody
     @RequestMapping("/getTopics")
@@ -94,6 +94,10 @@ public class RestfulJson extends AbstractController {
     @RequestMapping("/careArticle")
     public RestfulResult careArticle(ArticleCareParam param) {
         RestfulResult result = new RestfulResult();
+        if (!this.isUserLogined()) {
+            return result;
+        }
+
         if (param.getArticleId() == null || param.getArticleId() == 0 || param.getUserId() == null
             || param.getUserId() == 0) {
             return result;
@@ -106,6 +110,11 @@ public class RestfulJson extends AbstractController {
     @RequestMapping("/praiseArticle")
     public RestfulResult praiseArticle(ArticlePraiseParam param) {
         RestfulResult result = new RestfulResult();
+
+        if (!this.isUserLogined()) {
+            return result;
+        }
+
         if (param.getArticleId() == null || param.getArticleId() == 0 || param.getUserId() == null
             || param.getUserId() == 0) {
             return result;
@@ -113,4 +122,5 @@ public class RestfulJson extends AbstractController {
         result.setData(articleStatisService.praiseArticle(param));
         return result;
     }
+
 }

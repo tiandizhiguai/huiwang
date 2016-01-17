@@ -21,7 +21,7 @@ public class ArticleCommentModel implements Serializable {
 
     private Date              gmtModified;
 
-    private String            detailComment;
+    private String            comment;
 
     public Long getId() {
         return id;
@@ -79,11 +79,11 @@ public class ArticleCommentModel implements Serializable {
         this.gmtModified = gmtModified;
     }
 
-    public String getDetailComment() {
-        return detailComment;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDetailComment(String detailComment) {
-        this.detailComment = detailComment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

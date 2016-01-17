@@ -3,8 +3,8 @@
 <mapper namespace="com.example.dao.ArticleCommentDao">
 	<resultMap id="commentResultMap" type="com.example.model.ArticleCommentModel">
 		<id column="id" property="id" jdbcType="BIGINT" />
-		<result column="simple_comment" property="simpleComment"
-			jdbcType="VARCHAR" />
+		<result column="simple_comment" property="simpleComment" jdbcType="VARCHAR" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
 		<result column="article_id" property="articleId" jdbcType="BIGINT" />
 		<result column="user_id" property="userId" jdbcType="BIGINT" />
 		<result column="status" property="status" jdbcType="VARCHAR" />
@@ -13,7 +13,7 @@
 	</resultMap>
 
 	<sql id="commentColumnList">
-		id, simple_comment, article_id, user_id, status,
+		id, simple_comment,comment,article_id, user_id, status,
 		gmt_created, gmt_modified
 	</sql>
 
@@ -23,6 +23,13 @@
 		<include refid="commentColumnList" />
 		from article_comment
 		where
+		<include refid="commentCondition" />
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="getCount" parameterType="com.example.param.ArticleCommentParam"
+		resultType="int">
+		select count(*) from article_comment where
 		<include refid="commentCondition" />
 	</select>
 
@@ -43,10 +50,10 @@
 		insert into article_comment
 		(simple_comment, article_id,
 		user_id, status, gmt_created,
-		gmt_modified, detail_comment)
+		gmt_modified, comment)
 		values (#{simpleComment},#{articleId},
 		#{userId}, 'normal', now(),now(),
-		#{detailComment})
+		#{comment})
 	</insert>
 	<update id="update" parameterType="com.example.param.ArticleCommentParam">
 		update article_comment
@@ -63,8 +70,8 @@
 			<if test="status != null">
 				status = #{status},
 			</if>
-			<if test="detailComment != null">
-				detail_comment = #{detailComment},
+			<if test="comment != null">
+				comment = #{comment},
 			</if>
 			gmt_modified = now()
 		</set>
@@ -88,8 +95,14 @@
 		<if test="status != null">
 			and status = #{status}
 		</if>
-		<if test="detailComment != null">
-			and detail_comment = #{detailComment}
+		<if test="comment != null">
+			and comment = #{comment}
+		</if>
+		<if test="sortType != null">
+			order by ${sortType}
+		</if>
+		<if test="descOrder == true">
+			desc
 		</if>
 	</sql>
 </mapper>

@@ -53,9 +53,11 @@ public class UserController extends AbstractController {
     }
 
     @RequestMapping("/preLogin")
-    public ModelAndView preLogin(UserParam param) {
+    public ModelAndView preLogin(String redirectUri) {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("redirectUri", redirectUri);
         modelAndView.setViewName("/user/preLogin");
+
         return modelAndView;
     }
 
@@ -65,7 +67,11 @@ public class UserController extends AbstractController {
         User loginUser = userServie.get(param);
         if (loginUser != null && StringUtils.endsWithIgnoreCase(param.getLoginName(), loginUser.getLoginName())) {
             httpSession.setAttribute(Constants.LOGIN_USER, loginUser);
-            modelAndView.setViewName("redirect:/index");
+            if (!StringUtils.isEmpty(param.getRedirectUri())) {
+                modelAndView.setViewName("redirect:" + param.getRedirectUri());
+            }else{
+                modelAndView.setViewName("redirect:/index");
+            }
 		}else{
             modelAndView.setViewName("/user/loginError");
 		}

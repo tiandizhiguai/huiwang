@@ -4,21 +4,41 @@ import java.util.Date;
 
 public class ArticleCommentParam extends PageParam {
 
-    private Long              id;
+    private Long   id;
 
-    private String            simpleComment;
+    private String simpleComment;
 
-    private Long              articleId;
+    private Long   articleId;
 
-    private Long              userId;
+    private Long   userId;
 
-    private String            status;
+    private String status;
 
-    private Date              gmtCreated;
+    private Date   gmtCreated;
 
-    private Date              gmtModified;
+    private Date   gmtModified;
 
-    private String            detailComment;
+    private String comment;
+
+    private String  sortType;
+
+    private boolean descOrder;
+
+    public String getSortType() {
+        return sortType;
+    }
+
+    public void setSortType(String sortType) {
+        this.sortType = sortType;
+    }
+
+    public boolean isDescOrder() {
+        return descOrder;
+    }
+
+    public void setDescOrder(boolean descOrder) {
+        this.descOrder = descOrder;
+    }
 
     public Long getId() {
         return id;
@@ -76,11 +96,11 @@ public class ArticleCommentParam extends PageParam {
         this.gmtModified = gmtModified;
     }
 
-    public String getDetailComment() {
-        return detailComment;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDetailComment(String detailComment) {
-        this.detailComment = detailComment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

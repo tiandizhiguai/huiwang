@@ -5,51 +5,48 @@
 		<title>首页</title>
 	    #parse("common/common.vm")
 	</head>
-	<body>
+	<body style="min-width:1190px;">
 	    <div>
 		    #parse("common/header.vm")
 		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
 		    <div class="preRegister">
-		        <ul>
-			        <li class="preRegister_img">
-				        <img src="//img.meilishuo.net/css//images/register/ad_img.jpg"/>
-				    </li>
-			        <li class="preRegister_info">
-						<form class="pre_register_form" action="//www.rensheng.com/user/register" method="post">
-						  <table>
-							  <tr>
-								  <td>
-								      <div class="input-group">
-								         <input type="text" class="form-control" name="loginName" id="loginName" placeholder="登陆名">
-								      </div>
-							      </td>
-							      <td><span class="tips" id="check_user"></span></td>
-						      </tr>
-							  <tr>
-								  <td>
-								      <div class="input-group">
-								         <input type="password" class="form-control" name="passwd" id="passwd" placeholder="密码">
-								      </div>
-							      </td>
-							      <td><span class="tips" id="check_passwd"></span></td>
-						      </tr>
-						      <tr>
-							      <td>
-								      <div class="input-group">
-								         <input type="password" class="form-control" name="rePasswd" id="rePasswd" placeholder="确认密码">
-								      </div>
-							      </td>
-						          <td><span class="tips" id="check_repasswd"></span></td>
-						      </tr>
-						      <tr>
-							      <td>
-							          <button type="button" class="btn btn-default" id="pre_register_btn">注册</button>
-							      </td>
-						      </tr>
-					      </table>
-					    </form>
-				    </li>
-			    <ul>
+				<form class="pre_register_form" action="//www.rensheng.com/user/register" method="post">
+				  <table align="center">
+				  	  <tr>
+						  <td class="company_logo"><strong>回望</strong></td>
+						  <td></td>
+				      </tr>
+					  <tr>
+						  <td>
+						      <div class="input-group">
+						         <input type="text" class="form-control" name="loginName" id="loginName" placeholder="登陆名">
+						      </div>
+					      </td>
+					      <td align="left"><span class="tips" id="check_user"></span></td>
+				      </tr>
+					  <tr>
+						  <td>
+						      <div class="input-group">
+						         <input type="password" class="form-control" name="passwd" id="passwd" placeholder="密码">
+						      </div>
+					      </td>
+					      <td align="left"><span class="tips" id="check_passwd"></span></td>
+				      </tr>
+				      <tr>
+					      <td>
+						      <div class="input-group">
+						         <input type="password" class="form-control" name="rePasswd" id="rePasswd" placeholder="确认密码">
+						      </div>
+					      </td>
+				          <td align="left"><span class="tips" id="check_repasswd"></span></td>
+				      </tr>
+				      <tr>
+					      <td>
+					          <button type="button" class="btn btn-primary register_login_btn" id="pre_register_btn">注册</button>
+					      </td>
+				      </tr>
+			      </table>
+			    </form>
 		    </div>
 		    <script src="//style.rensheng.com/rensheng/js/preRegister.js"></script>
 		    #parse("common/footer.vm")

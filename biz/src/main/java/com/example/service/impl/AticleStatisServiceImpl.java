@@ -72,18 +72,12 @@ public class AticleStatisServiceImpl implements ArticleStatisService {
 
     @Override
     public void update(ArticleStatisParam param) {
-        ArticleStatisModel model = statisDao.getById(param.getId());
-        if (model != null) {
-            statisDao.update(param);
-        } else {
-            statisDao.insert(param);
-        }
+        statisDao.update(param);
     }
 
     @Override
     public void delete(ArticleStatisParam param) {
         statisDao.delete(param);
-
     }
 
     public ArticleStatis model2VO(ArticleStatisModel model) {

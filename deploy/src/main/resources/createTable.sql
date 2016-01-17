@@ -37,7 +37,7 @@ add index article_user_index(user_id);
 create table article_comment(
     id              bigint primary key not null auto_increment,
 	simple_comment  varchar(300),
-	detail_comment 	text,
+	comment 		text,
 	article_id		bigint,
 	user_id  	    bigint,
 	status          varchar(10),

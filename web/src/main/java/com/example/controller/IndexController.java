@@ -35,7 +35,7 @@ public class IndexController extends AbstractController {
         param.setSortType(SortType.ID.getValue());
         param.setDescOrder(true);
         param.setStatus(StatusType.NORMAL.getValue());
-        param.setPageSize(20);
+        param.setPageSize(15);
         int totalCount = articleService.getCount(param);
         int totalPage = totalCount / param.getPageSize();
         if (totalCount % param.getPageSize() != 0) {

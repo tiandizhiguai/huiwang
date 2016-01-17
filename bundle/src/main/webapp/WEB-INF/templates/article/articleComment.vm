@@ -1,0 +1,20 @@
+<ul>
+	#foreach($data in $!{datas})
+        <li class="comment_content_item">
+        	<div class="comment_content_author">
+        		<img class="comment_content_user_photo" src="$!{data.user.fullPhotoUrl}"/>
+        		<span>$!{data.user.loginName}</span>
+        		<span class="comment_conent_time">$!{data.comment.gmtCreated}</span>
+        	</div>
+        	<div class="comment_content_$!{data.comment.id}" id="$!{data.comment.id}">
+        		$!{data.comment.comment}
+        	</div>
+        </li>
+    #end
+    <li class="comment_content_item">
+		<textarea id="comment_content" style="width:400px;height:150px;"></textarea>
+		<button type="button" class="btn btn-primary" id="add_comment_btn">评论</button>
+	</li>
+</ul>
+#parse("common/paging.vm")
+<script src="//style.rensheng.com/rensheng/js/articleComment.js"></script>

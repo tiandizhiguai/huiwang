@@ -14,8 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.constant.Constants;
 import com.example.constant.OperationType;
+import com.example.constant.StatusType;
 import com.example.controller.AbstractController;
+import com.example.param.TopicParam;
 import com.example.param.UserParam;
+import com.example.service.TopicService;
 import com.example.service.UserService;
 
 @Controller
@@ -23,11 +26,18 @@ import com.example.service.UserService;
 public class AdminController extends AbstractController {
 
     @Resource
-    private UserService       userServie;
+    private UserService  userServie;
+
+    @Resource
+    private TopicService topicService;
 
     @RequestMapping("/index")
     public ModelAndView index(String operationType) {
+        TopicParam topicParam = new TopicParam();
+        topicParam.setPageSize(20);
+        topicParam.setStatus(StatusType.NORMAL.getValue());
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("topicDatas", topicService.getList(topicParam));
         modelAndView.addObject("operationType", operationType);
         modelAndView.setViewName("/admin/index");
         return modelAndView;

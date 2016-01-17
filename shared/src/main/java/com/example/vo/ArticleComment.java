@@ -1,24 +1,23 @@
 package com.example.vo;
 
-import java.util.Date;
 
 public class ArticleComment {
 
-    private Long              id;
+    private Long   id;
 
-    private String            simpleComment;
+    private String simpleComment;
 
-    private Long              articleId;
+    private Long   articleId;
 
-    private Long              userId;
+    private Long   userId;
 
-    private String            status;
+    private String status;
 
-    private Date              gmtCreated;
+    private String gmtCreated;
 
-    private Date              gmtModified;
+    private String gmtModified;
 
-    private String            detailComment;
+    private String comment;
 
     public Long getId() {
         return id;
@@ -60,27 +59,27 @@ public class ArticleComment {
         this.status = status;
     }
 
-    public Date getGmtCreated() {
+    public String getGmtCreated() {
         return gmtCreated;
     }
 
-    public void setGmtCreated(Date gmtCreated) {
+    public void setGmtCreated(String gmtCreated) {
         this.gmtCreated = gmtCreated;
     }
 
-    public Date getGmtModified() {
+    public String getGmtModified() {
         return gmtModified;
     }
 
-    public void setGmtModified(Date gmtModified) {
+    public void setGmtModified(String gmtModified) {
         this.gmtModified = gmtModified;
     }
 
-    public String getDetailComment() {
-        return detailComment;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDetailComment(String detailComment) {
-        this.detailComment = detailComment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

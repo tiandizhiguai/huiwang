@@ -27,7 +27,7 @@ public class LoginUserFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
         if (session == null || session.getAttribute(Constants.LOGIN_USER) == null) {
-            httpResponse.sendRedirect("/user/preLogin");
+            httpResponse.sendRedirect("/user/preLogin?redirectUri=" + httpRequest.getRequestURI());
         } else {
             chain.doFilter(httpRequest, httpResponse);
         }

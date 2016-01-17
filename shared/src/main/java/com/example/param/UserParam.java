@@ -31,6 +31,16 @@ public class UserParam extends PageParam {
 
     private Date       gmtModified;
 
+    private String     redirectUri;
+
+    public String getRedirectUri() {
+        return redirectUri;
+    }
+
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
+    }
+
     public List<Long> getIds() {
         return ids;
     }

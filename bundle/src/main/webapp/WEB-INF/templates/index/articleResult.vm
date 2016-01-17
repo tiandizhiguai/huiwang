@@ -24,7 +24,7 @@
 		            		<span id="heart"></span>
 		            		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
 	            		</a>
-		            	<a href="javascript:void(0)" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
+		            	<a href="//www.rensheng.com/article/detail?id=$!articleId#article_comment" target="_blank" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
 		            	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
 	            	</div>
 	            </li>

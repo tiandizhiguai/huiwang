@@ -58,7 +58,7 @@
 		gmt_modified
 		)
 		values (#{title},
-		#{simpleContent},#{topicName}
+		#{simpleContent},#{topicName},
 		#{content}, #{topicId},
 		#{userId},
 		'normal', now(), now()

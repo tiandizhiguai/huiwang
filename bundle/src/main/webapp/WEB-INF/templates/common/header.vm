@@ -15,10 +15,15 @@
 	                </a>
 	            	，<a href="//www.rensheng.com/user/logout">退出</a>
 	            #else
-	                <a href="//www.rensheng.com/user/preLogin">登陆</a>
+	                <a href="//www.rensheng.com/user/preLogin" class="login_btn">登陆</a>
 	            #end
 	        </li>
 	    </ul>
 	    <input type="hidden" class="login_user_id" value="$!{loginUser.id}"/>
     </div>
 </div>
+<script>
+$(function(){
+	$(".login_btn").attr("href", "//www.rensheng.com/user/preLogin?redirectUri=" + window.location.href);
+})
+</script>
