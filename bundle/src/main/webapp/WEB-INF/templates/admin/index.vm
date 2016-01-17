@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>首页</title>
-	    #parse("common/common.vm")
+	    #parse("common/head.vm")
 	</head>
 	<body style="min-width:1190px;">
 	    <div>
