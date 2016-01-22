@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -58,4 +59,15 @@ public class AbstractController {
         return localFileNames;
     }
 
+    protected String generateToken() {
+        String remoteHost = httpServletRequest.getRemoteHost();
+        long time = System.currentTimeMillis();
+        Random random = new Random();
+        int r = random.nextInt(1000);
+        StringBuilder token = new StringBuilder();
+        token.append(time);
+        token.append(remoteHost.hashCode());
+        token.append(r);
+        return token.toString();
+    }
 }

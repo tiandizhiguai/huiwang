@@ -44,6 +44,7 @@
 					      </td>
 				      </tr>
 			      </table>
+			      <input type="hidden" value="$!{tokenValue}" name="token"/>
 			    </form>
 		    </div>
 		    <script src="//style.rensheng.com/rensheng/js/preRegister.js"></script>

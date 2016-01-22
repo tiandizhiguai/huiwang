@@ -8,20 +8,12 @@
 	         <td><span class="tips" id="check_name"></span></td>
 	      </tr>
 	      <tr>
-	         <td align="right" class="left_td"><span class="must_input">*</span>身份证号：</td>
+	         <td align="right" class="left_td">身份证号：</td>
 	         <td align="left"><input type="text" class="idNumber" name="idNumber" value="$!{loginUser.idNumber}"></td>
 	         <td><span class="tips" id="check_idNumber"></span></td>
 	      </tr>
-	      ##<tr>
-	      ##   <td align="right" class="left_td"><span class="must_input">*</span>所在地：</td>
-	      ##   <td align="left">
-	      ##      <select name="provinceId" class="province_id_select"></select>
-		  ##        <select name="cityId" class="city_id_select"></select>
-		  ##	<td><span class="tips" id="check_province"></span></td>
-	      ##  </td>
-	      ##</tr>
 	      <tr>
-	         <td align="right" class="left_td"><span class="must_input">*</span>性别：</td>
+	         <td align="right" class="left_td">性别：</td>
 	         <td align="left">
 	            #set($sex=$!{loginUser.sex})
 	            <select name="sex" class="sex">

@@ -9,4 +9,6 @@ public class Constants {
     public static final String HOME_DOMAIN_URI         = "http://www.rensheng.com/";
     public static final String STYLE_DOMAIN_URI        = "http://style.rensheng.com/";
     public static final String NONE_IMG_NAME           = "none.jpg";
+
+    public static final String TOKEN_KEY               = "token";
 }

@@ -33,6 +33,16 @@ public class UserParam extends PageParam {
 
     private String     redirectUri;
 
+    private String     token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getRedirectUri() {
         return redirectUri;
     }
