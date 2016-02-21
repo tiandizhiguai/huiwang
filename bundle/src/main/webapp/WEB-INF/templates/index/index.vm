@@ -8,6 +8,7 @@
 		    #parse("common/header.vm")
 		    #parse("common/navBar.vm")
 		    #parse("index/articleResult.vm")
+		    #parse("common/backTop.vm")
 		    #parse("common/footer.vm")
 		</div>
 	</body>
