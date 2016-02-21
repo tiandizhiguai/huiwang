@@ -14,6 +14,7 @@ import com.example.param.ArticleCareParam;
 import com.example.param.ArticlePraiseParam;
 import com.example.param.CityParam;
 import com.example.param.TopicParam;
+import com.example.param.UserIdeaParam;
 import com.example.param.UserParam;
 import com.example.result.RestfulResult;
 import com.example.service.ArticleCareService;
@@ -23,6 +24,7 @@ import com.example.service.ArticleStatisService;
 import com.example.service.CityService;
 import com.example.service.ProvinceService;
 import com.example.service.TopicService;
+import com.example.service.UserIdeaService;
 import com.example.service.UserService;
 import com.example.vo.City;
 import com.example.vo.Province;
@@ -34,28 +36,31 @@ import com.example.vo.User;
 public class RestfulJson extends AbstractController {
 
     @Resource
-    private UserService           userServie;
+    private UserService          userServie;
 
     @Resource
-    private ProvinceService       provinceService;
+    private ProvinceService      provinceService;
 
     @Resource
-    private CityService           cityServie;
+    private CityService          cityServie;
 
     @Resource
-    private TopicService          topicService;
+    private TopicService         topicService;
 
     @Resource
-    private ArticleService        articleService;
+    private ArticleService       articleService;
 
     @Resource
-    private ArticleCareService    articleCareService;
+    private ArticleCareService   articleCareService;
 
     @Resource
-    private ArticlePraiseService  articlePraiseService;
+    private ArticlePraiseService articlePraiseService;
 
     @Resource
-    private ArticleStatisService  articleStatisService;
+    private ArticleStatisService articleStatisService;
+
+    @Resource
+    private UserIdeaService      userIdeaService;
 
     @ResponseBody
     @RequestMapping("/getTopics")
@@ -123,4 +128,18 @@ public class RestfulJson extends AbstractController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping("/addUserIdea")
+    public RestfulResult addUserIdea(UserIdeaParam param) {
+        RestfulResult result = new RestfulResult();
+        if (StringUtils.isEmpty(param.getContent())) {
+            result.setErrorMsg("content is empty");
+            return result;
+        }
+        if (this.isUserLogined()) {
+            param.setId(this.getLoginedUser().getId());
+        }
+        userIdeaService.add(param);
+        return result;
+    }
 }

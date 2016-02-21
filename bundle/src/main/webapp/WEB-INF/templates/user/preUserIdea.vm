@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		#parse("common/head.vm")
+	</head>
+	<body style="min-width:1190px;">
+	    <div>
+		    #parse("common/header.vm")
+		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
+		    <div class="preRegister">
+				<form class="pre_register_form" action="//www.rensheng.com/user/register" method="post">
+				  <table>
+				  	  <tr>
+						  <td class="company_logo"><strong>回望</strong></td>
+						  <td></td>
+				      </tr>
+					  <tr>
+						  <td>
+						      <div class="input-group">
+    							 <textarea class="form-control" rows="7" id="content" placeholder="500字以内"></textarea>
+						      </div>
+					      </td>
+					      <td align="left"><span class="tips" id="check_cotent"></span></td>
+				      </tr>
+				      <tr>
+					      <td>
+					      	  <div>&nbsp;</div>
+					          <button type="button" class="btn btn-primary register_login_btn" id="user_idea_btn">反馈</button>
+					      </td>
+				      </tr>
+			      </table>
+			      <input type="hidden" value="$!{tokenValue}" name="token"/>
+			    </form>
+		    </div>
+		    <script src="//style.rensheng.com/rensheng/js/preUserIdea.js"></script>
+		    #parse("common/footer.vm")
+		</div>
+	</body>
+</html>

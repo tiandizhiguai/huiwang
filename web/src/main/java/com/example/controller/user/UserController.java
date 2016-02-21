@@ -59,7 +59,6 @@ public class UserController extends AbstractController {
             return modelAndView;
         }
 
-
         if (StringUtils.isEmpty(param.getLoginName()) || StringUtils.isEmpty(param.getPasswd())) {
             modelAndView.setViewName("/user/registerError");
             return modelAndView;
@@ -110,6 +109,13 @@ public class UserController extends AbstractController {
         httpSession.removeAttribute(Constants.LOGIN_USER);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/index");
+        return modelAndView;
+    }
+
+    @RequestMapping("/preUserIdea")
+    public ModelAndView preUserIdea() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/user/preUserIdea");
         return modelAndView;
     }
 }

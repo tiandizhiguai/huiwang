@@ -99,3 +99,11 @@ insert into topic values(5, '坎坷', 'normal', now(), now());
 insert into topic values(6, '奋斗', 'normal', now(), now());
 insert into topic values(7, '童年', 'normal', now(), now());
 insert into topic values(8, '其他', 'normal', now(), now());
+
+create table user_idea(
+    id              bigint primary key not null auto_increment,
+	content			varchar(500),
+	user_id         bigint,
+	gmt_created     datetime,
+	gmt_modified    datetime
+)default charset=utf8;

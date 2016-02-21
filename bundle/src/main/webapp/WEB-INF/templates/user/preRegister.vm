@@ -3,13 +3,13 @@
 	<head>
 		#parse("common/head.vm")
 	</head>
-	<body style="min-width:1190px;">
+	<body>
 	    <div>
 		    #parse("common/header.vm")
 		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
 		    <div class="preRegister">
 				<form class="pre_register_form" action="//www.rensheng.com/user/register" method="post">
-				  <table align="center">
+				  <table>
 				  	  <tr>
 						  <td class="company_logo"><strong>回望</strong></td>
 						  <td></td>

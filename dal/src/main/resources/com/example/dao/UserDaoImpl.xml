@@ -126,11 +126,8 @@
 		<if test="provinceId != null">
 			and province_id = #{provinceId}
 		</if>
-		<if test="gmtCreated != null">
-			and gmt_created = #{gmtCreated}
-		</if>
-		<if test="gmtModified != null">
-			and gmt_modified = #{gmtModified}
+		<if test="passwd != null">
+			and passwd = #{passwd}
 		</if>
 	</sql>
 </mapper>

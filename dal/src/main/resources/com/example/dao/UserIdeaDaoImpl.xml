@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.UserIdeaDao">
+	<resultMap id="userIdeaResultMap" type="com.example.model.UserIdeaModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="userId" property="user_id" jdbcType="BIGINT" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="userIdeaColumnList">
+		id, content, user_id, gmt_created, gmt_modified
+	</sql>
+
+	<select id="getList" parameterType="com.example.param.UserIdeaParam"
+		resultMap="userIdeaResultMap">
+		select
+		<include refid="userIdeaColumnList" />
+		from user_idea
+		where
+		<include refid="userIdeaCondition" />
+	</select>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="userIdeaResultMap">
+		select
+		<include refid="userIdeaColumnList" />
+		from user_idea
+		where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="com.example.param.UserIdeaParam">
+		delete from user_idea
+		where
+		<include refid="userIdeaCondition" />
+	</delete>
+
+	<insert id="insert" parameterType="com.example.param.UserIdeaParam">
+		insert into user_idea (content,user_id,
+		gmt_created, gmt_modified)
+		values (#{content},#{userId},now(), now())
+	</insert>
+	<update id="update" parameterType="com.example.param.UserIdeaParam">
+		update user_idea
+		<set>
+			<if test="content != null">
+				content = #{content},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+
+	<sql id="userIdeaCondition">
+		1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+	</sql>
+</mapper>

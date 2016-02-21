@@ -21,7 +21,7 @@
 						         <input type="text" class="form-control" name="loginName" id="loginName" placeholder="登陆名">
 						      </div>
 					      </td>
-					      <td><span class="tips" id="check_user"></span></td>
+					      <td align="left"><span class="tips" id="check_user"></span></td>
 				      </tr>
 					  <tr>
 						  <td>
@@ -29,7 +29,7 @@
 						         <input type="password" class="form-control" name="passwd" id="passwd" placeholder="密码">
 						      </div>
 					      </td>
-					      <td><span class="tips" id="check_passwd"></span></td>
+					      <td align="left"><span class="tips" id="check_passwd"></span></td>
 				      </tr>
 				      <tr>
 					      <td>
