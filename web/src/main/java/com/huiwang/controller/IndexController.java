@@ -18,6 +18,8 @@ import com.huiwang.service.biz.ArticleBizService;
 @RequestMapping("/")
 public class IndexController extends AbstractController {
 
+    // private static Logger logger = LogManager.getLogger(IndexController.class);
+
     @Resource
     private ArticleBizService articleBizService;
 
@@ -41,7 +43,6 @@ public class IndexController extends AbstractController {
         if (totalCount % param.getPageSize() != 0) {
             totalPage++;
         }
-
         TopicParam topicParam = new TopicParam();
         topicParam.setPageSize(20);
         topicParam.setStatus(StatusType.NORMAL.getValue());

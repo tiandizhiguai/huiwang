@@ -14,6 +14,7 @@ create table users(
 	status          varchar(10),
 	city_id         bigint,
 	province_id     bigint,
+	gmt_login     	datetime,
 	gmt_created     datetime,
 	gmt_modified    datetime
 ) default charset=utf8;

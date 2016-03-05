@@ -107,6 +107,10 @@ public class UserServiceImpl implements UserService{
         return false;
     }
 
+    public void updateLoginTime() {
+        userDao.updateLoginTime();
+    }
+
     @Override
     public User get(Long id) {
         UserModel model = userDao.getById(id);

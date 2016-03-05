@@ -12,6 +12,7 @@
 		<result column="status" property="status" jdbcType="VARCHAR" />
 		<result column="city_id" property="cityId" jdbcType="BIGINT" />
 		<result column="province_id" property="provinceId" jdbcType="BIGINT" />
+		<result column="gmt_login" property="gmtLogin" jdbcType="TIMESTAMP" />
 		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
 		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
 	</resultMap>
@@ -19,7 +20,7 @@
 	<sql id="userColumnList">
 		id, real_name, login_name, passwd, id_number, sex, status,
 		city_id,photo_name,
-		province_id,
+		province_id,gmt_login,
 		gmt_created, gmt_modified
 	</sql>
 	
@@ -47,7 +48,7 @@
 		real_name, login_name,
 		passwd, id_number, sex,
 		status, photo_name,city_id,
-		province_id,
+		province_id,gmt_login,
 		gmt_created, gmt_modified)
 		values (
 		#{realName},
@@ -56,9 +57,16 @@
 		#{sex},
 		'normal',#{photoName},
 		#{cityId},
-		#{provinceId},
+		#{provinceId},now(),
 		now(), now())
 	</insert>
+	<update id="updateLoginTime">
+		update users
+		<set>
+			gmt_login = now()
+		</set>
+	</update>
+	
 	<update id="update" parameterType="com.huiwang.param.UserParam">
 		update users
 		<set>

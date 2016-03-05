@@ -31,9 +31,19 @@ public class UserParam extends PageParam {
 
     private Date       gmtModified;
 
+    private Date       gmtLogin;
+
     private String     redirectUri;
 
     private String     token;
+
+    public Date getGmtLogin() {
+        return gmtLogin;
+    }
+
+    public void setGmtLogin(Date gmtLogin) {
+        this.gmtLogin = gmtLogin;
+    }
 
     public String getToken() {
         return token;

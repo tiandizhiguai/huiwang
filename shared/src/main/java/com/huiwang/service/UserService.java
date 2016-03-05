@@ -8,5 +8,7 @@ public interface UserService extends GeneralService<UserParam, User> {
     User get(String loginName);
 
     boolean exists(UserParam param);
+    
+    public void updateLoginTime();
 
 }

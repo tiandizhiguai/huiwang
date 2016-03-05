@@ -27,9 +27,19 @@ public class UserModel implements Serializable {
 
     private Long              provinceId;
 
+    private Date              gmtLogin;
+
     private Date              gmtCreated;
 
     private Date              gmtModified;
+
+    public Date getGmtLogin() {
+        return gmtLogin;
+    }
+
+    public void setGmtLogin(Date gmtLogin) {
+        this.gmtLogin = gmtLogin;
+    }
 
     public Long getId() {
         return id;

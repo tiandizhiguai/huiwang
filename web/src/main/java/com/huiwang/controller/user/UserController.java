@@ -98,6 +98,7 @@ public class UserController extends AbstractController {
             }else{
                 modelAndView.setViewName("redirect:/index");
             }
+            userServie.updateLoginTime();
 		}else{
             modelAndView.setViewName("/user/loginError");
 		}
