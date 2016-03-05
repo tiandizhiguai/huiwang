@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huiwang.dao.UserDao">
+	<resultMap id="userResultMap" type="com.huiwang.model.UserModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="real_name" property="realName" jdbcType="VARCHAR" />
+		<result column="login_name" property="loginName" jdbcType="VARCHAR" />
+		<result column="passwd" property="passwd" jdbcType="VARCHAR" />
+		<result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="photo_name" property="photoName" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="city_id" property="cityId" jdbcType="BIGINT" />
+		<result column="province_id" property="provinceId" jdbcType="BIGINT" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="userColumnList">
+		id, real_name, login_name, passwd, id_number, sex, status,
+		city_id,photo_name,
+		province_id,
+		gmt_created, gmt_modified
+	</sql>
+	
+	<select id="getList" parameterType="com.huiwang.param.UserParam" resultMap="userResultMap">
+		select
+		<include refid="userColumnList" />
+		from users
+		where <include refid="userCondition" />
+	</select>
+	
+	<select id="getById" parameterType="java.lang.Long" resultMap="userResultMap">
+		select
+		<include refid="userColumnList" />
+		from users
+		where id = #{id}
+	</select>
+	
+	<delete id="delete" parameterType="com.huiwang.param.UserParam">
+		delete from users
+		where <include refid="userCondition" />
+	</delete>
+	
+	<insert id="insert" parameterType="com.huiwang.param.UserParam">
+		insert into users (
+		real_name, login_name,
+		passwd, id_number, sex,
+		status, photo_name,city_id,
+		province_id,
+		gmt_created, gmt_modified)
+		values (
+		#{realName},
+		#{loginName},
+		#{passwd}, #{idNumber},
+		#{sex},
+		'normal',#{photoName},
+		#{cityId},
+		#{provinceId},
+		now(), now())
+	</insert>
+	<update id="update" parameterType="com.huiwang.param.UserParam">
+		update users
+		<set>
+			<if test="realName != null">
+				real_name = #{realName},
+			</if>
+			<if test="loginName != null">
+				login_name = #{loginName},
+			</if>
+			<if test="passwd != null">
+				passwd = #{passwd},
+			</if>
+			<if test="idNumber != null">
+				id_number = #{idNumber},
+			</if>
+			<if test="sex != null">
+				sex = #{sex},
+			</if>
+			<if test="photoName != null">
+				photo_name = #{photoName},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId},
+			</if>
+			<if test="provinceId != null">
+				province_id = #{provinceId},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+	
+	<sql id="userCondition">
+	    1 = 1
+	    <if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="ids != null">
+		    and id in 
+		    <foreach collection="ids" item="value" separator="," open="(" close=")" index="index">
+				#{value}
+			</foreach>
+		</if>
+	    <if test="realName != null">
+			and real_name = #{realName}
+		</if>
+		<if test="loginName != null">
+			and login_name = #{loginName}
+		</if>
+		<if test="idNumber != null">
+			and id_number = #{idNumber}
+		</if>
+		<if test="sex != null">
+			and sex = #{sex}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="cityId != null">
+			and city_id = #{cityId}
+		</if>
+		<if test="provinceId != null">
+			and province_id = #{provinceId}
+		</if>
+		<if test="passwd != null">
+			and passwd = #{passwd}
+		</if>
+	</sql>
+</mapper>

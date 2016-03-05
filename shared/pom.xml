@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0      http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-    <artifactId>rensheng</artifactId>
-    <groupId>com.rensheng</groupId>
+    <artifactId>huiwang</artifactId>
+    <groupId>com.huiwang</groupId>
     <version>1.0.0</version>
   </parent>
-	<groupId>com.rensheng</groupId>
-	<artifactId>rensheng.shared</artifactId>
+	<groupId>com.huiwang</groupId>
+	<artifactId>huiwang.shared</artifactId>
 	<version>1.0.0</version>
-	<name>rensheng.shared</name>
+	<name>huiwang.shared</name>
 
 	<!-- 二方库上传到仓库，以便第三方使用 
 	<distributionManagement>

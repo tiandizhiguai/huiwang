@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huiwang.dao.ArticleDao">
+	<resultMap id="articleResultMap" type="com.huiwang.model.ArticleModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="simple_content" property="simpleContent"
+			jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="topic_id" property="topicId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="topic_name" property="topicName" jdbcType="VARCHAR" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="articleColumnList">
+		id, title, simple_content, topic_id, user_id,topic_name,
+		status, gmt_created, gmt_modified
+	</sql>
+
+	<select id="getList" parameterType="com.huiwang.param.ArticleParam"
+		resultMap="articleResultMap">
+		select
+		<include refid="articleColumnList" />
+		from article
+		where
+		<include refid="articleCondition" />
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="getCount" parameterType="com.huiwang.param.ArticleParam" resultType="int">
+		select count(*)
+		from article
+		where <include refid="articleCondition" />
+	</select>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="articleResultMap">
+		select
+		<include refid="articleColumnList" />,content
+		from article
+		where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="com.huiwang.param.ArticleParam">
+		delete from article
+		where
+		<include refid="articleCondition" />
+	</delete>
+
+	<insert id="insert" parameterType="com.huiwang.param.ArticleParam">
+		insert into article (
+		title,
+		simple_content,topic_name,
+		content, topic_id, user_id,
+		status, gmt_created,
+		gmt_modified
+		)
+		values (#{title},
+		#{simpleContent},#{topicName},
+		#{content}, #{topicId},
+		#{userId},
+		'normal', now(), now()
+		)
+	</insert>
+	<update id="update" parameterType="com.huiwang.param.ArticleParam">
+		update article
+		<set>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="simpleContent != null">
+				simple_content = #{simpleContent},
+			</if>
+			<if test="content != null">
+				content = #{content},
+			</if>
+			<if test="topicId != null">
+				topic_id = #{topicId},
+			</if>
+			<if test="topicName != null">
+				topic_name = #{topicName},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+
+	<sql id="articleCondition">
+		1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="title != null">
+			and title = #{title}
+		</if>
+		<if test="userId != null">
+			and user_id = #{userId}
+		</if>
+		<if test="content != null">
+			and content like %#{content}%
+		</if>
+		<if test="topicId != null">
+			and topic_id = #{topicId}
+		</if>
+		<if test="topicName != null">
+			topic_name like %#{topicName}%
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="sortType != null">
+			order by ${sortType}
+		</if>
+		<if test="descOrder == true">
+			desc
+		</if>
+	</sql>
+</mapper>

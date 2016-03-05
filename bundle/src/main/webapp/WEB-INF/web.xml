@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>rensheng.bundle</display-name>
+	<display-name>huiwang.bundle</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:config/spring/spring-*.xml</param-value>
@@ -15,7 +15,7 @@
     
     <filter>
         <filter-name>loginUserFilter</filter-name>
-        <filter-class>com.example.filter.LoginUserFilter</filter-class>
+        <filter-class>com.huiwang.filter.LoginUserFilter</filter-class>
     </filter>
     
 	<filter>

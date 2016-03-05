@@ -30,13 +30,13 @@
 		<property name="configLocation" value="classpath:config/mybatis-conf.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:com/example/dao/**/*.xml</value>
+				<value>classpath:com/huiwang/dao/**/*.xml</value>
 			</list>
 		</property>
 	</bean>
 	
 	<!-- 自动扫描制定包下的Mapper接口,并实现其功能  -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.example.dao" />
+		<property name="basePackage" value="com.huiwang.dao" />
 	</bean>
 </beans>

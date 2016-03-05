@@ -2,28 +2,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0      http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-    <artifactId>rensheng</artifactId>
-    <groupId>com.rensheng</groupId>
+    <artifactId>huiwang</artifactId>
+    <groupId>com.huiwang</groupId>
     <version>1.0.0</version>
   </parent>
-	<groupId>com.rensheng</groupId>
-	<artifactId>rensheng.bundle</artifactId>
+	<groupId>com.huiwang</groupId>
+	<artifactId>huiwang.bundle</artifactId>
 	<version>1.0.0</version>
-	<name>rensheng.bundle</name>
+	<name>huiwang.bundle</name>
 	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.rensheng</groupId>
-			<artifactId>rensheng.biz</artifactId>
+			<groupId>com.huiwang</groupId>
+			<artifactId>huiwang.biz</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.rensheng</groupId>
-			<artifactId>rensheng.dal</artifactId>
+			<groupId>com.huiwang</groupId>
+			<artifactId>huiwang.dal</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.rensheng</groupId>
-			<artifactId>rensheng.web</artifactId>
+			<groupId>com.huiwang</groupId>
+			<artifactId>huiwang.web</artifactId>
 		</dependency>
 	</dependencies>
 </project>

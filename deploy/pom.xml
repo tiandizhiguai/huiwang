@@ -2,19 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0      http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-    <artifactId>rensheng</artifactId>
-    <groupId>com.rensheng</groupId>
+    <artifactId>huiwang</artifactId>
+    <groupId>com.huiwang</groupId>
     <version>1.0.0</version>
   </parent>
-	<groupId>com.rensheng</groupId>
-	<artifactId>rensheng.deploy</artifactId>
+	<groupId>com.huiwang</groupId>
+	<artifactId>huiwang.deploy</artifactId>
 	<version>1.0.0</version>
-	<name>rensheng.deploy</name>
+	<name>huiwang.deploy</name>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.rensheng</groupId>
-			<artifactId>rensheng.bundle</artifactId>
+			<groupId>com.huiwang</groupId>
+			<artifactId>huiwang.bundle</artifactId>
 			<scope>runtime</scope>
 			<type>war</type>
 		</dependency>
@@ -35,8 +35,8 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>com.rensheng</groupId>
-									<artifactId>rensheng.bundle</artifactId>
+									<groupId>com.huiwang</groupId>
+									<artifactId>huiwang.bundle</artifactId>
 									<type>war</type>
 								</artifactItem>
 							</artifactItems>

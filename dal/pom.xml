@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0      http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-    <artifactId>rensheng</artifactId>
-    <groupId>com.rensheng</groupId>
+    <artifactId>huiwang</artifactId>
+    <groupId>com.huiwang</groupId>
     <version>1.0.0</version>
   </parent>
-	<groupId>com.rensheng</groupId>
-	<artifactId>rensheng.dal</artifactId>
+	<groupId>com.huiwang</groupId>
+	<artifactId>huiwang.dal</artifactId>
 	<version>1.0.0</version>
-	<name>rensheng.dal</name>
+	<name>huiwang.dal</name>
 
 	<dependencies>
 	    <dependency>
@@ -17,12 +17,12 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.rensheng</groupId>
-			<artifactId>rensheng.shared</artifactId>
+			<groupId>com.huiwang</groupId>
+			<artifactId>huiwang.shared</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.rensheng</groupId>
-			<artifactId>rensheng.common</artifactId>
+			<groupId>com.huiwang</groupId>
+			<artifactId>huiwang.common</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

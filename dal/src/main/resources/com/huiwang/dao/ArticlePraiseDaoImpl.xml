@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huiwang.dao.ArticlePraiseDao">
+	<resultMap id="praiseResultMap" type="com.huiwang.model.ArticlePraiseModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="user_id" property="userId" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="praiseColumnList">
+		id, article_id, user_id, status,
+		gmt_created, gmt_modified
+	</sql>
+
+	<select id="getList" parameterType="com.huiwang.param.ArticlePraiseParam"
+		resultMap="praiseResultMap">
+		select
+		<include refid="praiseColumnList" />
+		from article_praise
+		where
+		<include refid="praiseCondition" />
+	</select>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="praiseResultMap">
+		select
+		<include refid="praiseColumnList" />
+		from article_praise
+		where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="com.huiwang.param.ArticlePraiseParam">
+		delete from article_praise
+		where
+		<include refid="praiseCondition" />
+	</delete>
+
+	<insert id="insert" parameterType="com.huiwang.param.ArticlePraiseParam">
+		insert into article_praise
+		(article_id,
+		user_id, status, gmt_created,
+		gmt_modified)
+		values (#{articleId},
+		#{userId}, 'normal', now(),now())
+	</insert>
+	<update id="update" parameterType="com.huiwang.param.ArticlePraiseParam">
+		update article_praise
+		<set>
+			<if test="articleId != null">
+				article_id = #{articleId},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+
+	<sql id="praiseCondition">
+		1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="articleId != null">
+			and article_id = #{articleId}
+		</if>
+		<if test="userId != null">
+			and user_id = #{userId}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</sql>
+</mapper>
