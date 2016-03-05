@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/preAdd.css"/>
+<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/preAdd.css"/>
 <div class="pre_edit">
-    <form action="http://www.rensheng.com/admin/uploadPhoto" class="upload_form" method="post" enctype="multipart/form-data">
+    <form action="http://www.1huiwang.com/admin/uploadPhoto" class="upload_form" method="post" enctype="multipart/form-data">
         <table>
           <tr>
 	         <td align="right" class="left_td"><span class="must_input">*</span>选择头像：</td>
@@ -19,4 +19,4 @@
 		</table>
 	</form>
 </div>
-<script src="//style.rensheng.com/rensheng/js/admin/preUploadPhoto.js"></script>
+<script src="//style.1huiwang.com/huiwang/js/admin/preUploadPhoto.js"></script>

@@ -6,9 +6,9 @@
 	<body>
 	    <div>
 		    #parse("common/header.vm")
-		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
+		    <link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/preRegister.css"/>
 		    <div class="preRegister">
-				<form class="pre_login_form" action="//www.rensheng.com/user/login" method="post">
+				<form class="pre_login_form" action="//www.1huiwang.com/user/login" method="post">
 				  <input type="hidden" value="$!{redirectUri}" name="redirectUri"/>
 			      <table>
 			          <tr>
@@ -39,7 +39,7 @@
 			      </table>
 			    </form>
 		    </div>
-		    <script src="//style.rensheng.com/rensheng/js/preLogin.js"></script>
+		    <script src="//style.1huiwang.com/huiwang/js/preLogin.js"></script>
 		    #parse("common/footer.vm")
 		</div>
 	</body>

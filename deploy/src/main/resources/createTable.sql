@@ -1,6 +1,6 @@
-drop database rensheng;
-create database rensheng character set utf8;
-use rensheng;
+drop database huiwang;
+create database huiwang character set utf8;
+use huiwang;
 set names utf8;
 
 create table users(

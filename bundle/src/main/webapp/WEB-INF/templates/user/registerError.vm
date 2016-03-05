@@ -6,18 +6,18 @@
 	<body>
 	    <div>
 		    #parse("common/header.vm")
-		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
+		    <link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/preRegister.css"/>
 		    <div class="preRegister">
 		        <ul>
 			        <li class="preRegister_img">
 				        <img src="//img.meilishuo.net/css//images/register/ad_img.jpg"/>
 				    </li>
 			        <li class="preRegister_info">
-						注册失败，填写的信息不正确，<a href="//www.rensheng.com/index">返回首页</a>
+						注册失败，填写的信息不正确，<a href="//www.1huiwang.com/index">返回首页</a>
 				    </li>
 			    <ul>
 		    </div>
-		    <script src="//style.rensheng.com/rensheng/js/preRegister.js"></script>
+		    <script src="//style.1huiwang.com/huiwang/js/preRegister.js"></script>
 		    #parse("common/footer.vm")
 		</div>
 	</body>

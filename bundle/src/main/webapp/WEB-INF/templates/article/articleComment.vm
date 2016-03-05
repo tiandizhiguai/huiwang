@@ -17,4 +17,4 @@
 	</li>
 </ul>
 #parse("common/paging.vm")
-<script src="//style.rensheng.com/rensheng/js/articleComment.js"></script>
+<script src="//style.1huiwang.com/huiwang/js/articleComment.js"></script>

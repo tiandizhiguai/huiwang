@@ -12,7 +12,7 @@ public class URIUtils {
 
     public static String getNoneFullImgUrl() {
         String url = Constants.IMG_ABSOLUTE_PATH + Constants.NONE_IMG_NAME;
-        url = url.replace(url.substring(0, url.indexOf("rensheng")), Constants.STYLE_DOMAIN_URI);
+        url = url.replace(url.substring(0, url.indexOf("huiwang")), Constants.STYLE_DOMAIN_URI);
         return url;
     }
 
@@ -21,7 +21,7 @@ public class URIUtils {
             return null;
         }
         String url = uri + imgName;
-        url = url.replace(url.substring(0, url.indexOf("rensheng")), Constants.STYLE_DOMAIN_URI);
+        url = url.replace(url.substring(0, url.indexOf("huiwang")), Constants.STYLE_DOMAIN_URI);
         return url;
     }
 }

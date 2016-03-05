@@ -1,5 +1,5 @@
 #if($!{datas.size()} > 0)
-	<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/adminList.css"/>
+	<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/adminList.css"/>
 	<table class="table table-bordered">
 	   <thead>
 	      <tr>
@@ -34,7 +34,7 @@
 	   </tbody>
 	</table>
 	#parse("common/paging.vm")
-	<script src="//style.rensheng.com/rensheng/js/admin/adminArticles.js"></script>
+	<script src="//style.1huiwang.com/huiwang/js/admin/adminArticles.js"></script>
 #else
 	<div class="admin_welcome">
          还没有文章哦，去发布吧

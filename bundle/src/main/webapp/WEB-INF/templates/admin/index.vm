@@ -7,7 +7,7 @@
 	    <div>
 		    #parse("common/header.vm")
 		    #parse("common/navBar.vm")
-		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/index.css"/>
+		    <link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/index.css"/>
 		    <div class="admin_index">
 		        <div class="admin_left">
 		            <ul>
@@ -28,7 +28,7 @@
 		            </div>
 		        </div>
 		    </div>
-		    <script src="//style.rensheng.com/rensheng/js/admin/index.js"></script>
+		    <script src="//style.1huiwang.com/huiwang/js/admin/index.js"></script>
 		    #parse("common/footer.vm")
 		</div>
 	</body>

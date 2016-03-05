@@ -6,9 +6,9 @@
 	<body>
 	    <div>
 		    #parse("common/header.vm")
-		    <link rel="stylesheet" href="//style.rensheng.com/rensheng/css/preRegister.css"/>
+		    <link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/preRegister.css"/>
 		    <div class="preRegister">
-				<form class="pre_login_form" action="//www.rensheng.com/user/login" method="post">
+				<form class="pre_login_form" action="//www.1huiwang.com/user/login" method="post">
 				  <input type="hidden" value="$!{redirectUri}" name="redirectUri"/>
 			      <table>
 			          <tr>
@@ -17,7 +17,7 @@
 				      </tr>
 					  <tr>
 						  <td>
-						      <div class="input-group">注册成功，<a href="//www.rensheng.com/index">返回首页</a></div>
+						      <div class="input-group">注册成功，<a href="//www.1huiwang.com/index">返回首页</a></div>
 					      </td>
 					      <td></td>
 				      </tr>

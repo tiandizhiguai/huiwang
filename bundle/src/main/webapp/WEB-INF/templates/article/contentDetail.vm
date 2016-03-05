@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/contentDetail.css"/>
+<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/contentDetail.css"/>
 <div class="items">
     <div class="left_item">
         <div class="left_title">
@@ -10,7 +10,7 @@
     		<span class="content_topic">
         		<span>$!{data.gmtCreated}</span>
         		<span>发表于</span>
-        		<span><a href="//www.rensheng.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
+        		<span><a href="//www.1huiwang.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
     		</span>
     	</div>
         <ul>
@@ -34,4 +34,4 @@
     	#parse("index/imgCarousel.vm")
     </div>
 </div>
-<script src="//style.rensheng.com/rensheng/js/contentDetail.js"></script>
+<script src="//style.1huiwang.com/huiwang/js/contentDetail.js"></script>

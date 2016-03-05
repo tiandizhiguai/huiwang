@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/navBar.css"/>
+<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/navBar.css"/>
 <div class="nav_bar">
     <ul class="nav_bar_items">
     	#foreach($topicData in $!topicDatas)
     		<li class="nav_bar_item #if($selectedTopicId == $!{topicData.id}) bar_hover#end">
-    			<a href="//www.rensheng.com/index?topicId=$!{topicData.id}">$!{topicData.name}</a>
+    			<a href="//www.1huiwang.com/index?topicId=$!{topicData.id}">$!{topicData.name}</a>
     		</li>
     	#end
     </ul>
 </div>
-<script src="//style.rensheng.com/rensheng/js/navBar.js"></script>
+<script src="//style.1huiwang.com/huiwang/js/navBar.js"></script>

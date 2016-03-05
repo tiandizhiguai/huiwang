@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/preAdd.css"/>
+<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/preAdd.css"/>
 <div class="pre_edit">
-    <form action="//www.rensheng.com/article/addArticle" class="add_form" method="post">
+    <form action="//www.1huiwang.com/article/addArticle" class="add_form" method="post">
         <table>
           <tr>
 	         <td align="right" class="left_td"><span class="must_input">*</span>类型：</td>
@@ -31,4 +31,4 @@
 		</table>
 	</form>
 </div>
-<script src="//style.rensheng.com/rensheng/js/admin/preAddArticle.js"></script>
+<script src="//style.1huiwang.com/huiwang/js/admin/preAddArticle.js"></script>

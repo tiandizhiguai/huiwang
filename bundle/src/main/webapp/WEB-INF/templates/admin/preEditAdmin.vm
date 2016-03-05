@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="//style.rensheng.com/rensheng/css/admin/preAdd.css"/>
+<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/preAdd.css"/>
 <div class="pre_edit">
-    <form class="pre_add_admin_form" action="//www.rensheng.com/admin/editAdmin" method="post">
+    <form class="pre_add_admin_form" action="//www.1huiwang.com/admin/editAdmin" method="post">
         <table>
 	      <tr>
 	         <td align="right" class="left_td"><span class="must_input">*</span>姓名：</td>
@@ -32,4 +32,4 @@
 		</table>
 	</form>
 </div>
-<script src="//style.rensheng.com/rensheng/js/admin/preEditAdmin.js"></script>
+<script src="//style.1huiwang.com/huiwang/js/admin/preEditAdmin.js"></script>
