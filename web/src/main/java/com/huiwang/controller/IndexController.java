@@ -34,7 +34,7 @@ public class IndexController extends AbstractController {
         if (this.isUserLogined()) {
             param.setLoginUserId(this.getLoginedUser().getId());
         }
-        param.setSortType(SortType.ID.getValue());
+        param.setSortType(SortType.GMT_MODIFIED.getValue());
         param.setDescOrder(true);
         param.setStatus(StatusType.NORMAL.getValue());
         param.setPageSize(15);

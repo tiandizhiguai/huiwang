@@ -103,8 +103,7 @@ public class ArticleController extends AbstractController {
 
     @RequestMapping("/delete")
     public ModelAndView delete(ArticleParam param) {
-        param.setStatus(StatusType.DEL.getValue());
-        articleService.update(param);
+        articleService.delete(param);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("/info/info");

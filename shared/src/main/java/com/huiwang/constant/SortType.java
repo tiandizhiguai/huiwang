@@ -2,7 +2,7 @@ package com.huiwang.constant;
 
 public enum SortType {
 
-    NORMAL("gmt_created"), ID("id");
+    GMT_CREATED("gmt_created"), ID("id"), GMT_MODIFIED("gmt_modified");
 
     private SortType(String value){
         this.value = value;

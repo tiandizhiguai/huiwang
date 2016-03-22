@@ -11,9 +11,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.huiwang.constant.StatusType;
 import com.huiwang.dao.ArticleDao;
 import com.huiwang.model.ArticleModel;
+import com.huiwang.param.ArticleCommentParam;
 import com.huiwang.param.ArticleParam;
+import com.huiwang.param.ArticleStatisParam;
+import com.huiwang.service.ArticleCommentService;
 import com.huiwang.service.ArticleService;
 import com.huiwang.service.ArticleStatisService;
 import com.huiwang.service.TopicService;
@@ -34,6 +38,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Resource
     private TopicService         topicService;
+
+    @Resource
+    private ArticleCommentService articleCommentService;
 
     @Override
     public List<Article> getList(ArticleParam param) {
@@ -82,7 +89,17 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void delete(ArticleParam param) {
-        articleDao.delete(param);
+
+        param.setStatus(StatusType.DEL.getValue());
+        articleDao.update(param);
+
+        ArticleStatisParam statisParam = new ArticleStatisParam();
+        statisParam.setArticleId(param.getId());
+        articleStatisService.delete(statisParam);
+
+        ArticleCommentParam articleCommentParam = new ArticleCommentParam();
+        articleCommentParam.setArticleId(param.getId());
+        articleCommentService.delete(articleCommentParam);
     }
 
     public Article model2VO(ArticleModel model) {
