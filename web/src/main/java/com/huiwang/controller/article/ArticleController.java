@@ -63,7 +63,7 @@ public class ArticleController extends AbstractController {
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("pageNo", param.getPageNo());
         modelAndView.addObject("totalPage", totalPage);
-        modelAndView.addObject("datas", articleService.getList(param));
+        modelAndView.addObject("datas", articleBizService.getList(param));
         modelAndView.setViewName("/admin/adminArticles");
 
         return modelAndView;

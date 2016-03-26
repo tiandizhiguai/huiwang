@@ -49,6 +49,13 @@ public class ArticleBO {
         this.id = id;
     }
 
+    public String getTitle(int length) {
+        if (title == null || title.length() <= length) {
+            return title;
+        }
+        return title.substring(0, length) + "...";
+    }
+
     public String getTitle() {
         return title;
     }

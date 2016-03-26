@@ -6,15 +6,15 @@ public class ArticleStatis {
 
     private Long    id;
 
-    private Integer readSize;
+    private Integer readSize     = 0;
 
-    private Integer commentSize;
+    private Integer commentSize  = 0;
 
-    private Integer favoriteSize;
+    private Integer favoriteSize = 0;
 
-    private Integer careSize;
+    private Integer careSize     = 0;
 
-    private Integer forwardSize;
+    private Integer forwardSize  = 0;
 
     private Long    articleId;
 

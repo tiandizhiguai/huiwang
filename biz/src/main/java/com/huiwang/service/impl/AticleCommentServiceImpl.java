@@ -14,14 +14,20 @@ import org.springframework.util.CollectionUtils;
 import com.huiwang.dao.ArticleCommentDao;
 import com.huiwang.model.ArticleCommentModel;
 import com.huiwang.param.ArticleCommentParam;
+import com.huiwang.param.ArticleStatisParam;
 import com.huiwang.service.ArticleCommentService;
+import com.huiwang.service.ArticleStatisService;
 import com.huiwang.vo.ArticleComment;
+import com.huiwang.vo.ArticleStatis;
 
 @Service
 public class AticleCommentServiceImpl implements ArticleCommentService {
 
     @Resource
-    private ArticleCommentDao commentDao;
+    private ArticleCommentDao    commentDao;
+
+    @Resource
+    private ArticleStatisService articleStatisService;
 
     @Override
     public List<ArticleComment> getList(ArticleCommentParam param) {
@@ -53,6 +59,24 @@ public class AticleCommentServiceImpl implements ArticleCommentService {
             param.setSimpleComment(content.substring(0, 130) + "...");
         } else {
             param.setSimpleComment(content);
+        }
+
+        ArticleStatis statis = articleStatisService.getByArticleId(param.getArticleId());
+        ArticleStatisParam statisParam = new ArticleStatisParam();
+
+        if (statis != null) {
+            statisParam.setId(statis.getId());
+            Integer commentSize = statis.getCommentSize();
+            if (commentSize != null) {
+                statisParam.setCommentSize(commentSize + 1);
+            } else {
+                statisParam.setCommentSize(1);
+            }
+            articleStatisService.update(statisParam);
+        } else {
+            statisParam.setArticleId(param.getArticleId());
+            statisParam.setCommentSize(1);
+            articleStatisService.add(statisParam);
         }
 
         commentDao.insert(param);
