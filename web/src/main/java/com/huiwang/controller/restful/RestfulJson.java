@@ -1,6 +1,8 @@
 package com.huiwang.controller.restful;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -9,8 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.huiwang.constant.SortType;
+import com.huiwang.constant.StatusType;
 import com.huiwang.controller.AbstractController;
 import com.huiwang.param.ArticleCareParam;
+import com.huiwang.param.ArticleCommentParam;
 import com.huiwang.param.ArticlePraiseParam;
 import com.huiwang.param.CityParam;
 import com.huiwang.param.TopicParam;
@@ -18,6 +24,7 @@ import com.huiwang.param.UserIdeaParam;
 import com.huiwang.param.UserParam;
 import com.huiwang.result.RestfulResult;
 import com.huiwang.service.ArticleCareService;
+import com.huiwang.service.ArticleCommentService;
 import com.huiwang.service.ArticlePraiseService;
 import com.huiwang.service.ArticleService;
 import com.huiwang.service.ArticleStatisService;
@@ -26,6 +33,7 @@ import com.huiwang.service.ProvinceService;
 import com.huiwang.service.TopicService;
 import com.huiwang.service.UserIdeaService;
 import com.huiwang.service.UserService;
+import com.huiwang.service.biz.ArticleBizService;
 import com.huiwang.vo.City;
 import com.huiwang.vo.Province;
 import com.huiwang.vo.Topic;
@@ -36,31 +44,37 @@ import com.huiwang.vo.User;
 public class RestfulJson extends AbstractController {
 
     @Resource
-    private UserService          userServie;
+    private UserService           userServie;
 
     @Resource
-    private ProvinceService      provinceService;
+    private ProvinceService       provinceService;
 
     @Resource
-    private CityService          cityServie;
+    private CityService           cityServie;
 
     @Resource
-    private TopicService         topicService;
+    private TopicService          topicService;
 
     @Resource
-    private ArticleService       articleService;
+    private ArticleService        articleService;
 
     @Resource
-    private ArticleCareService   articleCareService;
+    private ArticleCareService    articleCareService;
 
     @Resource
-    private ArticlePraiseService articlePraiseService;
+    private ArticlePraiseService  articlePraiseService;
 
     @Resource
-    private ArticleStatisService articleStatisService;
+    private ArticleStatisService  articleStatisService;
 
     @Resource
-    private UserIdeaService      userIdeaService;
+    private UserIdeaService       userIdeaService;
+
+    @Resource
+    private ArticleCommentService articleCommentService;
+
+    @Resource
+    private ArticleBizService     articleBizService;
 
     @ResponseBody
     @RequestMapping("/getTopics")
@@ -141,5 +155,26 @@ public class RestfulJson extends AbstractController {
         }
         userIdeaService.add(param);
         return result;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getComments")
+    public JSONPObject getComments(ArticleCommentParam param) {
+        param.setSortType(SortType.ID.getValue());
+        param.setDescOrder(false);
+        param.setStatus(StatusType.NORMAL.getValue());
+        param.setPageSize(10);
+        int totalCount = articleCommentService.getCount(param);
+        int totalPage = totalCount / param.getPageSize();
+        if (totalCount % param.getPageSize() != 0) {
+            totalPage++;
+        }
+
+        Map<String, Object> datas = new HashMap<String, Object>();
+        datas.put("totalCount", totalCount);
+        datas.put("pageNo", param.getPageNo());
+        datas.put("totalPage", totalPage);
+        datas.put("datas", articleBizService.getCommentList(param));
+        return getJsonpData(datas, "article/articleComment.vm");
     }
 }

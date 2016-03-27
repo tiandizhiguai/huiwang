@@ -3,21 +3,21 @@
     <div class="header_item">
 	    <ul class="header_left">
 	        <li><a href="//www.1huiwang.com/index">首页</a></li>
-	        <li>回望网，用心沟通，世界因你而美！</li>
+	        <li title="回望网，用心沟通，世界因你而美！">回望网，用心沟通，世界因你而美！</li>
 	    </ul>
 	    <ul class="header_right">
 	    	#if(!$!{loginUser})
-	    		<li><a href="//www.1huiwang.com/user/preRegister">注册</a></li>
+	    		<li><a href="//www.1huiwang.com/user/preRegister" title="注册后，进入个人中心">注册</a></li>
 	    	#end
 	        <li>
 	        	#if($!{loginUser})
-	        		<a href="//www.1huiwang.com/admin/index">
+	        		<a href="//www.1huiwang.com/admin/index" title="进入个人中心">
 		                <img class="user_photo" src="$!{loginUser.fullPhotoUrl}"/>
 		                $!{loginUser.loginName}
 	                </a>
 	            	，<a href="//www.1huiwang.com/user/logout">退出</a>
 	            #else
-	                <a href="//www.1huiwang.com/user/preLogin" class="login_btn">登陆</a>
+	                <a href="//www.1huiwang.com/user/preLogin" class="login_btn" title="登陆后，进入个人中心">登陆</a>
 	            #end
 	        </li>
 	    </ul>

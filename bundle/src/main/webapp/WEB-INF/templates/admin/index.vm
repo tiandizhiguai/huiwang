@@ -23,7 +23,7 @@
 		        <div class="admin_right">
 		            <div class="admin_welcome">
 		                 #if($!{operationType} == "success")操作成功
-		                 #else欢迎来到我的主页
+		                 #else欢迎来到个人中心
 		                 #end
 		            </div>
 		        </div>
