@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.huiwang.common.HtmlUtils;
 import com.huiwang.constant.StatusType;
 import com.huiwang.dao.ArticleDao;
 import com.huiwang.model.ArticleModel;
@@ -69,7 +70,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void add(ArticleParam param) {
-        String content = param.getContent();
+        String content = HtmlUtils.getTextFromHtml(param.getContent());
         if (StringUtils.isNotBlank(content) && content.length() > 200) {
             param.setSimpleContent(content.substring(0, 200) + "...");
         } else {

@@ -28,6 +28,8 @@
 		            </div>
 		        </div>
 		    </div>
+		    <script charset="utf-8" src="//style.1huiwang.com/huiwang/editor/kindeditor-all-min.js"></script>
+			<script charset="utf-8" src="//style.1huiwang.com/huiwang/editor/editor.js"></script>
 		    <script src="//style.1huiwang.com/huiwang/js/admin/index.js"></script>
 		    #parse("common/footer.vm")
 		</div>

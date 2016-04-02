@@ -11,5 +11,7 @@
 		    #parse("common/backTop.vm")
 		    #parse("common/footer.vm")
 		</div>
+		<script charset="utf-8" src="//style.1huiwang.com/huiwang/editor/kindeditor-all-min.js"></script>
+		<script charset="utf-8" src="//style.1huiwang.com/huiwang/editor/editor.js"></script>
 	</body>
 </html>

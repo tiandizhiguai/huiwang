@@ -17,7 +17,8 @@
 	     
 	      <tr>
 	         <td align="right" class="left_td"><span class="must_input">*</span>内容：</td>
-	         <td align="left"><textarea name="content" class="content">$!{data.content}</textarea></td>
+	         <td align="left">#parse("common/editor.vm")</td>
+	         <input type="hidden" name="content" id="content"/>
 	         <td><span class="tips" id="check_content">100-5000字</span></td>
 	      </tr>
 	     
