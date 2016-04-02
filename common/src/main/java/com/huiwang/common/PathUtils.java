@@ -12,6 +12,7 @@ public class PathUtils {
     }
 
     public static String getTemplatesPath() {
+        // return "E:/workspace/huiwang/bundle/src/main/webapp/WEB-INF/templates/";
         return getWebInfPath() + "templates/";
     }
 }
