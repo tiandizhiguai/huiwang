@@ -7,21 +7,17 @@ import com.huiwang.constant.Constants;
 public class URIUtils {
 
     public static String getAdminPhotoFullUrl(String imgName) {
-        return getFullImgUrl(Constants.ADMIN_IMG_ABSOLUTE_PATH, imgName);
+        return getFullImgUrl(imgName);
     }
 
     public static String getNoneFullImgUrl() {
-        String url = Constants.IMG_ABSOLUTE_PATH + Constants.NONE_IMG_NAME;
-        url = url.replace(url.substring(0, url.indexOf("huiwang")), Constants.STYLE_DOMAIN_URI);
-        return url;
+        return Constants.STYLE_DOMAIN_URI + "img/" + Constants.NONE_IMG_NAME;
     }
 
-    public static String getFullImgUrl(String uri, String imgName) {
+    public static String getFullImgUrl(String imgName) {
         if (StringUtils.isEmpty(imgName)) {
             return null;
         }
-        String url = uri + imgName;
-        url = url.replace(url.substring(0, url.indexOf("huiwang")), Constants.STYLE_DOMAIN_URI);
-        return url;
+        return Constants.STYLE_DOMAIN_URI + "img/admin/" + imgName;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.huiwang.common.URIUtils;
 import com.huiwang.constant.Constants;
 import com.huiwang.constant.OperationType;
 import com.huiwang.constant.StatusType;
@@ -20,6 +21,7 @@ import com.huiwang.param.TopicParam;
 import com.huiwang.param.UserParam;
 import com.huiwang.service.TopicService;
 import com.huiwang.service.UserService;
+import com.huiwang.vo.User;
 
 @Controller
 @RequestMapping("/admin")
@@ -86,11 +88,19 @@ public class AdminController extends AbstractController {
         }
 
         List<String> localFileNames = saveFiles(files, parent);
+        String photoName = null;
         if (CollectionUtils.isNotEmpty(localFileNames)) {
-            param.setPhotoName(localFileNames.get(0));
+            photoName = localFileNames.get(0);
         }
 
+        // 更新用户数据
+        param.setPhotoName(photoName);
         userServie.update(param);
+
+        // 更新登陆用户的头像
+        User user = this.getLoginedUser();
+        user.setFullPhotoUrl(URIUtils.getFullImgUrl(photoName));
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("redirect:/admin/index");

@@ -7,10 +7,10 @@
 	<!-- 轮播（Carousel）项目 -->
 	<div class="carousel-inner">
 		<div class="item active">
-			<a target="_blank" href="//www.1huiwang.com/user/preUserIdea"><img src="http://style.1huiwang.com/huiwang/img/idea.jpg" alt="意见反馈"></a>
+			<a target="_blank" href="//www.1huiwang.com/user/preUserIdea"><img src="http://style.1huiwang.com/img/idea.jpg" alt="意见反馈"></a>
 		</div>
 		<div class="item">
-			<a target="_blank" href="//www.1huiwang.com/user/preUserIdea"><img src="http://style.1huiwang.com/huiwang/img/idea.jpg" alt="意见反馈"></a>
+			<a target="_blank" href="//www.1huiwang.com/user/preUserIdea"><img src="http://style.1huiwang.com/img/idea.jpg" alt="意见反馈"></a>
 		</div>
 	</div>
 	<!-- 轮播（Carousel）导航 -->

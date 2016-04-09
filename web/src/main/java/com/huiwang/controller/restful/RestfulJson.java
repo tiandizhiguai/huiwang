@@ -177,4 +177,12 @@ public class RestfulJson extends AbstractController {
         datas.put("datas", articleBizService.getCommentList(param));
         return getJsonpData(datas, "article/articleComment.vm");
     }
+
+    @ResponseBody
+    @RequestMapping("/getArticleDetail")
+    public RestfulResult getArticleDetail(Long artcileId) {
+        RestfulResult result = new RestfulResult();
+        result.setData(articleBizService.getDetail(null, artcileId));
+        return result;
+    }
 }

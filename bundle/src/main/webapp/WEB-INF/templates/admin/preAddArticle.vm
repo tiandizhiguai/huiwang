@@ -27,7 +27,7 @@
 	          <td align="left"><button type="button" class="btn btn-primary btn-sm" id="pre_add_btn">发布</button></td>
 	      </tr>
 	      <input type="hidden" name="userId" value="$!{loginUser.id}"/>
-	      <input type="hidden" name="id" value="$!{data.id}"/>
+	      <input type="hidden" name="id" id="article_id" value="$!{data.id}"/>
 	      <input type="hidden" id="topic_id" value="$!{data.topicId}"/>
 		</table>
 	</form>
