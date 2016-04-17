@@ -20,6 +20,7 @@
 		from topic
 		where
 		<include refid="topicCondition" />
+		order by t_order
 	</select>
 
 	<select id="getById" parameterType="java.lang.Long" resultMap="topicResultMap">

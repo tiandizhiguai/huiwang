@@ -1,0 +1,7 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+ 
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Set name="contextPath">/</Set>
+  <Set name="war">/root/jetty-distribution-9.3.7.v20160115/webapps/huiwang.bundle-1.0.0.war</Set>
+</Configure>
