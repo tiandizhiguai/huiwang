@@ -191,6 +191,7 @@ public class ArticleBizServiceImpl implements ArticleBizService {
 
         // 6.记录阅读次数
         ArticleStatis articleStatis = articleStatisService.getByArticleId(articleId);
+        ArticleStatisParam statisParam = new ArticleStatisParam();
         if (articleStatis != null) {
             Integer readSize = articleStatis.getReadSize();
             if (readSize != null) {
@@ -198,10 +199,13 @@ public class ArticleBizServiceImpl implements ArticleBizService {
             } else {
                 readSize = 1;
             }
-            ArticleStatisParam statisParam = new ArticleStatisParam();
             statisParam.setId(articleStatis.getId());
             statisParam.setReadSize(readSize);
             articleStatisService.update(statisParam);
+        } else {
+            statisParam.setReadSize(1);
+            statisParam.setArticleId(articleId);
+            articleStatisService.add(statisParam);
         }
 
         bo.setUserData(user);
