@@ -72,7 +72,7 @@ public class ArticleServiceImpl implements ArticleService {
     public void add(ArticleParam param) {
         String content = HtmlUtils.getTextFromHtml(param.getContent());
         if (StringUtils.isNotBlank(content) && content.length() > 200) {
-            param.setSimpleContent(content.substring(0, 200) + "...");
+            param.setSimpleContent(content.substring(0, 170) + "...");
         } else {
             param.setSimpleContent(content);
         }
