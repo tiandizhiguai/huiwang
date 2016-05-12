@@ -3,7 +3,7 @@
     <div class="header_item">
 	    <ul class="header_left">
 	        <li><a href="//www.1huiwang.com/index">首页</a></li>
-	        <li title="回望网，用心沟通，世界因你而美！">回望网，用心沟通，世界因你而美！</li>
+	        <li title="回望网，用心分享，世界因你而美！">回望网，用心分享，世界因你而美！</li>
 	    </ul>
 	    <ul class="header_right">
 	    	#if(!$!{loginUser})
