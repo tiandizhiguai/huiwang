@@ -1,6 +1,6 @@
 #if($!{datas.size()} > 0)
 	<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/adminList.css"/>
-	<table class="table table-bordered">
+	<table class="table">
 	   <thead>
 	      <tr>
 	         <th>标题</th>
@@ -17,7 +17,7 @@
 	   <tbody>
 	       #foreach($data in $!datas)
 	           <tr class="active">
-	              <td title="$!{data.title}">$!{data.getTitle(10)}</td>
+	              <td title="$!{data.title}"><a href="//www.1huiwang.com/article/detail?id=$!{data.id}" target="_blank">$!{data.getTitle(10)}</a></td>
 	              ##<td>$!{data.statisData.readSize}</td>
 	              
 	              
