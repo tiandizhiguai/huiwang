@@ -134,7 +134,7 @@ public class AticleStatisServiceImpl implements ArticleStatisService {
 
         ArticleStatis articleStatis = this.getByArticleId(param.getArticleId());
 
-        // 增加关注人
+        // 增加关注人，其中cared的值为true时，表示当前用户已经已经关注了当前文章
         Integer size = 0;
         ArticleStatisParam statisParam = new ArticleStatisParam();
         if (!param.isCared()) {

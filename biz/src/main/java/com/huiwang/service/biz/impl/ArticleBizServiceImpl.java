@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.huiwang.constant.StatusType;
 import com.huiwang.param.ArticleCareParam;
 import com.huiwang.param.ArticleCommentParam;
 import com.huiwang.param.ArticleParam;
@@ -122,6 +123,7 @@ public class ArticleBizServiceImpl implements ArticleBizService {
             ArticleCareParam careParam = new ArticleCareParam();
             careParam.setArticleIds(articleIds);
             careParam.setUserId(param.getLoginUserId());
+            careParam.setStatus(StatusType.NORMAL.getValue());
             List<ArticleCare> articleCares = articleCareService.getList(careParam);
             if (!CollectionUtils.isEmpty(articleCares)) {
                 for (ArticleCare articleCare : articleCares) {
@@ -133,6 +135,7 @@ public class ArticleBizServiceImpl implements ArticleBizService {
             ArticlePraiseParam praiseParam = new ArticlePraiseParam();
             praiseParam.setArticleIds(articleIds);
             praiseParam.setUserId(param.getLoginUserId());
+            praiseParam.setStatus(StatusType.NORMAL.getValue());
             List<ArticlePraise> articlePraises = articlePraiseService.getList(praiseParam);
             if (!CollectionUtils.isEmpty(articlePraises)) {
                 for (ArticlePraise articlePraise : articlePraises) {

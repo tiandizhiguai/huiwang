@@ -44,7 +44,7 @@
 	</select>
 
 	<delete id="delete" parameterType="com.huiwang.param.ArticleParam">
-		delete from article
+		delete article set status = 'del'
 		where
 		<include refid="articleCondition" />
 	</delete>
@@ -112,6 +112,12 @@
 		</if>
 		<if test="status != null">
 			and status = #{status}
+		</if>
+		<if test="ids != null">
+		    and id in 
+		    <foreach collection="ids" item="value" separator="," open="(" close=")" index="index">
+				#{value}
+			</foreach>
 		</if>
 		<if test="sortType != null">
 			order by ${sortType}

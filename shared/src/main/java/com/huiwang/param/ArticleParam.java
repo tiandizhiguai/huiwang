@@ -1,34 +1,45 @@
 package com.huiwang.param;
 
 import java.util.Date;
+import java.util.List;
 
 public class ArticleParam extends PageParam {
 
-    private Long    id;
+    private Long       id;
 
-    private String  title;
+    private List<Long> ids;
 
-    private String  simpleContent;
+    private String     title;
 
-    private String  content;
+    private String     simpleContent;
 
-    private Long    topicId;
+    private String     content;
 
-    private String  topicName;
+    private Long       topicId;
 
-    private Long    userId;
+    private String     topicName;
 
-    private String  status;
+    private Long       userId;
 
-    private Date    gmtCreated;
+    private String     status;
 
-    private Date    gmtModified;
+    private Date       gmtCreated;
 
-    private String  sortType;
+    private Date       gmtModified;
 
-    private boolean descOrder;
+    private String     sortType;
 
-    private Long    loginUserId;
+    private boolean    descOrder;
+
+    private Long       loginUserId;
+
+    public List<Long> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<Long> ids) {
+        this.ids = ids;
+    }
 
     public Long getLoginUserId() {
         return loginUserId;

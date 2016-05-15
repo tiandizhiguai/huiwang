@@ -10,6 +10,7 @@ public abstract class PageParam {
     protected int           pageSize          = DEFAULT_PAGE_SIZE;
     protected int           offset            = 0;
 
+    // 用于数据库分页
     public int getOffset() {
         return (getPageNo() - 1) * getPageSize();
     }

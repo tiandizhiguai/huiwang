@@ -15,6 +15,9 @@
 		                <input type="hidden" class="loginName" value="$!{loginUser.loginName}"/>
 		                <li class="left_nav_item"><a href="#">发布文章</a></li>
 		                <li class="left_nav_item"><a href="#">我的文章</a></li>
+		                <li class="left_nav_item"><a href="#">我的关注</a></li>
+		                <li class="left_nav_item"></li>
+		                <li class="left_nav_item"></li>
 		                <li class="left_nav_item"><a href="#">上传头像</a></li>
 		                <li class="left_nav_item"><a href="#">我的信息</a></li>
 		                <li class="left_nav_item"><a href="#">修改密码</a></li>
