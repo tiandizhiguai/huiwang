@@ -3,7 +3,13 @@
         <li class="comment_content_item">
         	<div class="comment_content_author">
         		<img class="comment_content_user_photo" src="$!{data.user.fullPhotoUrl}"/>
-        		<span>$!{data.user.loginName}</span>
+        		<span>
+        			#if($!{data.user.realName})
+	    				$!{data.user.realName}
+	    			#else
+	    				$!{data.user.loginName}
+	    			#end
+        		</span>
         		<span class="comment_conent_time">$!{data.comment.gmtCreated}</span>
         	</div>
         	<div class="comment_content_$!{data.comment.id}" id="$!{data.comment.id}">

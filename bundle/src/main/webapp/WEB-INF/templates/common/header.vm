@@ -11,7 +11,12 @@
 	        	#if($!{loginUser})
 	        		<a href="//www.1huiwang.com/admin/index" title="进入个人中心">
 		                <img class="user_photo" src="$!{loginUser.fullPhotoUrl}"/>
-		                $!{loginUser.loginName}
+		                #set($realName = $!{loginUser.realName})
+		                #if($!realName)
+		                	$!realName
+		                #else
+		                	$!{loginUser.loginName}
+		                #end
 	                </a>
 	            	，<a href="//www.1huiwang.com/user/logout">退出</a>
 	            #else

@@ -6,7 +6,13 @@
         </div>
         <div class="content_author">
     		<img class="content_user_photo" src="$!{data.userData.fullPhotoUrl}"/>
-    		<span><strong>$!{data.userData.loginName}</strong></span>
+    		<span><strong>
+    			#if($!{data.userData.realName})
+    				$!{data.userData.realName}
+    			#else
+    				$!{data.userData.loginName}
+    			#end
+    		</strong></span>
     		<span class="content_topic">
         		<span>$!{data.gmtCreated}</span>
         		<span>发表于</span>
