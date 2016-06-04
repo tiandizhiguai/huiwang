@@ -1,17 +1,23 @@
 package com.huiwang.controller.restful;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.huiwang.constant.Constants;
 import com.huiwang.constant.SortType;
 import com.huiwang.constant.StatusType;
 import com.huiwang.controller.AbstractController;
@@ -184,5 +190,27 @@ public class RestfulJson extends AbstractController {
         RestfulResult result = new RestfulResult();
         result.setData(articleBizService.getDetail(null, artcileId));
         return result;
+    }
+
+    @ResponseBody
+    @RequestMapping("/uploadArticleImg")
+    public String uploadArticleImg(@RequestParam MultipartFile[] imgFile) {
+
+        // 创建文章图片目录
+        File parentPath = new File(Constants.ARTICLE_IMG_ABSOLUTE_PATH);
+        if (!parentPath.exists()) {
+            parentPath.mkdir();
+        }
+
+        List<String> localFileNames = saveFiles(imgFile, parentPath);
+        String imgName = null;
+        if (CollectionUtils.isNotEmpty(localFileNames)) {
+            imgName = localFileNames.get(0);
+        }
+
+        JSONObject obj = new JSONObject();
+        obj.put("error", 0);
+        obj.put("url", Constants.STYLE_DOMAIN_URI_WHITH_HTTP + "img/article/" + imgName);
+        return obj.toString();
     }
 }
