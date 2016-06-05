@@ -44,6 +44,6 @@
 	<script src="//style.1huiwang.com/huiwang/js/admin/adminArticles.js"></script>
 #else
 	<div class="admin_welcome">
-         还没有文章哦，去发布吧
+         还没有分享哦，去发布吧
     </div>
 #end

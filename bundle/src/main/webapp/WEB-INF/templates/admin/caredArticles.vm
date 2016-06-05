@@ -40,5 +40,5 @@
 	#parse("common/paging.vm")
 	<script src="//style.1huiwang.com/huiwang/js/admin/caredArticles.js"></script>
 #else
-	<div class="admin_welcome">没有文章，赶快去关注吧</div>
+	<div class="admin_welcome">没有分享，赶快去关注吧</div>
 #end

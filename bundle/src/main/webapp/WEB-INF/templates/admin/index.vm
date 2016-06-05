@@ -13,8 +13,8 @@
 		            <ul>
 		                <input type="hidden" class="userId" value="$!{loginUser.id}"/>
 		                <input type="hidden" class="loginName" value="$!{loginUser.loginName}"/>
-		                <li class="left_nav_item"><a href="#">发布文章</a></li>
-		                <li class="left_nav_item"><a href="#">我的文章</a></li>
+		                <li class="left_nav_item"><a href="#">发布分享</a></li>
+		                <li class="left_nav_item"><a href="#">我的分享</a></li>
 		                <li class="left_nav_item"><a href="#">我的关注</a></li>
 		                <li class="left_nav_item"></li>
 		                <li class="left_nav_item"></li>
