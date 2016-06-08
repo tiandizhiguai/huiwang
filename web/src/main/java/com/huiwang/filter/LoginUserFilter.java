@@ -1,6 +1,7 @@
 package com.huiwang.filter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -27,7 +28,21 @@ public class LoginUserFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
         if (session == null || session.getAttribute(Constants.LOGIN_USER) == null) {
-            httpResponse.sendRedirect("/user/preLogin?redirectUri=" + httpRequest.getRequestURI());
+            Enumeration<String> paramNames = httpRequest.getParameterNames();
+            StringBuilder queryString = new StringBuilder("?");
+            for (; paramNames.hasMoreElements();) {
+                String paramName = paramNames.nextElement();
+                String paramValue = httpRequest.getParameter(paramName);
+                queryString.append(paramName);
+                queryString.append("=");
+                queryString.append(paramValue);
+                queryString.append("&");
+            }
+            if (queryString.length() > 1) {
+                queryString.deleteCharAt(queryString.length() - 1);
+            }
+
+            httpResponse.sendRedirect("/user/preLogin?redirectUri=" + httpRequest.getRequestURI() + queryString);
         } else {
             chain.doFilter(httpRequest, httpResponse);
         }

@@ -6,7 +6,7 @@
 	        <li title="回望网，用心分享，世界因你而美！">回望网，用心分享，世界因你而美！</li>
 	    </ul>
 	    <ul class="header_right">
-	    	<li><a href="//www.1huiwang.com/admin/index" title="登陆后，发布分享">发布分享</a></li>
+	    	<li><a href="//www.1huiwang.com/admin/index?type=addArticle" title="登陆后，发布分享">发布分享</a></li>
 	        <li>
 	        	#if($!{loginUser})
 	        		<a href="//www.1huiwang.com/admin/index" title="进入个人中心">

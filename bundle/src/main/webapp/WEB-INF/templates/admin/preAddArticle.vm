@@ -3,7 +3,7 @@
     <form action="//www.1huiwang.com/article/addArticle" class="add_form" method="post">
         <table>
           <tr>
-	         <td align="right" class="left_td"><span class="must_input">*</span>话题：</td>
+	         <td align="right" class="left_td"><span class="must_input">*</span>主题：</td>
 	         <td align="left">
 	            <select name="topicId" class="topic_id_select"></select>
 	         </td>
