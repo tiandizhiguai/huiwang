@@ -98,7 +98,9 @@ public class UserController extends AbstractController {
             }else{
                 modelAndView.setViewName("redirect:/index");
             }
-            userServie.updateLoginTime();
+            // 更新登陆时间
+            param.setPasswd(null);
+            userServie.updateLoginTime(param);
 		}else{
             modelAndView.setViewName("/user/loginError");
 		}

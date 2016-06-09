@@ -9,6 +9,6 @@ public interface UserService extends GeneralService<UserParam, User> {
 
     boolean exists(UserParam param);
     
-    public void updateLoginTime();
+    public void updateLoginTime(UserParam param);
 
 }

@@ -65,6 +65,7 @@
 		<set>
 			gmt_login = now()
 		</set>
+		where <include refid="userCondition" />
 	</update>
 	
 	<update id="update" parameterType="com.huiwang.param.UserParam">
