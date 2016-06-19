@@ -10,6 +10,8 @@ public class User {
 
     private String loginName;
 
+    private String pinyinName;
+
     private String idNumber;
 
     private String sex;
@@ -25,6 +27,14 @@ public class User {
     private Date   gmtModified;
 
     private String fullPhotoUrl;
+
+    public String getPinyinName() {
+        return pinyinName;
+    }
+
+    public void setPinyinName(String pinyinName) {
+        this.pinyinName = pinyinName;
+    }
 
     public String getFullPhotoUrl() {
         return fullPhotoUrl;

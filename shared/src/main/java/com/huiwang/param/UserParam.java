@@ -11,6 +11,10 @@ public class UserParam extends PageParam {
 
     private String     realName;
 
+    private String     beginRealName;
+
+    private String     pinyinName;
+
     private String     loginName;
 
     private String     passwd;
@@ -36,6 +40,22 @@ public class UserParam extends PageParam {
     private String     redirectUri;
 
     private String     token;
+
+    public String getPinyinName() {
+        return pinyinName;
+    }
+
+    public void setPinyinName(String pinyinName) {
+        this.pinyinName = pinyinName;
+    }
+
+    public String getBeginRealName() {
+        return beginRealName;
+    }
+
+    public void setBeginRealName(String beginRealName) {
+        this.beginRealName = beginRealName;
+    }
 
     public Date getGmtLogin() {
         return gmtLogin;

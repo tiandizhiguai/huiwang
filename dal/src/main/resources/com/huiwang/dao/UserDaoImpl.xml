@@ -5,6 +5,7 @@
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="real_name" property="realName" jdbcType="VARCHAR" />
 		<result column="login_name" property="loginName" jdbcType="VARCHAR" />
+		<result column="pinyin_name" property="pinyinName" jdbcType="VARCHAR" />
 		<result column="passwd" property="passwd" jdbcType="VARCHAR" />
 		<result column="id_number" property="idNumber" jdbcType="VARCHAR" />
 		<result column="sex" property="sex" jdbcType="VARCHAR" />
@@ -18,7 +19,7 @@
 	</resultMap>
 	
 	<sql id="userColumnList">
-		id, real_name, login_name, passwd, id_number, sex, status,
+		id, real_name, login_name, pinyin_name, passwd, id_number, sex, status,
 		city_id,photo_name,
 		province_id,gmt_login,
 		gmt_created, gmt_modified
@@ -29,6 +30,7 @@
 		<include refid="userColumnList" />
 		from users
 		where <include refid="userCondition" />
+		limit #{offset}, #{pageSize}
 	</select>
 	
 	<select id="getById" parameterType="java.lang.Long" resultMap="userResultMap">
@@ -45,14 +47,14 @@
 	
 	<insert id="insert" parameterType="com.huiwang.param.UserParam">
 		insert into users (
-		real_name, login_name,
+		real_name, login_name,pinyin_name,
 		passwd, id_number, sex,
 		status, photo_name,city_id,
 		province_id,gmt_login,
 		gmt_created, gmt_modified)
 		values (
 		#{realName},
-		#{loginName},
+		#{loginName},#{pinyinName},
 		#{passwd}, #{idNumber},
 		#{sex},
 		'normal',#{photoName},
@@ -76,6 +78,9 @@
 			</if>
 			<if test="loginName != null">
 				login_name = #{loginName},
+			</if>
+			<if test="pinyinName != null">
+				pinyin_name = #{pinyinName},
 			</if>
 			<if test="passwd != null">
 				passwd = #{passwd},
@@ -117,8 +122,14 @@
 	    <if test="realName != null">
 			and real_name = #{realName}
 		</if>
+		<if test="beginRealName != null">
+			and (real_name like concat('',#{beginRealName},'%') or login_name like concat('',#{beginRealName},'%') or pinyin_name like concat('',#{beginRealName},'%'))
+		</if>
 		<if test="loginName != null">
 			and login_name = #{loginName}
+		</if>
+		<if test="pinyinName != null">
+			and pinyin_name = #{pinyinName}
 		</if>
 		<if test="idNumber != null">
 			and id_number = #{idNumber}

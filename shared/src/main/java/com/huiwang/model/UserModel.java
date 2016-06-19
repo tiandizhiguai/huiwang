@@ -13,6 +13,8 @@ public class UserModel implements Serializable {
 
     private String            loginName;
 
+    private String            pinyinName;
+
     private String            passwd;
 
     private String            idNumber;
@@ -32,6 +34,14 @@ public class UserModel implements Serializable {
     private Date              gmtCreated;
 
     private Date              gmtModified;
+
+    public String getPinyinName() {
+        return pinyinName;
+    }
+
+    public void setPinyinName(String pinyinName) {
+        this.pinyinName = pinyinName;
+    }
 
     public Date getGmtLogin() {
         return gmtLogin;

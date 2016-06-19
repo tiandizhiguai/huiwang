@@ -30,7 +30,7 @@ import com.huiwang.vo.User;
 
 public class AbstractController {
 
-    protected Logger             logger = LogManager.getLogger(AbstractController.class);
+    protected static final Logger logger = LogManager.getLogger(AbstractController.class);
 
     @Resource
     protected HttpSession        httpSession;

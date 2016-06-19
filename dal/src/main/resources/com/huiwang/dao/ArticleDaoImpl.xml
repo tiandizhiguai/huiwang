@@ -102,13 +102,13 @@
 			and user_id = #{userId}
 		</if>
 		<if test="content != null">
-			and content like %#{content}%
+			and content like concat('%',#{content},'%')
 		</if>
 		<if test="topicId != null">
 			and topic_id = #{topicId}
 		</if>
 		<if test="topicName != null">
-			topic_name like %#{topicName}%
+			topic_name like concat('%',#{topicName},'%')
 		</if>
 		<if test="status != null">
 			and status = #{status}

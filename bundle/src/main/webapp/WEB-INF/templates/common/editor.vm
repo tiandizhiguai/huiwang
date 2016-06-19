@@ -1,3 +1,4 @@
 <link rel="stylesheet" href="//style.1huiwang.com/huiwang/editor/themes/default/default.css" />
 <script charset="utf-8" src="//style.1huiwang.com/huiwang/editor/editor.js"></script>
 <textarea id="text_content" style="width:300px;height:200px;visibility:hidden;"></textarea>
+<input type="text" class="autocomplete hidden"/>

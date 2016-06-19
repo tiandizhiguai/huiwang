@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService{
         for (UserModel model : models) {
             vos.add(model2VO(model));
         }
-
         return vos;
     }
 
@@ -63,6 +62,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void add(UserParam param) {
+        param.setPinyinName(com.huiwang.common.StringUtils.chineseToPinyin(param.getRealName()));
         userDao.insert(param);
     }
 
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService{
                     file.delete();
                 }
             }
-
+            param.setPinyinName(com.huiwang.common.StringUtils.chineseToPinyin(param.getRealName()));
             userDao.update(param);
         }
     }

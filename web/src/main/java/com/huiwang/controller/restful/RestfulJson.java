@@ -213,4 +213,14 @@ public class RestfulJson extends AbstractController {
         obj.put("url", Constants.STYLE_DOMAIN_URI_WHITH_HTTP + "img/article/" + imgName);
         return obj.toString();
     }
+
+    @ResponseBody
+    @RequestMapping("/autocompleteuser")
+    public RestfulResult autocompleteuser(String beginRealName) {
+        RestfulResult result = new RestfulResult();
+        UserParam param = new UserParam();
+        param.setBeginRealName(beginRealName);
+        result.setData(userServie.getList(param));
+        return result;
+    }
 }
