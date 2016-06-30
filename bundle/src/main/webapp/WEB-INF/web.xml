@@ -12,12 +12,26 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-    
-    <filter>
-        <filter-name>loginUserFilter</filter-name>
-        <filter-class>com.huiwang.filter.LoginUserFilter</filter-class>
-    </filter>
-    
+
+	<!-- log4j2.x start -->
+	<listener>
+		<listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>log4jServletFilter</filter-name>
+		<filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>log4jServletFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- log4j2.x end -->
+
+	<filter>
+		<filter-name>loginUserFilter</filter-name>
+		<filter-class>com.huiwang.filter.LoginUserFilter</filter-class>
+	</filter>
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -45,9 +59,9 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
-        <filter-name>loginUserFilter</filter-name>
-        <url-pattern>/admin/*</url-pattern>
-    </filter-mapping>
+		<filter-name>loginUserFilter</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.html</url-pattern>
