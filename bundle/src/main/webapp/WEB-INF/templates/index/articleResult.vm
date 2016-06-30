@@ -3,38 +3,46 @@
     <div class="left_item">
         <div class="left_title">最新动态</div>
         <ul>
-        	#foreach($data in $!{datas})
-	            <li class="content_item">
-	            	<div class="content_title">
-	            		<a target="_blank" href="/article/detail?id=$!{data.id}">$!{data.title}</a>
-	            	</div>
-	            	<div class="content_author">
-	            		<img class="content_user_photo" src="$!{data.userData.fullPhotoUrl}"/>
-	            		<span><strong>
-	            			#if($!{data.userData.realName})
-	            				$!{data.userData.realName}
-	            			#else
-	            				$!{data.userData.loginName}
-	            			#end
-	            		</strong></span>
-	            		<span class="content_topic">
-		            		<span>$!{data.gmtCreated}</span>
-		            		<span>发表于</span>
-		            		<span><a href="//www.1huiwang.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
-	            		</span>
-	            	</div>
-	            	<div class="content">$!{data.simpleContent}</div>
-	            	<div class="content_bottom">
-	            		#set($articleId = $!{data.id})
-	            		<a href="javascript:void(0)" class="praise_article" article_id="$!articleId" praised="$!{data.praised}" praised_size="$!{data.statisData.praiseSize}">
-		            		<span id="heart"></span>
-		            		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
-	            		</a>
-		            	<a href="//www.1huiwang.com/article/detail?id=$!articleId#article_comment" target="_blank" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
-		            	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
-	            	</div>
-	            </li>
-            #end
+        	#if($!{selectedTopicId} == 10)
+        		#foreach($data in $!{datas})
+		            <li class="content_item">
+		            	<div class="content">$!{data}</div>
+		            </li>
+	            #end
+        	#else
+        		#foreach($data in $!{datas})
+		            <li class="content_item">
+		            	<div class="content_title">
+		            		<a target="_blank" href="/article/detail?id=$!{data.id}">$!{data.title}</a>
+		            	</div>
+		            	<div class="content_author">
+		            		<img class="content_user_photo" src="$!{data.userData.fullPhotoUrl}"/>
+		            		<span><strong>
+		            			#if($!{data.userData.realName})
+		            				$!{data.userData.realName}
+		            			#else
+		            				$!{data.userData.loginName}
+		            			#end
+		            		</strong></span>
+		            		<span class="content_topic">
+			            		<span>$!{data.gmtCreated}</span>
+			            		<span>发表于</span>
+			            		<span><a href="//www.1huiwang.com/index?topicId=$!{data.topicId}">$!{data.topicName}</a></span>
+		            		</span>
+		            	</div>
+		            	<div class="content">$!{data.simpleContent}</div>
+		            	<div class="content_bottom">
+		            		#set($articleId = $!{data.id})
+		            		<a href="javascript:void(0)" class="praise_article" article_id="$!articleId" praised="$!{data.praised}" praised_size="$!{data.statisData.praiseSize}">
+			            		<span id="heart"></span>
+			            		<span style="margin-left:15px;" class="praise_show_$!articleId"></span>
+		            		</a>
+			            	<a href="//www.1huiwang.com/article/detail?id=$!articleId#article_comment" target="_blank" class="comment_article_$!articleId" article_id="$!{data.id}" comment_size="$!{data.statisData.commentSize}"></a>
+			            	<a href="javascript:void(0)" class="care_article_$!articleId" article_id="$!{data.id}" cared="$!{data.cared}" cared_size="$!{data.statisData.careSize}"></a>
+		            	</div>
+		            </li>
+	            #end
+        	#end
         </ul>
     </div>
     <div class="right_item">
@@ -43,7 +51,15 @@
 </div>
 #parse("common/paging.vm")
 <form id="index_form" method="get">
-    <input type="hidden" name="pageSize" value="20"/>
+    <input type="hidden" name="pageSize" value="15"/>
     <input type="hidden" name="pageNo" id="submit_page_no"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" class="hidden_param"/>
 </form>
 <script src="//style.1huiwang.com/huiwang/js/articleResult.js"></script>

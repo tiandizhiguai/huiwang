@@ -100,9 +100,10 @@ insert into topic values(4, '心情', 'normal', 5, now(), now());
 insert into topic values(5, '坎坷', 'normal', 6, now(), now());
 insert into topic values(6, '奋斗', 'normal', 7, now(), now());
 insert into topic values(7, '童年', 'normal', 8, now(), now());
-insert into topic values(8, '其他', 'normal', 10, now(), now());
+insert into topic values(8, '其他', 'normal', 11, now(), now());
 insert into topic values(9, '爱情', 'normal', 3, now(), now());
 insert into topic values(10, '文学', 'normal', 9, now(), now());
+insert into topic values(11, '开心时刻', 'normal', 10, now(), now());
 
 create table user_idea(
     id              bigint primary key not null auto_increment,
