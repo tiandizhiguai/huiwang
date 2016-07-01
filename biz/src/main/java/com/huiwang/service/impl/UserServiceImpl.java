@@ -62,7 +62,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void add(UserParam param) {
-        param.setPinyinName(com.huiwang.common.StringUtils.chineseToPinyin(param.getRealName()));
         userDao.insert(param);
     }
 
@@ -77,7 +76,9 @@ public class UserServiceImpl implements UserService{
                     file.delete();
                 }
             }
-            param.setPinyinName(com.huiwang.common.StringUtils.chineseToPinyin(param.getRealName()));
+            if (StringUtils.isNoneBlank(param.getRealName())) {
+                param.setPinyinName(com.huiwang.common.StringUtils.chineseToPinyin(param.getRealName()));
+            }
             userDao.update(param);
         }
     }
