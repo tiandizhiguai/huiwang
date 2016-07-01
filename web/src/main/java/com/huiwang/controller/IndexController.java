@@ -33,7 +33,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping("/index")
     public ModelAndView index(ArticleParam param) {
-        if (param.getTopicId() != null && param.getTopicId() == 10L) {
+        if (param.getTopicId() != null && param.getTopicId() == 11L) {
             return joke(param);
         } else {
             return article(param);

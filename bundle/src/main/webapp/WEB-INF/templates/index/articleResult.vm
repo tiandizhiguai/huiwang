@@ -3,7 +3,7 @@
     <div class="left_item">
         <div class="left_title">最新动态</div>
         <ul>
-        	#if($!{selectedTopicId} == 10)
+        	#if($!{selectedTopicId} == 11)
         		#foreach($data in $!{datas})
 		            <li class="content_item">
 		            	<div class="content">$!{data}</div>
