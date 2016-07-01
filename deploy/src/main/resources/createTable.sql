@@ -6,7 +6,8 @@ set names utf8;
 create table users(
     id              bigint primary key not null auto_increment,
 	real_name       varchar(30), 
-	login_name      varchar(30), 
+	login_name      varchar(30),
+	pinyin_name     varchar(100),
 	passwd          varchar(30),
 	id_number       varchar(30),
 	sex             varchar(5),
