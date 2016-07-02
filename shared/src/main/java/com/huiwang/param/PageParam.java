@@ -5,6 +5,7 @@ public abstract class PageParam {
     public static final int DEFAULT_PAGE_SIZE = 20;
     public static final int MAX_PAGE_SIZE     = 60;
     public static final int DEFAULT_PAGE_NO   = 1;
+    public static final int MAX_PAGE_NO       = 1000;
 
     protected int           pageNo            = DEFAULT_PAGE_NO;
     protected int           pageSize          = DEFAULT_PAGE_SIZE;
@@ -19,6 +20,11 @@ public abstract class PageParam {
         if (pageNo < DEFAULT_PAGE_NO) {
             return DEFAULT_PAGE_NO;
         }
+
+        if (pageNo > MAX_PAGE_NO) {
+            return MAX_PAGE_NO;
+        }
+
         return pageNo;
     }
 

@@ -72,7 +72,7 @@ public class IndexController extends AbstractController {
 
     public ModelAndView joke(ArticleParam param) {
         param.setPageSize(15);
-        int totalCount = 30000;
+        int totalCount = 15000;
         int totalPage = totalCount / param.getPageSize();
         if (totalCount % param.getPageSize() != 0) {
             totalPage++;
