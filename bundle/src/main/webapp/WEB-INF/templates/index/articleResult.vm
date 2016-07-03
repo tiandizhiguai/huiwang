@@ -53,13 +53,14 @@
 <form id="index_form" method="get">
     <input type="hidden" name="pageSize" value="15"/>
     <input type="hidden" name="pageNo" id="submit_page_no"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
-    <input type="hidden" class="hidden_param"/>
+    <input type="hidden" id="hidden_param_0"/>
+    <input type="hidden" id="hidden_param_1"/>
+    <input type="hidden" id="hidden_param_2"/>
+    <input type="hidden" id="hidden_param_3"/>
+    <input type="hidden" id="hidden_param_4"/>
+    <input type="hidden" id="hidden_param_5"/>
+    <input type="hidden" id="hidden_param_6"/>
+    <input type="hidden" id="hidden_param_7"/>
+    <input type="hidden" id="hidden_param_8"/>
 </form>
 <script src="//style.1huiwang.com/huiwang/js/articleResult.js"></script>

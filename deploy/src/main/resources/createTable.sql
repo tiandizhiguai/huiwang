@@ -88,23 +88,24 @@ add index praise_user_index(user_id);
 create table topic(
     id              bigint primary key not null auto_increment,
 	t_name			varchar(50),
+	ename           varchar(50),
 	status          varchar(10),
 	t_order         int,
 	gmt_created     datetime,
 	gmt_modified    datetime
 )default charset=utf8;
 
-insert into topic values(1, '花季雨季', 'normal', 1, now(), now());
-insert into topic values(2, '生活点滴', 'normal', 2, now(), now());
-insert into topic values(3, '亲情', 'normal', 4, now(), now());
-insert into topic values(4, '心情', 'normal', 5, now(), now());
-insert into topic values(5, '坎坷', 'normal', 6, now(), now());
-insert into topic values(6, '奋斗', 'normal', 7, now(), now());
-insert into topic values(7, '童年', 'normal', 8, now(), now());
-insert into topic values(8, '其他', 'normal', 11, now(), now());
-insert into topic values(9, '爱情', 'normal', 3, now(), now());
-insert into topic values(10, '文学', 'normal', 9, now(), now());
-insert into topic values(11, '开心时刻', 'normal', 10, now(), now());
+insert into topic values(1, '花季雨季', 'yuji', 'normal', 1, now(), now());
+insert into topic values(2, '生活点滴', 'shenghuo', 'normal', 2, now(), now());
+insert into topic values(3, '亲情', 'qinqing', 'normal', 4, now(), now());
+insert into topic values(4, '心情', 'xinqing', 'normal', 5, now(), now());
+insert into topic values(5, '坎坷', 'kanke', 'normal', 6, now(), now());
+insert into topic values(6, '奋斗', 'fendou', 'normal', 7, now(), now());
+insert into topic values(7, '童年', 'tongnian', 'normal', 8, now(), now());
+insert into topic values(8, '其他', 'other', 'normal', 11, now(), now());
+insert into topic values(9, '爱情', 'love', 'normal', 3, now(), now());
+insert into topic values(10, '文学', 'wenxue', 'normal', 9, now(), now());
+insert into topic values(11, '开心时刻', 'kaixin', 'normal', 10, now(), now());
 
 create table user_idea(
     id              bigint primary key not null auto_increment,
