@@ -45,7 +45,7 @@ public class ArticleController extends AbstractController {
 
     @RequestMapping("/detail")
     public ModelAndView detail(Long id) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
 
         TopicParam topicParam = new TopicParam();
         topicParam.setPageSize(20);
@@ -73,7 +73,7 @@ public class ArticleController extends AbstractController {
         if (totalCount % param.getPageSize() != 0) {
             totalPage++;
         }
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("pageNo", param.getPageNo());
         modelAndView.addObject("totalPage", totalPage);
@@ -85,7 +85,7 @@ public class ArticleController extends AbstractController {
 
     @RequestMapping("/caredArticles")
     public ModelAndView caredArticles(ArticleParam param) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.setViewName("/admin/caredArticles");
 
         // 获取关注的文章id
@@ -134,7 +134,7 @@ public class ArticleController extends AbstractController {
 
     @RequestMapping("/preAddArticle")
     public ModelAndView preAddArticle(Long id) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         if (id != null && id > 0) {
             modelAndView.addObject("data", articleService.get(id));
         }
@@ -144,7 +144,7 @@ public class ArticleController extends AbstractController {
 
     @RequestMapping("/preEditArticle")
     public ModelAndView preEditArticle(ArticleParam param) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("data", articleService.get(param));
         modelAndView.setViewName("/admin/preEditArticle");
         return modelAndView;
@@ -158,7 +158,7 @@ public class ArticleController extends AbstractController {
             articleService.add(param);
         }
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("redirect:/admin/index");
         return modelAndView;
@@ -167,7 +167,7 @@ public class ArticleController extends AbstractController {
     @RequestMapping("/delete")
     public ModelAndView delete(ArticleParam param) {
         articleService.delete(param);
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("/info/info");
         return modelAndView;
@@ -176,7 +176,7 @@ public class ArticleController extends AbstractController {
     @RequestMapping("/careArticle")
     public ModelAndView careArticle(ArticleCareParam param) {
         articleStatisService.careArticle(param);
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("/info/info");
         return modelAndView;

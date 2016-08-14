@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huiwang.dao.CommentMessageDao">
+	<resultMap id="messageResultMap" type="com.huiwang.model.CommentMessageModel">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="article_id" property="articleId" jdbcType="BIGINT" />
+		<result column="article_title" property="articleTitle"
+			jdbcType="VARCHAR" />
+		<result column="comment_id" property="commentId" jdbcType="BIGINT" />
+		<result column="from_user_id" property="fromUserId" jdbcType="BIGINT" />
+		<result column="from_user_name" property="fromUserName"
+			jdbcType="VARCHAR" />
+		<result column="to_user_id" property="toUserId" jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+		<result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="messageColumnList">
+		id, article_id, article_title, comment_id, from_user_id,
+		from_user_name, to_user_id,status,
+		gmt_created, gmt_modified
+	</sql>
+
+	<select id="getCount" parameterType="com.huiwang.param.CommentMessageParam"
+		resultType="int">
+		select count(*)
+		from comment_message
+		where
+		<include refid="messageCondition" />
+	</select>
+
+	<select id="getList" parameterType="com.huiwang.param.CommentMessageParam"
+		resultMap="messageResultMap">
+		select
+		<include refid="messageColumnList" />
+		from comment_message
+		where
+		<include refid="messageCondition" />
+		limit #{offset}, #{pageSize}
+	</select>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="messageResultMap">
+		select
+		<include refid="messageColumnList" />
+		from comment_message
+		where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="com.huiwang.param.CommentMessageParam">
+		delete from comment_message
+		where
+		<include refid="messageCondition" />
+	</delete>
+
+	<insert id="insert" parameterType="com.huiwang.param.CommentMessageParam">
+		insert into comment_message
+		(article_id, article_title, comment_id,
+		from_user_id, from_user_name,
+		to_user_id, status,
+		gmt_created,gmt_modified)
+		values
+		(#{articleId},
+		#{articleTitle}, #{commentId},#{fromUserId},#{fromUserName},
+		#{toUserId}, 'unread', now(),now())
+	</insert>
+	<update id="update" parameterType="com.huiwang.param.CommentMessageParam">
+		update comment_message
+		<set>
+			<if test="articleId != null">
+				article_id = #{articleId},
+			</if>
+			<if test="articleTitle != null">
+				article_title = #{articleTitle},
+			</if>
+			<if test="commentId != null">
+				comment_id = #{commentId},
+			</if>
+			<if test="fromUserId != null">
+				from_user_id = #{fromUserId},
+			</if>
+			<if test="fromUserName != null">
+				from_user_name = #{fromUserName},
+			</if>
+			<if test="toUserId != null">
+				to_user_id = #{toUserId},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			gmt_modified = now()
+		</set>
+		where id = #{id}
+	</update>
+
+	<sql id="messageCondition">
+		1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="commentId != null">
+			and comment_id = #{commentId}
+		</if>
+		<if test="fromUserId != null">
+			and from_user_id = #{fromUserId}
+		</if>
+		<if test="toUserId != null">
+			and to_user_id = #{toUserId}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="sortType != null">
+			order by ${sortType}
+		</if>
+		<if test="descOrder == true">
+			desc
+		</if>
+	</sql>
+</mapper>

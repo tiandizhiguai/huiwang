@@ -1,0 +1,29 @@
+#if($!{datas.size()} > 0)
+	<link rel="stylesheet" href="//style.1huiwang.com/huiwang/css/admin/adminList.css"/>
+	<table class="table">
+	   <thead>
+	      <tr>
+	         <th>文章</th>
+	         <th>评论人</th>
+	         <th>评论时间</th>
+	         <th>状态</th>
+	      </tr>
+	   </thead>
+	   <tbody>
+	       #foreach($data in $!datas)
+	           <tr id="message_$!{data.id}" class="active #if($!{data.status} == 'unread')font_wight#end">
+	              <td class="unread_message" id="$!{data.id}" title="$!{data.articleTitle}"><a href="//www.1huiwang.com/article/detail?id=$!{data.articleId}" target="_blank">$!{data.getArticleTitle(15)}</a></td>
+	              <td>$!{data.fromUserName}</td>
+	              <td>$!{data.gmtCreated}</td>
+	              <td id="status_$!{data.id}">$!{data.statusName}</td>
+	           </tr>
+	      #end
+	   </tbody>
+	</table>
+	#parse("common/paging.vm")
+	<script src="//style.1huiwang.com/huiwang/js/admin/adminMessage.js"></script>
+#else
+	<div class="admin_welcome">
+         还没有你的消息哦
+    </div>
+#end

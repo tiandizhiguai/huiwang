@@ -1,16 +1,13 @@
 package com.huiwang.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ArticlePraiseModel extends AbstratModel {
+public class AbstratModel implements Serializable {
 
-    private static final long serialVersionUID = 1940693230873015696L;
+    private static final long serialVersionUID = -4709893189118525374L;
 
-    private Long              id;
-
-    private Long              articleId;
-
-    private Long              userId;
+    protected Long            id;
 
     private String            status;
 
@@ -24,22 +21,6 @@ public class ArticlePraiseModel extends AbstratModel {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getStatus() {

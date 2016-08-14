@@ -37,7 +37,7 @@ public class ArticleCommentController extends AbstractController {
             totalPage++;
         }
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("pageNo", param.getPageNo());
         modelAndView.addObject("totalPage", totalPage);
@@ -49,7 +49,7 @@ public class ArticleCommentController extends AbstractController {
 
     @RequestMapping("/detail")
     public ModelAndView detail(Long id) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
 
         TopicParam topicParam = new TopicParam();
         topicParam.setPageSize(20);
@@ -91,7 +91,7 @@ public class ArticleCommentController extends AbstractController {
         // 最后一页的数据
         param.setPageNo(totalPage);
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("pageNo", param.getPageNo());
         modelAndView.addObject("totalPage", totalPage);

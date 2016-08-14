@@ -58,7 +58,7 @@ public class IndexController extends AbstractController {
         topicParam.setPageSize(20);
         topicParam.setStatus(StatusType.NORMAL.getValue());
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("pageNo", param.getPageNo());
         modelAndView.addObject("totalPage", totalPage);
@@ -81,7 +81,7 @@ public class IndexController extends AbstractController {
         topicParam.setPageSize(20);
         topicParam.setStatus(StatusType.NORMAL.getValue());
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("pageNo", param.getPageNo());
         modelAndView.addObject("totalPage", totalPage);

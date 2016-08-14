@@ -114,3 +114,16 @@ create table user_idea(
 	gmt_created     datetime,
 	gmt_modified    datetime
 )default charset=utf8;
+
+create table comment_message(
+    id              bigint primary key not null auto_increment,
+	article_id      bigint not null,
+	article_title   varchar(256) not null,
+	comment_id		bigint not null,
+	from_user_id	bigint not null,
+	from_user_name  varchar(32) not null,
+	to_user_id		bigint not null,
+	status			varchar(16),
+	gmt_created     datetime,
+	gmt_modified    datetime
+)default charset=utf8;

@@ -11,12 +11,17 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.huiwang.constant.StatusType;
 import com.huiwang.dao.ArticleCommentDao;
 import com.huiwang.model.ArticleCommentModel;
 import com.huiwang.param.ArticleCommentParam;
 import com.huiwang.param.ArticleStatisParam;
+import com.huiwang.param.CommentMessageParam;
 import com.huiwang.service.ArticleCommentService;
+import com.huiwang.service.ArticleService;
 import com.huiwang.service.ArticleStatisService;
+import com.huiwang.service.CommentMessageService;
+import com.huiwang.vo.Article;
 import com.huiwang.vo.ArticleComment;
 import com.huiwang.vo.ArticleStatis;
 
@@ -24,10 +29,16 @@ import com.huiwang.vo.ArticleStatis;
 public class AticleCommentServiceImpl implements ArticleCommentService {
 
     @Resource
-    private ArticleCommentDao    commentDao;
+    private ArticleCommentDao     commentDao;
 
     @Resource
-    private ArticleStatisService articleStatisService;
+    private ArticleStatisService  articleStatisService;
+
+    @Resource
+    private CommentMessageService commentMessageService;
+
+    @Resource
+    private ArticleService        articleService;
 
     @Override
     public List<ArticleComment> getList(ArticleCommentParam param) {
@@ -54,6 +65,12 @@ public class AticleCommentServiceImpl implements ArticleCommentService {
 
     @Override
     public void add(ArticleCommentParam param) {
+        Article artilce = articleService.get(param.getArticleId());
+        if (artilce == null) {
+            return;
+        }
+
+        // 预览内容
         String content = param.getComment();
         if (StringUtils.isNotBlank(content) && content.length() > 130) {
             param.setSimpleComment(content.substring(0, 130) + "...");
@@ -61,6 +78,10 @@ public class AticleCommentServiceImpl implements ArticleCommentService {
             param.setSimpleComment(content);
         }
 
+        // 1.添加评论
+        commentDao.insert(param);
+
+        // 2.统计多少评论
         ArticleStatis statis = articleStatisService.getByArticleId(param.getArticleId());
         ArticleStatisParam statisParam = new ArticleStatisParam();
 
@@ -79,7 +100,14 @@ public class AticleCommentServiceImpl implements ArticleCommentService {
             articleStatisService.add(statisParam);
         }
 
-        commentDao.insert(param);
+        // 3.提醒文章作者消息
+        CommentMessageParam messageParam = new CommentMessageParam();
+        messageParam.setArticleId(param.getArticleId());
+        messageParam.setCommentId(param.getId());
+        messageParam.setFromUserId(param.getUserId());
+        messageParam.setToUserId(artilce.getUserId());
+        messageParam.setStatus(StatusType.UNREAD.getValue());
+        commentMessageService.add(messageParam);
     }
 
     @Override

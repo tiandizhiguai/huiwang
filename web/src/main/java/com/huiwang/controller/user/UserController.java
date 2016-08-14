@@ -29,7 +29,7 @@ public class UserController extends AbstractController {
     public ModelAndView preRegister(UserParam param) {
         String token = this.generateToken();
         httpSession.setAttribute(Constants.TOKEN_KEY, token);
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("tokenValue", token);
         modelAndView.setViewName("/user/preRegister");
         return modelAndView;
@@ -38,7 +38,7 @@ public class UserController extends AbstractController {
     @RequestMapping("/register")
     public ModelAndView register(UserParam param) {
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         String token = (String) httpSession.getAttribute(Constants.TOKEN_KEY);
 
         // 1.无效操作
@@ -80,7 +80,7 @@ public class UserController extends AbstractController {
 
     @RequestMapping("/preLogin")
     public ModelAndView preLogin(String redirectUri) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("redirectUri", redirectUri);
         modelAndView.setViewName("/user/preLogin");
 
@@ -89,18 +89,21 @@ public class UserController extends AbstractController {
 
     @RequestMapping("/login")
 	public ModelAndView login(UserParam param) {
-		ModelAndView modelAndView =  new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         User loginUser = userServie.get(param);
         if (loginUser != null && StringUtils.endsWithIgnoreCase(param.getLoginName(), loginUser.getLoginName())) {
+            // 更新登陆时间
+            param.setPasswd(null);
+            userServie.updateLoginTime(param);
             httpSession.setAttribute(Constants.LOGIN_USER, loginUser);
+
+            // 创建存放了登陆数据返回模型
+            modelAndView = getModelAndView();
             if (!StringUtils.isEmpty(param.getRedirectUri())) {
                 modelAndView.setViewName("redirect:" + param.getRedirectUri());
             }else{
                 modelAndView.setViewName("redirect:/index");
             }
-            // 更新登陆时间
-            param.setPasswd(null);
-            userServie.updateLoginTime(param);
 		}else{
             modelAndView.setViewName("/user/loginError");
 		}
@@ -110,14 +113,14 @@ public class UserController extends AbstractController {
     @RequestMapping("/logout")
     public ModelAndView logout(UserParam param) {
         httpSession.removeAttribute(Constants.LOGIN_USER);
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.setViewName("redirect:/index");
         return modelAndView;
     }
 
     @RequestMapping("/preUserIdea")
     public ModelAndView preUserIdea() {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.setViewName("/user/preUserIdea");
         return modelAndView;
     }

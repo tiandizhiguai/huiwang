@@ -1,24 +1,10 @@
 package com.huiwang.model;
 
-import java.util.Date;
+public class ProvinceModel extends AbstratModel {
 
-public class ProvinceModel {
-
-    private Long   id;
+    private static final long serialVersionUID = 174630613390758996L;
 
     private String name;
-
-    private Date   gmtCreated;
-
-    private Date   gmtModified;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -28,19 +14,4 @@ public class ProvinceModel {
         this.name = name;
     }
 
-    public Date getGmtCreated() {
-        return gmtCreated;
-    }
-
-    public void setGmtCreated(Date gmtCreated) {
-        this.gmtCreated = gmtCreated;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
-    }
 }

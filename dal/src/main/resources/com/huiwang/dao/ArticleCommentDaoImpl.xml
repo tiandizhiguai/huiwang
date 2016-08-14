@@ -40,13 +40,13 @@
 		where id = #{id}
 	</select>
 
-	<delete id="delete" parameterType="com.huiwang.param.ArticleCommentParam">
+	<delete id="delete" parameterType="com.huiwang.param.ArticleCommentParam" >
 		delete from article_comment
 		where
 		<include refid="commentCondition" />
 	</delete>
 
-	<insert id="insert" parameterType="com.huiwang.param.ArticleCommentParam">
+	<insert id="insert" parameterType="com.huiwang.param.ArticleCommentParam" useGeneratedKeys="true" keyProperty="id">
 		insert into article_comment
 		(simple_comment, article_id,
 		user_id, status, gmt_created,

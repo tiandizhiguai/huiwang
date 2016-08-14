@@ -1,13 +1,10 @@
 package com.huiwang.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class UserModel implements Serializable {
+public class UserModel extends AbstratModel {
 
     private static final long serialVersionUID = 941808055778328433L;
-
-    private Long              id;
 
     private String            realName;
 
@@ -23,17 +20,11 @@ public class UserModel implements Serializable {
 
     private String            photoName;
 
-    private String            status;
-
     private Long              cityId;
 
     private Long              provinceId;
 
     private Date              gmtLogin;
-
-    private Date              gmtCreated;
-
-    private Date              gmtModified;
 
     public String getPinyinName() {
         return pinyinName;
@@ -49,14 +40,6 @@ public class UserModel implements Serializable {
 
     public void setGmtLogin(Date gmtLogin) {
         this.gmtLogin = gmtLogin;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getRealName() {
@@ -107,14 +90,6 @@ public class UserModel implements Serializable {
         this.photoName = photoName;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Long getCityId() {
         return cityId;
     }
@@ -131,19 +106,4 @@ public class UserModel implements Serializable {
         this.provinceId = provinceId;
     }
 
-    public Date getGmtCreated() {
-        return gmtCreated;
-    }
-
-    public void setGmtCreated(Date gmtCreated) {
-        this.gmtCreated = gmtCreated;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
-    }
 }

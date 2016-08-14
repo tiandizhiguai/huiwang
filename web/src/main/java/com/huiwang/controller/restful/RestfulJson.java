@@ -25,6 +25,7 @@ import com.huiwang.param.ArticleCareParam;
 import com.huiwang.param.ArticleCommentParam;
 import com.huiwang.param.ArticlePraiseParam;
 import com.huiwang.param.CityParam;
+import com.huiwang.param.CommentMessageParam;
 import com.huiwang.param.TopicParam;
 import com.huiwang.param.UserIdeaParam;
 import com.huiwang.param.UserParam;
@@ -35,6 +36,7 @@ import com.huiwang.service.ArticlePraiseService;
 import com.huiwang.service.ArticleService;
 import com.huiwang.service.ArticleStatisService;
 import com.huiwang.service.CityService;
+import com.huiwang.service.CommentMessageService;
 import com.huiwang.service.ProvinceService;
 import com.huiwang.service.TopicService;
 import com.huiwang.service.UserIdeaService;
@@ -81,6 +83,9 @@ public class RestfulJson extends AbstractController {
 
     @Resource
     private ArticleBizService     articleBizService;
+
+    @Resource
+    private CommentMessageService commentMessageService;
 
     @ResponseBody
     @RequestMapping("/getTopics")
@@ -221,6 +226,25 @@ public class RestfulJson extends AbstractController {
         UserParam param = new UserParam();
         param.setBeginRealName(beginRealName);
         result.setData(userServie.getList(param));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping("/updateCommentMessage")
+    public RestfulResult updateCommentMessage(CommentMessageParam param) {
+        RestfulResult result = new RestfulResult();
+        if (param.getId() == null) {
+            result.setErrorMsg("请指定要修改的评论");
+            return result;
+        }
+
+        if (!this.isUserLogined()) {
+            result.setErrorMsg("用户没有登陆");
+            return result;
+        }
+
+        commentMessageService.update(param);
+
         return result;
     }
 }

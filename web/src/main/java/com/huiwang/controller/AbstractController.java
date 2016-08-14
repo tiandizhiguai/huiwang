@@ -21,11 +21,15 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.huiwang.common.PathUtils;
 import com.huiwang.constant.Constants;
+import com.huiwang.constant.StatusType;
+import com.huiwang.param.CommentMessageParam;
 import com.huiwang.result.RestfulResult;
+import com.huiwang.service.CommentMessageService;
 import com.huiwang.vo.User;
 
 public class AbstractController {
@@ -40,6 +44,9 @@ public class AbstractController {
 
     @Resource
     protected HttpServletResponse httpServletResponse;
+
+    @Resource
+    private CommentMessageService commentMessageService;
 
     protected User getLoginedUser() {
         return (User) httpSession.getAttribute(Constants.LOGIN_USER);
@@ -108,5 +115,20 @@ public class AbstractController {
         token.append(remoteHost.hashCode());
         token.append(r);
         return token.toString();
+    }
+
+    protected ModelAndView getModelAndView() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        // 登陆成功后，获取用户未读的消息
+        if (isUserLogined()) {
+            CommentMessageParam messageParam = new CommentMessageParam();
+            messageParam.setToUserId(this.getLoginedUser().getId());
+            messageParam.setStatus(StatusType.UNREAD.getValue());
+            int unreadMessgeCount = commentMessageService.getCount(messageParam);
+            modelAndView.addObject("unreadMessgeCount", unreadMessgeCount);
+        }
+
+        return modelAndView;
     }
 }

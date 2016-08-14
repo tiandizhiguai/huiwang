@@ -38,7 +38,7 @@ public class AdminController extends AbstractController {
         TopicParam topicParam = new TopicParam();
         topicParam.setPageSize(20);
         topicParam.setStatus(StatusType.NORMAL.getValue());
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("topicDatas", topicService.getList(topicParam));
         modelAndView.addObject("operationType", operationType);
         modelAndView.setViewName("/admin/index");
@@ -47,7 +47,7 @@ public class AdminController extends AbstractController {
 
     @RequestMapping("/preEditAdmin")
     public ModelAndView preEditAdmin(UserParam param) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.setViewName("/admin/preEditAdmin");
         return modelAndView;
     }
@@ -57,7 +57,7 @@ public class AdminController extends AbstractController {
         userServie.update(param);
         // 修改用户后，要更新登陆信息
         httpSession.setAttribute(Constants.LOGIN_USER, userServie.get(param.getId()));
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("redirect:/admin/index");
         return modelAndView;
@@ -65,7 +65,7 @@ public class AdminController extends AbstractController {
 
     @RequestMapping("/preUploadPhoto")
     public ModelAndView preUploadPhoto(UserParam param) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("data", userServie.get(param));
         modelAndView.setViewName("/admin/preUploadPhoto");
         return modelAndView;
@@ -101,7 +101,7 @@ public class AdminController extends AbstractController {
         User user = this.getLoginedUser();
         user.setFullPhotoUrl(URIUtils.getFullImgUrl(photoName));
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("operationType", OperationType.SUCCESS.getValue());
         modelAndView.setViewName("redirect:/admin/index");
         return modelAndView;
@@ -109,7 +109,7 @@ public class AdminController extends AbstractController {
 
     @RequestMapping("/preEditPassword")
     public ModelAndView preEditPassword(UserParam param) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.setViewName("/admin/preEditPassword");
         return modelAndView;
     }
@@ -119,7 +119,7 @@ public class AdminController extends AbstractController {
         userServie.update(param);
         // 修改用户后，要更新登陆信息
         httpSession.setAttribute(Constants.LOGIN_USER, userServie.get(param.getId()));
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = getModelAndView();
         modelAndView.setViewName("redirect:/admin/index");
         return modelAndView;
     }

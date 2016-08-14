@@ -3,7 +3,7 @@ package com.huiwang.constant;
 public enum StatusType {
 
     // 依次为：正常、删除
-    NORMAL("normal"), DEL("del");
+    NORMAL("normal"), DEL("del"), UNREAD("unread"), READ("read");
 
     private StatusType(String value){
         this.value = value;

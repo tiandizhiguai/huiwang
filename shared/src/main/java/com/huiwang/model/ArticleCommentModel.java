@@ -1,13 +1,9 @@
 package com.huiwang.model;
 
-import java.io.Serializable;
-import java.util.Date;
 
-public class ArticleCommentModel implements Serializable {
+public class ArticleCommentModel extends AbstratModel {
 
-    private static final long serialVersionUID = -1711319805268639569L;
-
-    private Long              id;
+    private static final long serialVersionUID = -7255162498869119558L;
 
     private String            simpleComment;
 
@@ -15,21 +11,7 @@ public class ArticleCommentModel implements Serializable {
 
     private Long              userId;
 
-    private String            status;
-
-    private Date              gmtCreated;
-
-    private Date              gmtModified;
-
     private String            comment;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getSimpleComment() {
         return simpleComment;
@@ -53,30 +35,6 @@ public class ArticleCommentModel implements Serializable {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getGmtCreated() {
-        return gmtCreated;
-    }
-
-    public void setGmtCreated(Date gmtCreated) {
-        this.gmtCreated = gmtCreated;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
     }
 
     public String getComment() {
