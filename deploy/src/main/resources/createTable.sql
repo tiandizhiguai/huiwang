@@ -1,5 +1,5 @@
-drop database huiwang;
-create database huiwang character set utf8;
+--drop database huiwang;
+--create database huiwang character set utf8;
 use huiwang;
 set names utf8;
 
